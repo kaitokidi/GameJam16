@@ -88,7 +88,7 @@ public:
 
     //Load the frame using name and position
         //It will load the animation frame on the position passed
-    bool loadFrame(std::string name, int position);
+    bool loadFrame(std::string name,unsigned int position);
 
     //Load the frame using name
         //It will load the animation frame on the animation
@@ -96,7 +96,7 @@ public:
     bool loadFrame(std::string name);
 
     bool loadFrame(sf::Texture & text);
-    bool loadFrame(sf::Texture & text, int position);
+    bool loadFrame(sf::Texture & text,unsigned int position);
 
 
 
