@@ -87,45 +87,51 @@ void SceneGame::update(float deltaTime){
             if(InputManager::action(InputAction::firstAction)){
                 _spelling.first.discard();
                 _chamans.first.changeState(status::action);
+
+
             } else if(InputManager::action(InputAction::firstUp)){
                 _spelling.first.add(glyphUP);
+
             } else if(InputManager::action(InputAction::firstDown)){
                 _spelling.first.add(glyphDOWN);
+
             } else if(InputManager::action(InputAction::firstLeft)){
                 _spelling.first.add(glyphLEFT);
+
             } else if(InputManager::action(InputAction::firstRight)){
                 _spelling.first.add(glyphRIGHT);
+
             }
     } else {
         if(InputManager::action(InputAction::firstAction)){
             _inventory.first.rotate();
             _chamans.first.changeState(status::action);
-             SoundManager::playSound("action");
 
         } else if(InputManager::action(InputAction::firstUp)){
             _finalRitual.first.add(_actualGlyph.first.getGlyphID() );
             _chamans.first.changeState(status::action);
-            SoundManager::playSound("action");
-            _actualGlyph.first.pop();
+
+           // _actualGlyph.first.pop();
 
         } else if(InputManager::action(InputAction::firstDown)){
             _inventory.first.add(_actualGlyph.first.getGlyphID() );
             _chamans.first.changeState(status::action);
-            SoundManager::playSound("action");
-            _actualGlyph.first.pop();
+
+           // _actualGlyph.first.pop();
 
         } else if(InputManager::action(InputAction::firstLeft)){
             _spelling.first.add(_actualGlyph.first.getGlyphID());
             //_inventory.first.firstToActualGlyph();
             _chamans.first.changeState(status::action);
-            SoundManager::playSound("action");
-            _actualGlyph.first.pop();
+
+          //  _actualGlyph.first.pop();
 
         } else if(InputManager::action(InputAction::firstRight)){
             //_inventory.second.attackWith(_actualGlyph.first.getGlyphID());
             _chamans.first.changeState(status::attack);
             SoundManager::playSound("attack");
-            _actualGlyph.first.pop();
+
+          //  _actualGlyph.first.pop();
         }
     }
 
@@ -133,31 +139,36 @@ void SceneGame::update(float deltaTime){
         if(InputManager::action(InputAction::secondAction)){
             _spelling.second.discard();
             _chamans.second.changeState(status::action);
+
         } else if(InputManager::action(InputAction::secondUp)){
             _spelling.second.add(glyphUP);
+
         } else if(InputManager::action(InputAction::secondDown)){
             _spelling.second.add(glyphDOWN);
+
         } else if(InputManager::action(InputAction::secondLeft)){
             _spelling.second.add(glyphLEFT);
+
         } else if(InputManager::action(InputAction::secondRight)){
             _spelling.second.add(glyphRIGHT);
+
         }
     } else {
         if(InputManager::action(InputAction::secondAction)){
             _inventory.second.rotate();
             _chamans.second.changeState(status::action);
-            SoundManager::playSound("action");
+
 
         } else if(InputManager::action(InputAction::secondUp)){
             _finalRitual.second.add(_actualGlyph.second.getGlyphID() );
             _chamans.second.changeState(status::action);
-            SoundManager::playSound("action");
+
             _actualGlyph.second.pop();
 
         } else if(InputManager::action(InputAction::secondDown)){
             _inventory.second.add(_actualGlyph.second.getGlyphID() );
             _chamans.second.changeState(status::action);
-            SoundManager::playSound("action");
+
             _actualGlyph.second.pop();
 
 
@@ -165,13 +176,14 @@ void SceneGame::update(float deltaTime){
             _spelling.second.add(_actualGlyph.second.getGlyphID());
             //_inventory.second.firstToActualGliph();
             _chamans.second.changeState(status::action);
-            SoundManager::playSound("action");
+
             _actualGlyph.second.pop();
 
         } else if(InputManager::action(InputAction::secondLeft)){
             //_inventory.first.attackWith(_actualGlyph.second.getGliph());
             _chamans.second.changeState(status::attack);
             SoundManager::playSound("attack");
+
             _actualGlyph.second.pop();
 
         }

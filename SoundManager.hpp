@@ -29,8 +29,8 @@ private:
     //INITIALIZE YOUR VARIABLES AS STATIC sf::Music or sf::SoundBuffer
     /* Example:
      static sf::Music   overWorldMusic;*/
-     static sf::SoundBuffer     soundBuf;
-
+     static sf::SoundBuffer     attackBuf;
+     static sf::SoundBuffer     actionBuf;
 
      static std::map<std::string, sf::Sound> soundMap;
      static std::map<std::string, sf::Music> musicMap;
