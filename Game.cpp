@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include "SceneGame.hpp"
 
 Game::Game() : _window(sf::VideoMode::getFullscreenModes()[0],"TOPKeK", sf::Style::Close | sf::Style::Fullscreen) {
     _window.setFramerateLimit(FRAMERATE);
@@ -72,7 +73,7 @@ void Game::loadScenes() {
    */
 
     _scenes.insert(std::make_pair("test", new SceneTest(this, &_window, "test2")));
-    _scenes.insert(std::make_pair("test2", new SceneTest(this, &_window, "previous")));
+    _scenes.insert(std::make_pair("test2", new SceneGame(this, &_window)));
 }
 
 void Game::loadScene(std::string sceneName) {
