@@ -58,13 +58,13 @@ std::string Scene::getSceneName() {
 }
 
 void Scene::processInput() {
-    sf::Event event;
+    /*sf::Event event;
     while (_window->pollEvent(event)) {
         if (event.type == sf::Event::Closed) {_window->close(); exit(0);}
         else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
             _window->close(); exit(0);
         }
-    }
+    }*/
 }
 
 void Scene::update(float deltaTime) {

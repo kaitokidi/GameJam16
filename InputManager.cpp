@@ -46,7 +46,7 @@ bool InputManager::isJoystickBinded(int s) {
 
 float InputManager::action(int s) {
     auto itK = keyboardBinds.find(s);
-    if (itK != keyboardBinds.end() && (*itK).second.b) return true;
+    if (itK != keyboardBinds.end() && (*itK).second.b) { (*itK).second.b = false;  return true; }
     else {
         auto itM = mouseBinds.find(s);
         if (itM != mouseBinds.end() && (*itM).second.b) return true;
@@ -75,4 +75,24 @@ void InputManager::update() {
     for (auto& jbs : joystickButtonBinds) {
         jbs.second.b = sf::Joystick::isButtonPressed(jbs.second.nPad,jbs.second.nButton);
     }
+}
+
+void InputManager::update(sf::RenderWindow *rw) {
+    sf::Event event;
+    while(rw->pollEvent(event)){
+        if (event.type == sf::Event::Closed) {rw->close(); exit(0);}
+        if (event.type == sf::Event::MouseButtonPressed) {rw->close(); exit(0);}
+
+        if(event.type == sf::Event::KeyPressed ){
+            for (auto& kb : keyboardBinds) {
+                if(event.key.code == kb.second.k) kb.second.b = true;
+            }
+        }
+        if(event.type == sf::Event::KeyReleased ){
+            for (auto& kb : keyboardBinds) {
+                if(event.key.code == kb.second.k) kb.second.b = false;
+            }
+        }
+    }
+
 }

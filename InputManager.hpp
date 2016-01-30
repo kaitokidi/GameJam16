@@ -2,7 +2,12 @@
 #define INPUTMANAGER_HPP
 
 #include <map>
+#include "utils.hpp"
 #include <SFML/Window.hpp>
+
+namespace sf {
+class RenderWindow;
+}
 
 class InputManager {
 
@@ -53,6 +58,8 @@ private:
 public:
 
     static void update();
+    static void update(sf::RenderWindow* rw);
+
     static float action(int s); //return 0 no s'ha fet l'acció
 
     static bool isBinded(int s);
