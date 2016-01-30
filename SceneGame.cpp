@@ -38,7 +38,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _finalRitual.second.setPosition(sf::Vector2f(677,20));
 
 
-    for ( int i = 0; i < 3; ++i){
+   /* for ( int i = 0; i < 3; ++i){
         int r = random()%3;
         GlyphID id = _inventory.getGlyphIDByIndex(r);
         _finalRitual.first.add(id);
@@ -53,14 +53,16 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     GlyphID id = _inventory.getGlyphIDByIndex(5);
     _finalRitual.first.add(id);
     _finalRitual.second.add(id);
-
+*/
 
 
     _view = _window->getDefaultView();
     _next = "end";
     _inventory.first.init();
     _inventory.second.init();
-    _view = _window->getDefaultView();
+    //_view = _window->getDefaultView();
+    // initView(&_view, sf::Vector2i(_window->getSize().x,_window->getSize().y));
+    initView(&_view, sf::Vector2i(900,600));
     _nextInputUpdate = 0.0f;
 }
 
