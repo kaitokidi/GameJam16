@@ -27,6 +27,16 @@
 #define UIRATIOX 1117
 #define UIRATIOY 768
 
+#define FRAME_DELAY 0.9
+
+//numero de frames de la animacio de cada bitxo/monstre/entitat/deu/summoneable stuff
+#define M1_FRAME_NUM 4 //4 per posar algo, ho canviem en funcio dels spritesheets
+#define M2_FRAME_NUM 4
+
+//numero de evcolucions de cada bitxo/monstre/entitat/deu/summoneable stuff
+#define M1_EVOL_NUM 4 //4 per posar algo, ho canviem en funcio dels spritesheets
+#define M2_EVOL_NUM 4
+
 #ifdef _WIN32
 #define NOMINMAX
 #define M_PI 3.14159

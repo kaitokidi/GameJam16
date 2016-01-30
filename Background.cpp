@@ -8,18 +8,47 @@ Background::Background(std::string backgroundPath, std::string m1Path, std::stri
     if(!_tMonster1.loadFromFile(m1Path))  std::cout << "failed to load monster 1 texture!!" <<  std::endl;
     _monster1.setTexture(_tMonster1);
     _monster1.setPosition(m1Pos);
+    _monster1.setTextureRect(sf::IntRect(0,0,_tMonster1.getSize().x/M1_FRAME_NUM, _tMonster1.getSize().y/M1_EVOL_NUM));
 
     if(!_tMonster2.loadFromFile(m2Path))  std::cout << "failed to load monster 2 texture!!" <<  std::endl;
-    _monster2.setTexture(_tMonster1);
+    _monster2.setTexture(_tMonster2);
     _monster2.setPosition(m2Pos);
+    _monster2.setTextureRect(sf::IntRect(0,0,_tMonster2.getSize().x/M2_FRAME_NUM, _tMonster2.getSize().y/M2_EVOL_NUM));
 
+    _m1Evolution = 0;
+    _m2Evolution = 0;
 
+    _m1Frame = 0;
+    _m2Frame = 0;
 }//2
 
-void Background::update(){}
+void Background::update(float deltaTime){
+    _time += deltaTime;
+    if(_time >= FRAME_DELAY){
+        _time = 0;
+        _updateSprites();
+    }
+}
 
 void Background::draw(sf::RenderTarget& window){
     window.draw(_background);
     window.draw(_monster1);
     window.draw(_monster2);
+}
+
+void Background::evolve(bool monster){
+    if(monster) ++_m2Evolution;
+    else ++_m1Evolution;
+}
+
+void Background::_updateSprites(){
+
+    _m1Frame = (_m1Frame+1)%M1_FRAME_NUM;
+    _m2Frame = (_m2Frame+1)%M2_FRAME_NUM;
+
+    _monster1.setTextureRect(sf::IntRect(_m1Frame*(_tMonster1.getSize().x/M1_FRAME_NUM), _m1Evolution*(_tMonster1.getSize().y/M1_EVOL_NUM),
+                                         _tMonster1.getSize().x/M1_FRAME_NUM, _tMonster1.getSize().y/M1_EVOL_NUM));
+
+    _monster2.setTextureRect(sf::IntRect(_m2Frame*(_tMonster2.getSize().x/M2_FRAME_NUM), _m2Evolution*(_tMonster2.getSize().y/M2_EVOL_NUM),
+                                         _tMonster2.getSize().x/M2_FRAME_NUM, _tMonster2.getSize().y/M2_EVOL_NUM));
 }
