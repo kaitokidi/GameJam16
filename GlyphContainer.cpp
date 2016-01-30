@@ -52,14 +52,20 @@ void GlyphContainer::setPosition(const sf::Vector2f& pos) {
 }
 
 void GlyphContainer::setSize(const sf::Vector2f& size) {
-  
-
-  // Recalculate positions
-  setPosition(_pos);
+  setSize(size.x, size.y);
 }
 
 void GlyphContainer::setSize(float width, float height) {
-  setSize(sf::Vector2f(width, height));
+  float x_ratio = width / _background.getTexture()->getSize().x;
+  float y_ratio = height / _background.getTexture()->getSize().y;
+  _background.setScale(sf::Vector2f(x_ratio, y_ratio));
+
+  sf::Vector2f gsize = calculateGlyphSize();
+  for(auto g : _glyphs) {
+    g.setSize(gsize);
+  }
+  // Recalculate positions
+  setPosition(_pos);
 }
 
 Glyph GlyphContainer::top() {
