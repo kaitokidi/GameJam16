@@ -5,9 +5,9 @@
 //sf::Music           SoundManager::MUSIC_NAME;
 
 /* Example:
-sf::Music           SoundManager::overWorldMusic;
-sf::SoundBuffer     SoundManager::attackBuf;
-*/
+sf::Music           SoundManager::overWorldMusic;*/
+sf::SoundBuffer     SoundManager::soundBuf;
+
 
 
 std::map<std::string, sf::Sound> SoundManager::soundMap;
@@ -27,8 +27,11 @@ void SoundManager::load(){
     soundMap["chamaleonTongue"].setBuffer(attackBuf);
     */
     musicMap["music"].openFromFile("Resources/Sounds/music.ogg");
-    //if(!attackBuf.loadFromFile("Resources/Sounds/attack.ogg")){ std::cout << "Fail on loading attack" << std::endl;};
-    //soundMap["attack"].setBuffer(attackBuf);
+    if(!soundBuf.loadFromFile("Resources/Sounds/action.ogg")){ std::cout << "Fail on loading action sound" << std::endl;};
+    soundMap["action"].setBuffer(soundBuf);
+    if(!soundBuf.loadFromFile("Resources/Sounds/attack.ogg")){ std::cout << "Fail on loading attack sound" << std::endl;};
+    soundMap["attack"].setBuffer(soundBuf);
+
 }
 
 
