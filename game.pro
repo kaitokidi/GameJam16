@@ -41,7 +41,8 @@ SOURCES += main.cpp \
     Inventory.cpp \
     InputGlyphs.cpp \
     Recipies.cpp \
-    BasicReagents.cpp
+    BasicReagents.cpp \
+    MoveEffect.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -77,4 +78,5 @@ HEADERS += utils.hpp \
     Inventory.h \
     InputGlyphs.h \
     Recipies.hpp \
-    BasicReagents.hpp
+    BasicReagents.hpp \
+    MoveEffect.hpp

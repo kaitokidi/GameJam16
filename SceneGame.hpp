@@ -7,10 +7,10 @@
 #include "Background.h"
 #include "Resources.hpp"
 #include "Inventory.hpp"
+#include "MoveEffect.hpp"
 #include "InputGlyphs.hpp"
 #include "GlyphContainer.hpp"
 #include "ObjectiveGlyphs.hpp"
-
 class SceneGame : public Scene {
 
 public:
@@ -41,6 +41,9 @@ private:
     std::pair<InputGlyphs,InputGlyphs> _spelling;
     std::pair<GlyphContainer,GlyphContainer> _actualGlyph;
     std::pair<ObjectiveGlyphs,ObjectiveGlyphs> _finalRitual;
+
+    std::vector<MoveEffect* > moveEffects;
+
 };
 
 #endif // SCENEGAME_HPP

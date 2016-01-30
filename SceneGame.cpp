@@ -156,6 +156,7 @@ void SceneGame::update(float deltaTime){
 
             _chamans.first.changeState(status::attack);
             SoundManager::playSound("attack");
+            //moveEffects.push_back(new MoveEffect(sf::Vector2i(153,172), sf::Vector2i(672,305), Resources::key));
         }
     }
 
@@ -244,6 +245,17 @@ void SceneGame::update(float deltaTime){
         changeScene("endCham");
     }
 
+
+
+    for(auto it = moveEffects.begin(); it != moveEffects.end(); ++it){
+        (*it)->update(deltaTime);
+        if(! (*it)->alive()) {
+            delete *it;
+            moveEffects.erase(it);
+        }
+    }
+
+
 }
 
 void SceneGame::processInput(){
@@ -269,6 +281,10 @@ void SceneGame::render(sf::RenderTarget *target){
 
     _actualGlyph.first.draw(target);
     _actualGlyph.second.draw(target);
+
+    for(auto it = moveEffects.begin(); it != moveEffects.end(); ++it){
+        _window->draw((*(*it)));
+    }
 }
 
 void SceneGame::resizing() {
