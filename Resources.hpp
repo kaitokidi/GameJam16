@@ -25,6 +25,50 @@ public:
     static sf::Texture             spellingBgCham;
     static sf::Texture             inventoryBgCham;
 
+  static sf::Texture glyphUP;
+    // glyphDOWN:
+  static sf::Texture  glyphDOWN;
+    // glyphRIGHT:
+  static sf::Texture  glyphRIGHT;
+    // glyphLEFT:
+  static sf::Texture  glyphLEFT;
+    // glyph11:
+  static sf::Texture  glyph11;
+    // glyph12:
+  static sf::Texture  glyph12;
+    // glyph13:
+  static sf::Texture  glyph13;
+    // glyph14:
+  static sf::Texture  glyph14;
+    // glyph15:
+  static sf::Texture  glyph15;
+    // glyph16:
+  static sf::Texture  glyph16;
+    // glyph17:
+  static sf::Texture  glyph17;
+    // glyph18:
+  static sf::Texture  glyph18;
+    // glyph19:
+  static sf::Texture  glyph19;
+    // glyph21:
+  static sf::Texture  glyph21;
+    // glyph22:
+  static sf::Texture  glyph22;
+    // glyph23:
+  static sf::Texture  glyph23;
+    // glyph24:
+  static sf::Texture  glyph24;
+    //glyph 25:
+  static sf::Texture  glyph25;
+    // glyph26:
+  static sf::Texture  glyph26;
+    // glyph31:
+  static sf::Texture  glyph31;
+    // glyph32:
+  static sf::Texture  glyph32;
+    // glyph33:
+  static sf::Texture  glyph33;
+
     static sf::Texture             recipesBg;
 
 
