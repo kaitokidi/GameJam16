@@ -5,9 +5,9 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _background(TEXTURETPATH + std::string("game.png"), TEXTURETPATH + std::string("orc.png"), TEXTURETPATH + std::string("other_orc.png"), sf::Vector2f(233,20), sf::Vector2f(455,20)),
     //_recipes(Resources::recipesBg),
     _actualGlyph(GlyphContainer(1,sf::Vector2i(1,1),Resources::talkBox),GlyphContainer(1,sf::Vector2i(1,1),Resources::talkBox)),
-    _spelling(InputGlyphs(Resources::spellingBgOrc, &_actualGlyph.first),InputGlyphs(Resources::actualBgCham, &_actualGlyph.second)),
-    _inventory(Inventory(Resources::inventoryBgOrc, &_actualGlyph.first),Inventory(Resources::actualBgCham, &_actualGlyph.second)),
-    _finalRitual(ObjectiveGlyphs(Resources::objectiveBg),ObjectiveGlyphs(Resources::actualBgCham))
+    _spelling(InputGlyphs(Resources::talkBox, &_actualGlyph.first),InputGlyphs(Resources::talkBox, &_actualGlyph.second)),
+    _inventory(Inventory(Resources::talkBox, &_actualGlyph.first),Inventory(Resources::talkBox, &_actualGlyph.second)),
+    _finalRitual(ObjectiveGlyphs(Resources::talkBox),ObjectiveGlyphs(Resources::talkBox))
 {
   _actualGlyph.first.setPosition(sf::Vector2f(153, 172));
   _actualGlyph.first.setSize(sf::Vector2f(75, 75));
@@ -78,16 +78,20 @@ void SceneGame::update(float deltaTime){
             _chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstUp)){
             _finalRitual.first.add(_actualGlyph.first.getGlyphID() );
+            _actualGlyph.first.pop();
             _chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstDown)){
             _inventory.first.add(_actualGlyph.first.getGlyphID() );
+            _actualGlyph.first.pop();
             _chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstLeft)){
             _spelling.first.add(_actualGlyph.first.getGlyphID());
-            //_inventory.first.firstToActualGlyph();
+            _actualGlyph.first.pop();
+            _inventory.first.firstToActualGlyph();
             _chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstRight)){
-            //_inventory.second.attackWith(_actualGlyph.first.getGlyphID());
+            _inventory.second.attackWith(_actualGlyph.first.getGlyphID());
+          _actualGlyph.first.pop();
             _chamans.first.changeState(status::attack);
         }
     }
@@ -111,16 +115,20 @@ void SceneGame::update(float deltaTime){
             _chamans.second.changeState(status::action);
         } else if(InputManager::action(InputAction::secondUp)){
             _finalRitual.second.add(_actualGlyph.second.getGlyphID() );
+            _actualGlyph.second.pop();
             _chamans.second.changeState(status::action);
         } else if(InputManager::action(InputAction::secondDown)){
             _inventory.second.add(_actualGlyph.second.getGlyphID() );
+            _actualGlyph.second.pop();
             _chamans.second.changeState(status::action);
         } else if(InputManager::action(InputAction::secondRight)){
             _spelling.second.add(_actualGlyph.second.getGlyphID());
-            //_inventory.second.firstToActualGliph();
+            _actualGlyph.second.pop();
+            _inventory.second.firstToActualGlyph();
             _chamans.second.changeState(status::action);
         } else if(InputManager::action(InputAction::secondLeft)){
-            //_inventory.first.attackWith(_actualGlyph.second.getGliph());
+            _inventory.first.attackWith(_actualGlyph.second.getGlyphID());
+          _actualGlyph.second.pop();
             _chamans.second.changeState(status::attack);
         }
     }
