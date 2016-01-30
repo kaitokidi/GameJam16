@@ -27,6 +27,20 @@
 #define UIRATIOX 1117
 #define UIRATIOY 768
 
+#define FRAME_DELAY 0.9
+
+//numero de frames de la animacio de cada bitxo/monstre/entitat/deu/summoneable stuff
+#define M_FRAME_NUM 4
+//numero de evcolucions de cada bitxo/monstre/entitat/deu/summoneable stuff
+#define M_EVOL_NUM 4 //4 per posar algo, ho canviem en funcio dels spritesheets
+
+//numero de frames i estats de la animacio dels players
+#define PLAYER_FRAME_NUM 4
+#define PLAYER_STATE_NUM 3
+
+
+
+
 #ifdef _WIN32
 #define NOMINMAX
 #define M_PI 3.14159
@@ -66,10 +80,13 @@ const int my[5] = {1,    0,     0,   -1,   0   };
 
 const float TO_RADIANS = (1 / 180.0f) * (float ) M_PI;
 const float TO_DEGREES = (1 / (float ) M_PI) * 180;
+
 // Scene Status
 namespace status{
     enum gameStatus {running, onMenu};
+    enum playerStatus{idle, action, attack};
 }
+
 
 namespace InputAction {
   enum action {

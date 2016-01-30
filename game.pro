@@ -33,6 +33,8 @@ SOURCES += main.cpp \
     InputManager.cpp \
     SceneTest.cpp \
     SceneGame.cpp
+    Background.cpp \
+    Player.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -60,3 +62,5 @@ HEADERS += utils.hpp \
     InputManager.hpp \
     SceneTest.hpp \
     SceneGame.hpp
+    Background.h \
+    Player.h
