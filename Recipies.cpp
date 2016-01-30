@@ -47,7 +47,7 @@ void Recipies::generateSimpleRecipies() {
       recipe.push_back(glyphs[index]);
     }
     recipies[recipe] = generateUniqueSimpleReagent();
-    printf("%d %d\n", recipe, recipies[recipe]);
+    //printf("%d %d\n", recipe, recipies[recipe]);
     glyphs.push_back(recipies[recipe]);
   }
 }
