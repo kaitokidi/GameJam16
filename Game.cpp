@@ -3,6 +3,7 @@
 
 Game::Game() : _window(sf::VideoMode::getFullscreenModes()[0],"dhfgsadhkf", sf::Style::Close | sf::Style::Fullscreen) {
     _window.setFramerateLimit(FRAMERATE);
+    _window.setKeyRepeatEnabled(false);
     //_window.setMouseCursorVisible(false);
 
     _lastScene = nullptr;
