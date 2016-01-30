@@ -35,7 +35,7 @@ void Inventory::attackWith(GlyphID gid) {
 
 void Inventory::firstToActualGlyph() {
   if(!empty()) {
-    _current_object->add(_glyphs[0].getID());
+    _current_object->substitute(_glyphs[0].getID());
     _glyphs.erase(_glyphs.begin());
     setPosition(_pos);
   }

@@ -11,7 +11,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _finalRitual(ObjectiveGlyphs(Resources::objectiveBg),ObjectiveGlyphs(Resources::actualBgCham))
 {
   _actualGlyph.first.setPosition(sf::Vector2f(100, 100));
-  //_actualGlyph.first.setSize(sf::Vector2f(200, 200));
+  _actualGlyph.first.setSize(sf::Vector2f(200, 200));
   _actualGlyph.second.setPosition(sf::Vector2f(200, 100));
   _inventory.first.setSize(sf::Vector2f(200,200));
   _inventory.second.setSize(sf::Vector2f(200,200));

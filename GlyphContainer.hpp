@@ -27,6 +27,7 @@ public:
   void add(GlyphID gid);
   bool empty();
   Glyph get(int index);
+  void substitute(GlyphID gid);
 
   sf::Sprite _background;
 protected:

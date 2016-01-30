@@ -90,6 +90,21 @@ void GlyphContainer::add(Glyph g) {
   setPosition(_pos);
 }
 
+void GlyphContainer::substitute(GlyphID gid) {
+  printf("%d\n", gid);
+  Glyph g = Glyph(gid);
+
+  if(_glyphs.size() == 0) {
+    g.setSize(calculateGlyphSize());
+    _glyphs.push_back(g);
+  } else {
+    g.setSize(_glyphs[0].getSize());
+    _glyphs[0] = g;
+  }
+
+  setPosition(_pos);
+}
+
 void GlyphContainer::add(GlyphID gid) {
   Glyph g = Glyph(gid);
   add(g);
