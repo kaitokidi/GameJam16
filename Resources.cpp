@@ -49,7 +49,7 @@ void Resources::load() {
 
 
 
-    //talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"));
+    talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"));
 
    // descriptions = std::vector<SpriteSheetDescription>(spriteDescriptionsQtt);
    // descriptions[linkSpritesDescriptions]       = loadDescription("linkSheet");

@@ -27,7 +27,9 @@ public:
   void add(GlyphID gid);
   bool empty();
   Glyph get(int index);
+  void substitute(GlyphID gid);
 
+  sf::Sprite _background;
 protected:
   unsigned int _nglyphs;
   sf::Vector2i _layout;
@@ -36,7 +38,6 @@ protected:
   sf::RenderTarget* _window;
 
   std::vector<Glyph> _glyphs;
-  sf::Sprite _background;
 
   sf::Vector2f calculateGlyphSize();
 };

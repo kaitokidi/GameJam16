@@ -5,19 +5,21 @@ Inventory::Inventory(const sf::Texture& text, GlyphContainer* curr_object) :
   GlyphContainer(6, sf::Vector2i(2, 3), text),
   _current_object(curr_object)
 {
-  printf("Initializing\n");
-  add(glyph11);
-  add(glyph11);
-  add(glyph11);
-  add(glyph11);
-  add(glyph11);
-  firstToActualGlyph();
 }
 
 Inventory::~Inventory() {}
 
 void Inventory::rotate() {
   // TODO
+}
+
+void Inventory::init() {
+  add(glyph11);
+  add(glyph11);
+  add(glyph11);
+  add(glyph11);
+  add(glyph11);
+  firstToActualGlyph();
 }
 
 void Inventory::attackWith(GlyphID gid) {
@@ -33,8 +35,8 @@ void Inventory::attackWith(GlyphID gid) {
 
 void Inventory::firstToActualGlyph() {
   if(!empty()) {
-    printf("%d\n", &_current_object);
-    _current_object->add(_glyphs[0].getID());
+    _current_object->substitute(_glyphs[0].getID());
     _glyphs.erase(_glyphs.begin());
+    setPosition(_pos);
   }
 }
