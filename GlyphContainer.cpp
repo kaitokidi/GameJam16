@@ -103,7 +103,7 @@ Glyph GlyphContainer::get(int index) {
 }
 
 GlyphID GlyphContainer::getGlyphID() {
-  if(!empty)
+  if(!empty())
     return _glyphs[0].getID();
   else
     return glyph_none;

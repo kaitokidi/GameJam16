@@ -44,20 +44,20 @@ void SceneGame::update(float deltaTime){
         }
     } else {
         if(InputManager::action(InputAction::firstAction)){
-            inventory.first.rotate();
+            _inventory.first.rotate();
             //_chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstUp)){
-            _finalRitual.first.add(_actualGlyph.first.getGliphID() );
+            _finalRitual.first.add(_actualGlyph.first.getGlyphID() );
             //_chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstDown)){
-            //inventory.first.add(_actualGlyph.first.getGliphID() );
+            //inventory.first.add(_actualGlyph.first.getGlyphID() );
             //_chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstLeft)){
-            _spelling.first.add(_actualGlyph.first.getGliphID());
+            _spelling.first.add(_actualGlyph.first.getGlyphID());
            // inventory.first.firstToActualGliph();
            // _chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstRight)){
-            //inventory.second.attackWith(_actualGlyph.first.getGliphID());
+            //inventory.second.attackWith(_actualGlyph.first.getGlyphID());
             //_chamans.first.changeState(status::attack);
         }
     }
@@ -77,16 +77,16 @@ void SceneGame::update(float deltaTime){
         }
     } else {
         if(InputManager::action(InputAction::secondAction)){
-            inventory.second.rotate();
+            _inventory.second.rotate();
             //_chamans.second.changeState(status::action);
         } else if(InputManager::action(InputAction::secondUp)){
-            _finalRitual.second.add(_actualGlyph.second.getGliphID() );
+            _finalRitual.second.add(_actualGlyph.second.getGlyphID() );
             //_chamans.second.changeState(status::action);
         } else if(InputManager::action(InputAction::secondDown)){
-            //inventory.second.add(_actualGlyph.second.getGliphID() );
+            //inventory.second.add(_actualGlyph.second.getGlyphID() );
             //_chamans.second.changeState(status::action);
         } else if(InputManager::action(InputAction::secondLeft)){
-            _spelling.second.add(_actualGlyph.second.getGliphID());
+            _spelling.second.add(_actualGlyph.second.getGlyphID());
            // inventory.second.firstToActualGliph();
             //_chamans.second.changeState(status::action);
         } else if(InputManager::action(InputAction::secondRight)){
@@ -119,7 +119,7 @@ void SceneGame::render(sf::RenderTarget *target){
     _chamans.second.draw(target);
 
     _recipes.draw(target);
-
+*/
     _inventory.first.draw(target);
     _inventory.second.draw(target);
 
@@ -131,7 +131,7 @@ void SceneGame::render(sf::RenderTarget *target){
 
     _actualGlyph.first.draw(target);
     _actualGlyph.second.draw(target);
-    */
+
 }
 
 void SceneGame::resizing() {
