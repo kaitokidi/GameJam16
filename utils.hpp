@@ -104,7 +104,7 @@ namespace InputAction {
   };
 }
 
-enum glypID {
+enum GlyphID {
     glyphUP,
     glyphDOWN,
     glyphLEFT,
