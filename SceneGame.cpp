@@ -9,14 +9,21 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _inventory(Inventory(Resources::inventoryBgOrc, &_actualGlyph.first),Inventory(Resources::actualBgCham, &_actualGlyph.second)),
     _finalRitual(ObjectiveGlyphs(Resources::objectiveBg),ObjectiveGlyphs(Resources::actualBgCham))
 {
-  _actualGlyph.first.setPosition(sf::Vector2f(100, 100));
-  _actualGlyph.first.setSize(sf::Vector2f(200, 200));
-  _actualGlyph.second.setPosition(sf::Vector2f(200, 100));
-  _inventory.first.setSize(sf::Vector2f(200,200));
-  _inventory.second.setSize(sf::Vector2f(200,200));
-  _inventory.second.setPosition(sf::Vector2f(600,600));
+  _actualGlyph.first.setPosition(sf::Vector2f(153, 172));
+  _actualGlyph.first.setSize(sf::Vector2f(75, 75));
+
+  _actualGlyph.second.setPosition(sf::Vector2f(677, 172));
+  _actualGlyph.second.setSize(sf::Vector2f(75, 75));
+
+  _inventory.first.setSize(sf::Vector2f(198,260));
+  _inventory.first.setPosition(sf::Vector2f(25,310));
+
+  _inventory.second.setSize(sf::Vector2f(198,260));
+  _inventory.second.setPosition(sf::Vector2f(682,310));
+
   _chamans.first.setParameters(TEXTURETPATH + std::string("orc.png"), sf::Vector2f(20,172));
   _chamans.second.setParameters(TEXTURETPATH + std::string("other_orc.png"), sf::Vector2f(757,172));
+
   _view = _window->getDefaultView();
   _next = "end";
   _inventory.first.init();
