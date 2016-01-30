@@ -24,7 +24,7 @@ public:
 
 private:
 
-    //Game* _game;
+    Game* _game;
     std::string _next;
     sf::Sprite _sprite;
     sf::Texture _texture;

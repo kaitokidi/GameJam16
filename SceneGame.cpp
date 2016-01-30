@@ -144,7 +144,7 @@ void SceneGame::update(float deltaTime){
 
             _chamans.first.changeState(status::attack);
             SoundManager::playSound("attack");
-            //moveEffects.push_back(new MoveEffect(sf::Vector2i(153,172), sf::Vector2i(672,305), Resources::key));
+            moveEffects.push_back(new MoveEffect(sf::Vector2i(153,172), sf::Vector2i(672,305), Resources::key));
         }
     }
 
@@ -223,8 +223,7 @@ void SceneGame::update(float deltaTime){
 
 
 
-
-    for(auto it = moveEffects.begin(); it != moveEffects.end(); ++it){
+    for(auto it = moveEffects.begin(); it != moveEffects.end() && (*it) != nullptr; ++it){
         (*it)->update(deltaTime);
         if(! (*it)->alive()) {
             delete *it;
@@ -261,7 +260,9 @@ void SceneGame::render(sf::RenderTarget *target){
     _actualGlyph.second.draw(target);
 
     for(auto it = moveEffects.begin(); it != moveEffects.end(); ++it){
+        std::cout << "d" << std::endl;
         _window->draw((*(*it)));
+        std::cout << "dd" << std::endl;
     }
 }
 
