@@ -81,5 +81,8 @@ bool Glyph::isComplete() {
   return _complete;
 }
 
-void setSize(sf::Vector2f size) {}
-void setSize(float width, float height) {}
+void Glyph::setSize(sf::Vector2f size) {
+}
+
+void Glyph::setSize(float width, float height) {
+}
