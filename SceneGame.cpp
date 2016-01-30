@@ -10,14 +10,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     //inventory((6, sf::Vector2i(3,2), Resources::inventoryBgOrc, &_actualGlyph),(1 , sf::Vector2i(1,1), Resources::actualBgCham)),
     //_finalRitual((6, sf::Vector2i(1,6), Resources::objectiveBg),(1 , sf::Vector2i(1,1), Resources::actualBgCham))
 {
-   /*
-    //Silvan textures
-    sf::Texture             Resources::objectiveCham;
-    sf::Texture             Resources::actualBgCham;
-    sf::Texture             Resources::spellingBgCham;
-    sf::Texture             Resources::inventoryBgCham;
 
-   */
     _next = "end";
 }
 
