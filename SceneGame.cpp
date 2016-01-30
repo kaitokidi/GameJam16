@@ -93,7 +93,15 @@ void SceneGame::update(float deltaTime){
             inventory.first.attackWith(_actualGlyph.second.getGliph());
             _chamans.second.changeState(status::attack);
         }
-    }*/
+    }
+
+*/
+    if(_finalRitual.first.complete()){
+        _nextScene = "endOrc";
+    }
+    if(_finalRitual.second.complete()){
+
+    }
 }
 
 void SceneGame::processInput(){
