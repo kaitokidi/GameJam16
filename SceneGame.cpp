@@ -41,7 +41,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _finalRitual.second.setSize(sf::Vector2f(208,55));
     _finalRitual.second.setPosition(sf::Vector2f(672,20));
 
-/*
+
     for ( int i = 0; i < 3; ++i){
         int r = random()%3;
         GlyphID id = _recipes.getGlyphIDByIndex(r);
@@ -58,7 +58,6 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _finalRitual.first.add(id);
     _finalRitual.second.add(id);
 
-*/
 
     _view = _window->getDefaultView();
     _next = "end";
@@ -87,18 +86,17 @@ void SceneGame::update(float deltaTime){
             _spelling.first.discard();
             _chamans.first.changeState(status::action);
 
-
         } else if(InputManager::action(InputAction::firstUp)){
-            _spelling.first.add(glyphUP);
+            _spelling.first.add(GlyphID::glyphUP);
 
         } else if(InputManager::action(InputAction::firstDown)){
-            _spelling.first.add(glyphDOWN);
+            _spelling.first.add(GlyphID::glyphDOWN);
 
         } else if(InputManager::action(InputAction::firstLeft)){
-            _spelling.first.add(glyphLEFT);
+            _spelling.first.add(GlyphID::glyphLEFT);
 
         } else if(InputManager::action(InputAction::firstRight)){
-            _spelling.first.add(glyphRIGHT);
+            _spelling.first.add(GlyphID::glyphRIGHT);
 
         }
     } else {
@@ -135,21 +133,22 @@ void SceneGame::update(float deltaTime){
     }
 
     if(_actualGlyph.second.empty()){
+
         if(InputManager::action(InputAction::secondAction)){
             _spelling.second.discard();
             _chamans.second.changeState(status::action);
 
         } else if(InputManager::action(InputAction::secondUp)){
-            _spelling.second.add(glyphUP);
+            _spelling.second.add(GlyphID::glyphUP);
 
         } else if(InputManager::action(InputAction::secondDown)){
-            _spelling.second.add(glyphDOWN);
+            _spelling.second.add(GlyphID::glyphDOWN);
 
         } else if(InputManager::action(InputAction::secondLeft)){
-            _spelling.second.add(glyphLEFT);
+            _spelling.second.add(GlyphID::glyphLEFT);
 
         } else if(InputManager::action(InputAction::secondRight)){
-            _spelling.second.add(glyphRIGHT);
+            _spelling.second.add(GlyphID::glyphRIGHT);
 
         }
     } else {
@@ -173,10 +172,10 @@ void SceneGame::update(float deltaTime){
 
         } else if(InputManager::action(InputAction::secondRight)){
             _spelling.second.add(_actualGlyph.second.getGlyphID());
+            _actualGlyph.second.pop();
             //_inventory.second.firstToActualGliph();
             _chamans.second.changeState(status::action);
 
-            _actualGlyph.second.pop();
 
         } else if(InputManager::action(InputAction::secondLeft)){
             //_inventory.first.attackWith(_actualGlyph.second.getGliph());
