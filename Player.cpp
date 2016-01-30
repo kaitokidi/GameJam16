@@ -8,6 +8,7 @@ Player::Player(std::string path, sf::Vector2f pos){
     _status = status::playerStatus::idle;
     _frame = 0;
     _time = 0;
+    std::cout << "YO" << std::endl;
 }
 
 

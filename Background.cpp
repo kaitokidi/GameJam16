@@ -20,6 +20,8 @@ Background::Background(std::string backgroundPath, std::string m1Path, std::stri
 
     _m1Frame = 0;
     _m2Frame = 0;
+
+    std::cout << "OY" << std::endl;
 }//2
 
 void Background::update(float deltaTime){
