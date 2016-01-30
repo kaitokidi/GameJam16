@@ -7,7 +7,7 @@ GlyphID BasicReagents::used_g[9];
 std::vector<std::vector<GlyphID>> BasicReagents::reagents;
 
 Recipies::Recipies(const sf::Texture& text)
-  : GlyphContainer(6, sf::Vector2i(1,6), text)
+  : GlyphContainer(6, sf::Vector2i(6,6), text)
 {}
 
 Recipies::~Recipies() {}
@@ -16,6 +16,8 @@ void Recipies::populate() {
   BasicReagents::init();
   used_simple = 0;
   glyphs.clear();
+
+  printf("Populate\n");
 
   // Generate 3 basic reagents
   BasicReagents::startNewSequence();
@@ -45,6 +47,7 @@ void Recipies::generateSimpleRecipies() {
       recipe.push_back(glyphs[index]);
     }
     recipies[recipe] = generateUniqueSimpleReagent();
+    printf("%d %d\n", recipe, recipies[recipe]);
     glyphs.push_back(recipies[recipe]);
   }
 }
@@ -81,6 +84,30 @@ bool Recipies::isUsed(GlyphID gid) {
       return true;
   }
   return false;
+}
+
+void Recipies::draw(sf::RenderTarget* target) {
+  target->draw(_background);
+  int i = 0;
+  for(std::map<std::vector<GlyphID>, GlyphID>::iterator it = recipies.begin(); it != recipies.end(); it++) {
+    Glyph g = Glyph(it->second);
+    sf::Vector2f n_pos;
+    n_pos = _background.getPosition() + sf::Vector2f(0, i*calculateGlyphSize().y) + sf::Vector2f(0, 20);
+    g.setPosition(n_pos);
+    g.setSize(calculateGlyphSize());
+    g.draw(target);
+    int j = 0;
+    for(auto gid : it->first) {
+      Glyph g = Glyph(gid);
+      sf::Vector2f n_pos;
+      n_pos = _background.getPosition() + sf::Vector2f(j*calculateGlyphSize().x, i*calculateGlyphSize().y) + sf::Vector2f(0, 20);
+      g.setPosition(n_pos);
+      g.setSize(calculateGlyphSize());
+      g.draw(target);
+      j++;
+    }
+    i++;
+  }
 }
 
 GlyphID Recipies::getGlyphIDByIndex(int index) {

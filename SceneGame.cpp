@@ -8,8 +8,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _spelling(InputGlyphs(Resources::talkBox, &_actualGlyph.first),InputGlyphs(Resources::talkBox, &_actualGlyph.second)),
     _inventory(Inventory(Resources::talkBox, &_actualGlyph.first),Inventory(Resources::talkBox, &_actualGlyph.second)),
     _finalRitual(ObjectiveGlyphs(Resources::talkBox),ObjectiveGlyphs(Resources::talkBox))
-    {
-
+{
     _actualGlyph.first.setPosition(sf::Vector2f(153, 172));
     _actualGlyph.first.setSize(sf::Vector2f(75, 75));
 
@@ -29,7 +28,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
 
     _inventory.second.setSize(sf::Vector2f(198,260));
     _inventory.second.setPosition(sf::Vector2f(677,310));
-    
+
     _recipes.populate();
 
     _chamans.first.setParameters(TEXTURETPATH + std::string("orc.png"), sf::Vector2f(20,172));
@@ -40,6 +39,9 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
 
     _finalRitual.second.setSize(sf::Vector2f(208,55));
     _finalRitual.second.setPosition(sf::Vector2f(672,20));
+
+    _recipes.setPosition(sf::Vector2f(233, 305));
+    _recipes.setSize(sf::Vector2f(434, 270));
 
 /*
     for ( int i = 0; i < 3; ++i){
