@@ -7,7 +7,7 @@ GlyphID BasicReagents::used_g[9];
 std::vector<std::vector<GlyphID>> BasicReagents::reagents;
 
 Recipies::Recipies(const sf::Texture& text)
-  : GlyphContainer(6, sf::Vector2i(6,6), text)
+  : GlyphContainer(6, sf::Vector2i(7,7), text)
 {}
 
 Recipies::~Recipies() {}
@@ -67,7 +67,7 @@ GlyphID Recipies::generateUniqueSimpleReagent() {
   GlyphID random;
   do {
     random = (GlyphID)(rand() % 6 + 13);
-    printf("lmao\n");
+    //printf("lmao\n");
   } while(isUsed(random));
   aused_simple[used_simple] = random;
   used_simple++;
@@ -96,7 +96,7 @@ void Recipies::draw(sf::RenderTarget* target) {
     g.setPosition(n_pos);
     g.setSize(calculateGlyphSize());
     g.draw(target);
-    int j = 0;
+    int j = 1;
     for(auto gid : it->first) {
       Glyph g = Glyph(gid);
       sf::Vector2f n_pos;

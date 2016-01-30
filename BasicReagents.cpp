@@ -15,15 +15,15 @@ bool BasicReagents::alreadyUsed(GlyphID gid) {
 
 void BasicReagents::init() {
   reagents = std::vector<std::vector<GlyphID>>(30);
-  reagents[glyph11] = {glyphUP, glyphDOWN};
-  reagents[glyph12] = {glyphUP, glyphDOWN};
-  reagents[glyph13] = {glyphUP, glyphDOWN};
-  reagents[glyph14] = {glyphUP, glyphDOWN};
-  reagents[glyph15] = {glyphUP, glyphDOWN};
-  reagents[glyph16] = {glyphUP, glyphDOWN};
-  reagents[glyph17] = {glyphUP, glyphDOWN};
-  reagents[glyph18] = {glyphUP, glyphDOWN};
-  reagents[glyph19] = {glyphUP, glyphDOWN};
+  reagents[glyph11] = {glyphUP, glyphDOWN, glyphUP, glyphDOWN, glyphUP, glyphDOWN};
+  reagents[glyph12] = {glyphUP, glyphDOWN, glyphLEFT, glyphRIGHT, glyphLEFT, glyphRIGHT};
+  reagents[glyph13] = {glyphUP, glyphDOWN, glyphRIGHT, glyphLEFT, glyphDOWN, glyphRIGHT};
+  reagents[glyph14] = {glyphUP, glyphDOWN, glyphLEFT, glyphDOWN, glyphUP, glyphDOWN};
+  reagents[glyph15] = {glyphUP, glyphDOWN, glyphDOWN, glyphLEFT, glyphDOWN, glyphUP};
+  reagents[glyph16] = {glyphRIGHT, glyphLEFT, glyphRIGHT, glyphLEFT, glyphRIGHT, glyphLEFT};
+  reagents[glyph17] = {glyphUP, glyphRIGHT, glyphLEFT, glyphUP, glyphRIGHT, glyphLEFT};
+  reagents[glyph18] = {glyphLEFT, glyphDOWN, glyphRIGHT, glyphLEFT, glyphDOWN, glyphRIGHT};
+  reagents[glyph19] = {glyphUP,glyphDOWN, glyphLEFT, glyphDOWN, glyphUP, glyphDOWN};
 }
 
 std::pair<GlyphID, std::vector<GlyphID>> BasicReagents::getBasicReagent() {
