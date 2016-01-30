@@ -87,7 +87,6 @@ namespace status{
     enum playerStatus{idle, action, attack};
 }
 
-
 namespace InputAction {
   enum action {
       firstUp,

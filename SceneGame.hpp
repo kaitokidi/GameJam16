@@ -3,11 +3,6 @@
 #include "Scene.hpp"
 #include "utils.hpp"
 
-//TODO delete it when implemented
-class Chaman;
-class Background;
-class GlyphContainer;
-
 class SceneGame : public Scene {
 
 public:
@@ -30,7 +25,7 @@ private:
     std::string _next;
 /*
     Background _background;
-    std::pair<Chaman> _chamans;
+    std::pair<Player> _chamans;
 
     GlyphContainer _recipes;
     std::pair<Inventory> _inventory;
