@@ -32,10 +32,10 @@ void Background::update(float deltaTime){
     }
 }
 
-void Background::draw(sf::RenderTarget& window){
-    window.draw(_background);
-    window.draw(_monster1);
-    window.draw(_monster2);
+void Background::draw(sf::RenderTarget *window){
+    window->draw(_background);
+    window->draw(_monster1);
+    window->draw(_monster2);
 }
 
 void Background::evolve(bool monster){

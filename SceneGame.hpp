@@ -35,10 +35,10 @@ private:
     std::pair<Player,Player> _chamans;
 
     //GlyphContainer _recipes;
-    std::pair<Inventory,Inventory> _inventory;
+   /* std::pair<Inventory,Inventory> _inventory;
     std::pair<InputGlyphs,InputGlyphs> _spelling;
     std::pair<GlyphContainer,GlyphContainer> _actualGlyph;
-    std::pair<ObjectiveGlyphs,ObjectiveGlyphs> _finalRitual;
+    std::pair<ObjectiveGlyphs,ObjectiveGlyphs> _finalRitual;*/
 
 
 
