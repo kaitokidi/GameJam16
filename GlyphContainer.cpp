@@ -115,8 +115,8 @@ sf::Vector2f GlyphContainer::calculateGlyphSize() {
   float width;
   float height;
 
-  width = _background.getTexture()->getSize().x / _layout.x * _background.getScale().x;
-  height = _background.getTexture()->getSize().y / _layout.y * _background.getScale().y;
+  width = _background.getGlobalBounds().width / _layout.x;
+  height = _background.getGlobalBounds().height / _layout.y;
 
   return sf::Vector2f(width, height);
 }

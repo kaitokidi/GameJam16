@@ -33,6 +33,7 @@ void Inventory::attackWith(GlyphID gid) {
 
 void Inventory::firstToActualGlyph() {
   if(!empty()) {
+    printf("%d\n", &_current_object);
     _current_object->add(_glyphs[0].getID());
     _glyphs.erase(_glyphs.begin());
   }
