@@ -8,7 +8,7 @@ public:
   Inventory(const sf::Texture& text, GlyphContainer* curr_object);
   ~Inventory();
 
-  Glyph rotate(Glyph g);
+  void rotate();
 
 private:
   GlyphContainer* _current_object;
