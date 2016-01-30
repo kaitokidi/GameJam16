@@ -75,6 +75,11 @@ void GlyphContainer::add(Glyph g) {
   setPosition(_pos);
 }
 
+void GlyphContainer::add(GlyphID gid) {
+  Glyph g = Glyph(gid);
+  add(g);
+}
+
 bool GlyphContainer::empty() {
   return _glyphs.size() == 0;
 }

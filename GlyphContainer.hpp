@@ -20,6 +20,7 @@ public:
   Glyph top();
   void pop();
   void add(Glyph g);
+  void add(GlyphID gid);
   bool empty();
   Glyph get(int index);
 
