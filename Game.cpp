@@ -82,6 +82,21 @@ void Game::loadScene(std::string sceneName) {
 
 void Game::initInput() {
 
+    InputManager::bind(InputAction::firstUp, sf::Keyboard::W);
+    InputManager::bind(InputAction::firstDown, sf::Keyboard::S);
+    InputManager::bind(InputAction::firstLeft, sf::Keyboard::A);
+    InputManager::bind(InputAction::firstRight, sf::Keyboard::D);
+    InputManager::bind(InputAction::firstRight, sf::Keyboard::D);
+    InputManager::bind(InputAction::firstAction, sf::Keyboard::Space);
+
+    InputManager::bind(InputAction::secondUp, sf::Keyboard::Up);
+    InputManager::bind(InputAction::secondDown, sf::Keyboard::Down);
+    InputManager::bind(InputAction::secondLeft, sf::Keyboard::Left);
+    InputManager::bind(InputAction::secondRight, sf::Keyboard::Right);
+    InputManager::bind(InputAction::secondAction, sf::Keyboard::RShift);
+
+
+    /*
     InputManager::bind(InputAction::menuUp, sf::Keyboard::Up);
     InputManager::bind(InputAction::menuDown, sf::Keyboard::Down);
     InputManager::bind(InputAction::menuEnter, sf::Keyboard::Return);
@@ -107,4 +122,6 @@ void Game::initInput() {
 
 	InputManager::bind(InputAction::reset, sf::Keyboard::F5);
     InputManager::bind(InputAction::reset, 0, 6);
+    */
+
 }

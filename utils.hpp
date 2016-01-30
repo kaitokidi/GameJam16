@@ -73,26 +73,45 @@ namespace status{
 
 namespace InputAction {
   enum action {
-      menuDown      ,
-      menuUp        ,
-      menuMovement  , // gamepad axis
-      menuEnter     ,
-      menuBack      ,
-      down          , 
-      up            ,
-      p1movementY   , 
-      p2movementY   , 
-      left          , 
-      right         ,
-      p1movementX   ,
-      p2movementX   ,  
-      action        ,
-      fairyAction   , 
-      pause         ,
-	  reset			,
+      firstUp,
+      firstDown,
+      firstLeft,
+      firstRight,
+      firstAction,
+      secondUp,
+      secondDown,
+      secondLeft,
+      secondRight,
+      secondAction,
       inputQtt
   };
 }
+
+enum glypID {
+    glyphUP,
+    glyphDOWN,
+    glyphLEFT,
+    glyphRIGHT,
+    glyph11,
+    glyph12,
+    glyph13,
+    glyph14,
+    glyph15,
+    glyph16,
+    glyph17,
+    glyph18,
+    glyph19,
+    glyph21,
+    glyph22,
+    glyph23,
+    glyph24,
+    glyph25,
+    glyph26,
+    glyph31,
+    glyph32,
+    glyph33,
+    glyph_none
+};
 
 //Scenes
 enum sceneTypes {
