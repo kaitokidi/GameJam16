@@ -40,13 +40,17 @@ void GlyphContainer::setPosition(const sf::Vector2f& pos) {
   else
     return;
 
+  sf::Vector2f offset;
+  offset.x = (_background.getGlobalBounds().width/2)/_layout.x - (calculateGlyphSize().x/2);
+  offset.y = (_background.getGlobalBounds().height/2)/_layout.y - (calculateGlyphSize().y/2);
+
   for(unsigned int i = 0; i < _layout.x; i++) {
     for(unsigned int j = 0; j < _layout.y; j++) {
       if((i * _layout.y + j) > _glyphs.size())
         return;
 
-      sf::Vector2f n_pos = _pos + sf::Vector2f(i * g_size.x,
-                                               j * g_size.y);
+      sf::Vector2f n_pos = _pos + sf::Vector2f(i * g_size.x + offset.x,
+                                               j * g_size.y + offset.y);
       _glyphs[i * _layout.y + j].setPosition(n_pos);
     }
   }
@@ -105,6 +109,10 @@ void GlyphContainer::substitute(GlyphID gid) {
   setPosition(_pos);
 }
 
+void GlyphContainer::preserveHeight(bool b) {
+  preserve_height = b;
+}
+
 void GlyphContainer::add(GlyphID gid) {
   Glyph g = Glyph(gid);
   add(g);
@@ -132,6 +140,12 @@ sf::Vector2f GlyphContainer::calculateGlyphSize() {
 
   width = this->_background.getGlobalBounds().width / _layout.x;
   height = this->_background.getGlobalBounds().height / _layout.y;
+
+  if(preserve_height) {
+    height = width;
+  } else if(preserve_width) {
+    width = height;
+  }
 
   return sf::Vector2f(width, height);
 }

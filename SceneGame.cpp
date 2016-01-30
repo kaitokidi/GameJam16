@@ -18,9 +18,11 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
 
     _spelling.first.setPosition(sf::Vector2f(20, 80));
     _spelling.first.setSize(sf::Vector2f(208, 87));
+    _spelling.first.preserveHeight(true);
 
     _spelling.second.setPosition(sf::Vector2f(672, 80));
     _spelling.second.setSize(sf::Vector2f(208, 87));
+    _spelling.second.preserveHeight(true);
 
     _inventory.first.setSize(sf::Vector2f(198,260));
     _inventory.first.setPosition(sf::Vector2f(25,310));

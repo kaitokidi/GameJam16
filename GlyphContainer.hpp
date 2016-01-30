@@ -21,6 +21,8 @@ public:
 
   void setRenderTarget(sf::RenderTarget* t);
 
+  void preserveHeight(bool b);
+
   Glyph top();
   void pop();
   void add(Glyph g);
@@ -34,6 +36,8 @@ protected:
   unsigned int _nglyphs;
   sf::Vector2i _layout;
   sf::Vector2f _pos;
+  bool preserve_height;
+  bool preserve_width;
 
   sf::RenderTarget* _window;
 
