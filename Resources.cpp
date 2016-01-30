@@ -9,8 +9,6 @@ sf::Shader             Resources::cInvert;
 sf::Font               Resources::pauseMenuFont;
 std::vector<SpriteSheetDescription> Resources::descriptions;
 
-
-
 //Orc textures
 sf::Texture             Resources::objectiveBg;
 sf::Texture             Resources::actualBgOrc;
