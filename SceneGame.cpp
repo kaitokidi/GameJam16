@@ -187,13 +187,7 @@ void SceneGame::update(float deltaTime){
 }
 
 void SceneGame::processInput(){
-    InputManager::update();
-    sf::Event event;
-    while(_window->pollEvent(event)){
-
-        if (event.type == sf::Event::Closed) {_window->close(); exit(0);}
-        if (event.type == sf::Event::MouseButtonPressed) {_window->close(); exit(0);}
-    }
+    InputManager::update(_window);
 }
 
 void SceneGame::render(sf::RenderTarget *target){
