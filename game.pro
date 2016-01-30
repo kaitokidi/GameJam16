@@ -4,7 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 LIBS += -lsfml-audio -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system
 
-QMAKE_CXXFLAGS += -std=c++11
+QMAKE_CXXFLAGS += -std=c++11 -g
 
 SOURCES += main.cpp \
         utils.cpp \

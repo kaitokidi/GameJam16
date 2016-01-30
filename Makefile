@@ -14,7 +14,7 @@ CC            = gcc
 CXX           = g++
 DEFINES       = 
 CFLAGS        = -pipe -O2 -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -Wall -W -fPIC $(DEFINES)
-CXXFLAGS      = -pipe -std=c++11 -O2 -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -Wall -W -fPIC $(DEFINES)
+CXXFLAGS      = -pipe -std=c++11 -g -O2 -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -Wall -W -fPIC $(DEFINES)
 INCPATH       = -I. -I/usr/lib/qt/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt/bin/qmake
 DEL_FILE      = rm -f
@@ -447,7 +447,15 @@ Game.o: Game.cpp Game.hpp \
 		Resources.hpp \
 		SceneTest.hpp \
 		TextBoxManager.hpp \
-		TextBox.hpp
+		TextBox.hpp \
+		SceneGame.hpp \
+		Player.h \
+		Background.h \
+		Inventory.hpp \
+		GlyphContainer.hpp \
+		Glyph.hpp \
+		InputGlyphs.hpp \
+		ObjectiveGlyphs.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Game.o Game.cpp
 
 Scene.o: Scene.cpp Scene.hpp \
@@ -593,12 +601,20 @@ SceneTest.o: SceneTest.cpp SceneTest.hpp \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneTest.o SceneTest.cpp
 
 SceneGame.o: SceneGame.cpp SceneGame.hpp \
-		Scene.hpp \
+		Player.h \
 		utils.hpp \
 		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp \
-		SceneChanger.hpp
+		Scene.hpp \
+		SceneChanger.hpp \
+		Background.h \
+		Resources.hpp \
+		Inventory.hpp \
+		GlyphContainer.hpp \
+		Glyph.hpp \
+		InputGlyphs.hpp \
+		ObjectiveGlyphs.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneGame.o SceneGame.cpp
 
 Background.o: Background.cpp Background.h \
@@ -636,7 +652,8 @@ Glyph.o: Glyph.cpp Glyph.hpp \
 		utils.hpp \
 		DataManager.hpp \
 		SoundManager.hpp \
-		InputManager.hpp
+		InputManager.hpp \
+		Resources.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Glyph.o Glyph.cpp
 
 Inventory.o: Inventory.cpp Inventory.hpp \

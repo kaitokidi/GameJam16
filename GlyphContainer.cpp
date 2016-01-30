@@ -2,10 +2,10 @@
 #include <stdio.h>
 
 GlyphContainer::GlyphContainer(int size, sf::Vector2i layout, const sf::Texture& bg_text) :
-  _background(bg_text)
+  _background(bg_text),
+  _glyphs()
 {
   _nglyphs = size;
-  _glyphs = std::vector<Glyph>();
   _layout = layout;
 }
 
@@ -78,15 +78,10 @@ void GlyphContainer::pop() {
 }
 
 void GlyphContainer::add(Glyph g) {
-
   if(_glyphs.size() == 0) {
-
     g.setSize(calculateGlyphSize());
-
   } else {
-
     g.setSize(_glyphs[0].getSize());
-
   }
 
   _glyphs.push_back(g);

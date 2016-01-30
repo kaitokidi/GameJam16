@@ -9,6 +9,8 @@ public:
   ~Inventory();
 
   void rotate();
+  void attackWith(GlyphID gid);
+  void firstToActualGlyph();
 
 private:
   GlyphContainer* _current_object;

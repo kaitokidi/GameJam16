@@ -54,7 +54,7 @@ void SceneGame::update(float deltaTime){
             _chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstLeft)){
             _spelling.first.add(_actualGlyph.first.getGlyphID());
-            //_inventory.first.firstToActualGliph();
+            //_inventory.first.firstToActualGlyph();
             _chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstRight)){
             //_inventory.second.attackWith(_actualGlyph.first.getGlyphID());
