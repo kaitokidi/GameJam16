@@ -1,7 +1,14 @@
 #ifndef SCENEGAME_HPP
 #define SCENEGAME_HPP
+#include "Player.h"
 #include "Scene.hpp"
 #include "utils.hpp"
+#include "Background.h"
+#include "Resources.hpp"
+#include "Inventory.hpp"
+#include "InputGlyphs.hpp"
+#include "GlyphContainer.hpp"
+#include "ObjectiveGlyphs.hpp"
 
 class SceneGame : public Scene {
 
@@ -23,16 +30,16 @@ public:
 private:
 
     std::string _next;
-/*
-    Background _background;
-    std::pair<Player> _chamans;
 
-    GlyphContainer _recipes;
-    std::pair<Inventory> _inventory;
-    std::pair<InputGlyphs> _spelling;
-    std::pair<GlyphContainer> _actualGlyph;
-    std::pair<ObjectiveGlyphs> _finalRitual;
-*/
+   // Background _background;
+    //std::pair<Player,Player> _chamans;
+
+    //GlyphContainer _recipes;
+    std::pair<Inventory,Inventory> _inventory;
+    std::pair<InputGlyphs,InputGlyphs> _spelling;
+    std::pair<GlyphContainer,GlyphContainer> _actualGlyph;
+    std::pair<ObjectiveGlyphs,ObjectiveGlyphs> _finalRitual;
+
 
 
 };
