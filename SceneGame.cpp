@@ -2,22 +2,15 @@
 
 SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     Scene(g, w, sceneTypes::testScene, "end") //,
-    //_background(),
-    //_chamans(),
+    //_background(std::string backgroundPath, std::string m1Path, std::string m2Path, sf::Vector2f m1Pos, sf::Vector2f m2Pos),
+    //_chamans((std::string Path, sf::Vector2f(0,0)),(std::string Path, sf::Vector2f(100,100))),
     //_recipes(Resources::recipesBg),
     //_actualGlyph((1 , sf::Vector2i(1,1), Resources::actualBgOrc),(1 , sf::Vector2i(1,1), Resources::actualBgCham)),
     //_spelling((6, sf::Vector2i(1,6), Resources::spellingBgOrc, &_actualGlyph),(1 , sf::Vector2i(1,1), Resources::actualBgCham)),
     //inventory((6, sf::Vector2i(3,2), Resources::inventoryBgOrc, &_actualGlyph),(1 , sf::Vector2i(1,1), Resources::actualBgCham)),
     //_finalRitual((6, sf::Vector2i(1,6), Resources::objectiveBg),(1 , sf::Vector2i(1,1), Resources::actualBgCham))
 {
-   /*
-    //Silvan textures
-    sf::Texture             Resources::objectiveCham;
-    sf::Texture             Resources::actualBgCham;
-    sf::Texture             Resources::spellingBgCham;
-    sf::Texture             Resources::inventoryBgCham;
 
-   */
     _next = "end";
 }
 
@@ -33,60 +26,72 @@ void SceneGame::update(float deltaTime){
 /*
     _background.update(deltaTime);
 
-    _chamans.first().update(deltaTime);
-    _chamans.second().update(deltaTime);
+    _chamans.first.update(deltaTime);
+    _chamans.second.update(deltaTime);
 
-    if(_actualGlyph.first().empty()){
+    if(_actualGlyph.first.empty()){
         if(InputManager::action(InputAction::firstAction)){
-            _spelling.first().discard();
+            _spelling.first.discard();
+            _chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstUp)){
-            _spelling.first().add(glyphUP);
+            _spelling.first.add(glyphUP);
         } else if(InputManager::action(InputAction::firstDown)){
-            _spelling.first().add(glyphDOWN);
+            _spelling.first.add(glyphDOWN);
         } else if(InputManager::action(InputAction::firstLeft)){
-            _spelling.first().add(glyphLEFT);
+            _spelling.first.add(glyphLEFT);
         } else if(InputManager::action(InputAction::firstRight)){
-            _spelling.first().add(glyphRIGHT);
+            _spelling.first.add(glyphRIGHT);
         }
     } else {
         if(InputManager::action(InputAction::firstAction)){
-            inventory.first().rotate();
+            inventory.first.rotate();
+            _chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstUp)){
-            _finalRitual.first().add(_actualGlyph.first().getGliphID() );
+            _finalRitual.first.add(_actualGlyph.first.getGliphID() );
+            _chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstDown)){
-            inventory.first().add(_actualGlyph.first().getGliphID() );
+            inventory.first.add(_actualGlyph.first.getGliphID() );
+            _chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstLeft)){
-            _spelling.first().add(_actualGlyph.first().getGliphID());
-            inventory.first().firstToActualGliph();
+            _spelling.first.add(_actualGlyph.first.getGliphID());
+            inventory.first.firstToActualGliph();
+            _chamans.first.changeState(status::action);
         } else if(InputManager::action(InputAction::firstRight)){
-            inventory.second().attackWith(_actualGlyph.first().getGliphID());
+            inventory.second.attackWith(_actualGlyph.first.getGliphID());
+            _chamans.first.changeState(status::attack);
         }
     }
 
-    if(_actualGlyph.second().empty()){
+    if(_actualGlyph.second.empty()){
         if(InputManager::action(InputAction::secondAction)){
-            _spelling.second().discard();
+            _spelling.second.discard();
+            _chamans.second.changeState(status::action);
         } else if(InputManager::action(InputAction::secondUp)){
-            _spelling.second().add(glyphUP);
+            _spelling.second.add(glyphUP);
         } else if(InputManager::action(InputAction::secondDown)){
-            _spelling.second().add(glyphDOWN);
+            _spelling.second.add(glyphDOWN);
         } else if(InputManager::action(InputAction::secondLeft)){
-            _spelling.second().add(glyphLEFT);
+            _spelling.second.add(glyphLEFT);
         } else if(InputManager::action(InputAction::secondRight)){
-            _spelling.second().add(glyphRIGHT);
+            _spelling.second.add(glyphRIGHT);
         }
     } else {
         if(InputManager::action(InputAction::secondAction)){
-            inventory.second().rotate();
+            inventory.second.rotate();
+            _chamans.second.changeState(status::action);
         } else if(InputManager::action(InputAction::secondUp)){
-            _finalRitual.second().add(_actualGlyph.second().getGliphID() );
+            _finalRitual.second.add(_actualGlyph.second.getGliphID() );
+            _chamans.second.changeState(status::action);
         } else if(InputManager::action(InputAction::secondDown)){
-            inventory.second().add(_actualGlyph.second().getGliphID() );
+            inventory.second.add(_actualGlyph.second.getGliphID() );
+            _chamans.second.changeState(status::action);
         } else if(InputManager::action(InputAction::secondLeft)){
-            _spelling.second().add(_actualGlyph.second().getGliphID());
-            inventory.second().firstToActualGliph();
+            _spelling.second.add(_actualGlyph.second.getGliphID());
+            inventory.second.firstToActualGliph();
+            _chamans.second.changeState(status::action);
         } else if(InputManager::action(InputAction::secondRight)){
-            inventory.first().attackWith(_actualGlyph.second().getGliph());
+            inventory.first.attackWith(_actualGlyph.second.getGliph());
+            _chamans.second.changeState(status::attack);
         }
     }*/
 }
