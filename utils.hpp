@@ -30,12 +30,16 @@
 #define FRAME_DELAY 0.9
 
 //numero de frames de la animacio de cada bitxo/monstre/entitat/deu/summoneable stuff
-#define M1_FRAME_NUM 4 //4 per posar algo, ho canviem en funcio dels spritesheets
-#define M2_FRAME_NUM 4
-
+#define M_FRAME_NUM 4
 //numero de evcolucions de cada bitxo/monstre/entitat/deu/summoneable stuff
-#define M1_EVOL_NUM 4 //4 per posar algo, ho canviem en funcio dels spritesheets
-#define M2_EVOL_NUM 4
+#define M_EVOL_NUM 4 //4 per posar algo, ho canviem en funcio dels spritesheets
+
+//numero de frames i estats de la animacio dels players
+#define PLAYER_FRAME_NUM 4
+#define PLAYER_STATE_NUM 3
+
+
+
 
 #ifdef _WIN32
 #define NOMINMAX
@@ -76,33 +80,55 @@ const int my[5] = {1,    0,     0,   -1,   0   };
 
 const float TO_RADIANS = (1 / 180.0f) * (float ) M_PI;
 const float TO_DEGREES = (1 / (float ) M_PI) * 180;
+
 // Scene Status
 namespace status{
     enum gameStatus {running, onMenu};
+    enum playerStatus{idle, action, attack};
 }
+
 
 namespace InputAction {
   enum action {
-      menuDown      ,
-      menuUp        ,
-      menuMovement  , // gamepad axis
-      menuEnter     ,
-      menuBack      ,
-      down          , 
-      up            ,
-      p1movementY   , 
-      p2movementY   , 
-      left          , 
-      right         ,
-      p1movementX   ,
-      p2movementX   ,  
-      action        ,
-      fairyAction   , 
-      pause         ,
-	  reset			,
+      firstUp,
+      firstDown,
+      firstLeft,
+      firstRight,
+      firstAction,
+      secondUp,
+      secondDown,
+      secondLeft,
+      secondRight,
+      secondAction,
       inputQtt
   };
 }
+
+enum glypID {
+    glyphUP,
+    glyphDOWN,
+    glyphLEFT,
+    glyphRIGHT,
+    glyph11,
+    glyph12,
+    glyph13,
+    glyph14,
+    glyph15,
+    glyph16,
+    glyph17,
+    glyph18,
+    glyph19,
+    glyph21,
+    glyph22,
+    glyph23,
+    glyph24,
+    glyph25,
+    glyph26,
+    glyph31,
+    glyph32,
+    glyph33,
+    glyph_none
+};
 
 //Scenes
 enum sceneTypes {

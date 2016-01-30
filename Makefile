@@ -71,7 +71,8 @@ SOURCES       = main.cpp \
 		TextBoxManager.cpp \
 		InputManager.cpp \
 		SceneTest.cpp \
-		Background.cpp 
+		Background.cpp \
+		Player.cpp 
 OBJECTS       = main.o \
 		utils.o \
 		Resources.o \
@@ -98,7 +99,8 @@ OBJECTS       = main.o \
 		TextBoxManager.o \
 		InputManager.o \
 		SceneTest.o \
-		Background.o
+		Background.o \
+		Player.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -507,8 +509,19 @@ SceneTest.o: SceneTest.cpp SceneTest.hpp \
 		Resources.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneTest.o SceneTest.cpp
 
-Background.o: Background.cpp Background.h
+Background.o: Background.cpp Background.h \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Background.o Background.cpp
+
+Player.o: Player.cpp Player.h \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Player.o Player.cpp
 
 ####### Install
 
