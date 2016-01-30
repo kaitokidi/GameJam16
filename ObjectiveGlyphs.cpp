@@ -25,5 +25,14 @@ void ObjectiveGlyphs::add(GlyphID gid) {
 }
 
 bool ObjectiveGlyphs::complete() {
-  return _gcounter == 0;
+    return _gcounter == 0;
+}
+
+void ObjectiveGlyphs::active(GlyphID gid) {
+    for (auto g : _glyphs) {
+        if (gid == g.getID() && (! g.isComplete()) ) {
+            g.setComplete();
+            return;
+        }
+    }
 }

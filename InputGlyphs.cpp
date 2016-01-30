@@ -8,7 +8,15 @@ InputGlyphs::InputGlyphs(sf::Texture& text, GlyphContainer* curr_object) :
 InputGlyphs::~InputGlyphs() {}
 
 void InputGlyphs::discard() {
-  _glyphs.clear();
+    _glyphs.clear();
+}
+
+std::vector<GlyphID> InputGlyphs::getVectorGlyphID(){
+    std::vector<GlyphID> ret;
+    for (auto g : _glyphs) {
+        ret.push_back(g.getID());
+    }
+    return ret;
 }
 
 // bool InputGlyphs::add(Glyph g) {

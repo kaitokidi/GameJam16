@@ -7,6 +7,8 @@ GlyphContainer::GlyphContainer(int size, sf::Vector2i layout, const sf::Texture&
 {
   _nglyphs = size;
   _layout = layout;
+  preserve_height = false;
+  preserve_width = false;
 }
 
 GlyphContainer::~GlyphContainer() {}
@@ -119,7 +121,11 @@ void GlyphContainer::add(GlyphID gid) {
 }
 
 bool GlyphContainer::empty() {
-  return _glyphs.size() == 0;
+  return (_glyphs.size() == 0);
+}
+
+bool GlyphContainer::glyphNone(){
+    return (_glyphs.size() == 1 && _glyphs[0].getID() == GlyphID::glyph_none);
 }
 
 Glyph GlyphContainer::get(int index) {

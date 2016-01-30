@@ -8,7 +8,7 @@ public:
   InputGlyphs(sf::Texture& text, GlyphContainer* curr_object);
   ~InputGlyphs();
   void discard();
-
+  std::vector<GlyphID> getVectorGlyphID();
 private:
   GlyphContainer* _current_object;
 };
