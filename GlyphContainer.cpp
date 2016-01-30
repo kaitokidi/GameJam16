@@ -21,6 +21,13 @@ void GlyphContainer::update(float deltaTime) {
   // TODO OR NOT TODO
 }
 
+void GlyphContainer::setRenderTarget(sf::RenderTarget* t) {
+  _window = t;
+  for (auto g : _glyphs) {
+    g.setRenderTarget(t);
+  }
+}
+
 void GlyphContainer::setPosition(const sf::Vector2f& pos) {
   _background.setPosition(pos);
   _pos = pos;
@@ -70,6 +77,7 @@ void GlyphContainer::add(Glyph g) {
     g.setSize(_glyphs[0].getSize());
   }
 
+  g.setRenderTarget(_window);
   _glyphs.push_back(g);
   // Recalculate position
   setPosition(_pos);

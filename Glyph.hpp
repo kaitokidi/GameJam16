@@ -15,6 +15,7 @@ public:
   void setPosition(sf::Vector2f pos);
   void setSize(sf::Vector2f size);
   void setSize(float width, float height);
+  void setRenderTarget(sf::RenderTarget* t);
   GlyphID getID();
   sf::Vector2f getSize();
   void setComplete();

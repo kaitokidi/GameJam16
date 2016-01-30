@@ -81,8 +81,14 @@ bool Glyph::isComplete() {
   return _complete;
 }
 
+void Glyph::setRenderTarget(sf::RenderTarget* t) {
+  _window = t;
+}
+
 void Glyph::setSize(sf::Vector2f size) {
+  setSize(size.x, size.y);
 }
 
 void Glyph::setSize(float width, float height) {
+  // TODO
 }

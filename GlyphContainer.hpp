@@ -17,6 +17,8 @@ public:
   void setSize(const sf::Vector2f& size);
   void setSize(float width, float height);
 
+  void setRenderTarget(sf::RenderTarget* t);
+
   Glyph top();
   void pop();
   void add(Glyph g);
