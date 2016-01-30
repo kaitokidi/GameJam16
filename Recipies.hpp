@@ -14,6 +14,8 @@ public:
   void populate();
   GlyphID build(std::vector<GlyphID>);
 
+  GlyphID getGlyphIDByIndex(int index);
+
 private:
   void generateSimpleRecipies();
   void generateComplexRecipe();

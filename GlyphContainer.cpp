@@ -87,7 +87,7 @@ void GlyphContainer::add(Glyph g) {
   } else {
     g.setSize(_glyphs[0].getSize());
   }
-
+  printf("%d\n", g.getID());
   _glyphs.push_back(g);
 
   // Recalculate position

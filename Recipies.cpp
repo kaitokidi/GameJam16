@@ -82,3 +82,7 @@ bool Recipies::isUsed(GlyphID gid) {
   }
   return false;
 }
+
+GlyphID Recipies::getGlyphIDByIndex(int index) {
+  return glyphs[index];
+}
