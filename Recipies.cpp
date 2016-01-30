@@ -14,6 +14,7 @@ Recipies::~Recipies() {}
 
 void Recipies::populate() {
   BasicReagents::init();
+  used_simple = 0;
   glyphs.clear();
 
   // Generate 3 basic reagents
