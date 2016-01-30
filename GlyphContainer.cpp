@@ -52,7 +52,7 @@ void GlyphContainer::setPosition(const sf::Vector2f& pos) {
 }
 
 void GlyphContainer::setSize(const sf::Vector2f& size) {
-  // TODO _background.(size
+  
 
   // Recalculate positions
   setPosition(_pos);
@@ -97,5 +97,12 @@ Glyph GlyphContainer::get(int index) {
 }
 
 sf::Vector2f GlyphContainer::calculateGlyphSize() {
-  // TODO
+  //sheeeeet
+  float width;
+  float height;
+
+  width = _background.getTexture()->getSize().x / _layout.x * _background.getScale().x;
+  height = _background.getTexture()->getSize().y / _layout.y * _background.getScale().y;
+
+  return sf::Vector2f(width, height);
 }
