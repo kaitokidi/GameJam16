@@ -13,6 +13,7 @@ public:
 
   void populate();
   GlyphID build(std::vector<GlyphID>);
+  void draw(sf::RenderTarget* target);
 
   GlyphID getGlyphIDByIndex(int index);
 
