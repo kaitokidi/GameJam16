@@ -40,14 +40,9 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _finalRitual.second.setSize(sf::Vector2f(208,55));
     _finalRitual.second.setPosition(sf::Vector2f(672,20));
 
-<<<<<<< HEAD
     _recipes.setPosition(sf::Vector2f(233, 305));
     _recipes.setSize(sf::Vector2f(434, 270));
 
-/*
-=======
-
->>>>>>> 5b7b8fa2421ffe10f1ecb0e721c9810da02e16f7
     for ( int i = 0; i < 3; ++i){
         int r = random()%3;
         GlyphID id = _recipes.getGlyphIDByIndex(r);
