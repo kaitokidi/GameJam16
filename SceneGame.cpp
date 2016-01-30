@@ -2,8 +2,8 @@
 
 SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     Scene(g, w, sceneTypes::testScene, "end") ,
-//    _background(std::string backgroundPath, std::string m1Path, std::string m2Path, sf::Vector2f m1Pos, sf::Vector2f m2Pos),
-  //  _chamans((std::string Path, sf::Vector2f(0,0)),(std::string Path, sf::Vector2f(100,100))),
+    _background(TEXTURETPATH + std::string("key.png"), TEXTURETPATH + std::string("key.png"), TEXTURETPATH + std::string("key.png"), sf::Vector2f(0,0), sf::Vector2f(100,100)),
+    _chamans(Player(TEXTURETPATH + std::string("key.png"), sf::Vector2f(0,200)),Player(TEXTURETPATH + std::string("key.png"), sf::Vector2f(100,200))),
     //_recipes(Resources::recipesBg),
     _actualGlyph(GlyphContainer(1,sf::Vector2i(1,1),Resources::actualBgOrc),GlyphContainer(1,sf::Vector2i(1,1),Resources::actualBgCham)),
     _spelling(InputGlyphs(Resources::spellingBgOrc, &_actualGlyph.first),InputGlyphs(Resources::actualBgCham, &_actualGlyph.second)),
@@ -112,14 +112,14 @@ void SceneGame::processInput(){
 }
 
 void SceneGame::render(sf::RenderTarget *target){
-/*
-    _background.draw(target);
 
-    _chamans.first.draw(target);
-    _chamans.second.draw(target);
+    //_background.draw(target);
 
-    _recipes.draw(target);
-*/
+    //_chamans.first.draw(target);
+    //_chamans.second.draw(target);
+
+    //_recipes.draw(target);
+
     _inventory.first.draw(target);
     _inventory.second.draw(target);
 

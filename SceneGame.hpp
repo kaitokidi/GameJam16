@@ -31,8 +31,8 @@ private:
 
     std::string _next;
 
-   // Background _background;
-    //std::pair<Player,Player> _chamans;
+    Background _background;
+    std::pair<Player,Player> _chamans;
 
     //GlyphContainer _recipes;
     std::pair<Inventory,Inventory> _inventory;
