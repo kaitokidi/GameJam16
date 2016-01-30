@@ -1,6 +1,10 @@
 #include "Background.h"
 
 Background::Background(std::string backgroundPath, std::string m1Path, std::string m2Path, sf::Vector2f m1Pos, sf::Vector2f m2Pos){
+    setParameters(backgroundPath, m1Path, m2Path, m1Pos, m2Pos);
+}//2
+
+void Background::setParameters(std::string backgroundPath, std::string m1Path, std::string m2Path, sf::Vector2f m1Pos, sf::Vector2f m2Pos){
     if(!_tBackground.loadFromFile(backgroundPath))  std::cout << "failed to load background texture!! 2 faggots" <<  std::endl;
     _background.setTexture(_tBackground);
     _background.setPosition(0,0);
@@ -22,7 +26,7 @@ Background::Background(std::string backgroundPath, std::string m1Path, std::stri
     _m2Frame = 0;
 
     std::cout << "OY" << std::endl;
-}//2
+}
 
 void Background::update(float deltaTime){
     _time += deltaTime;

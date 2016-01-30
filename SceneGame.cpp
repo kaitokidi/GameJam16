@@ -2,8 +2,7 @@
 
 SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     Scene(g, w, sceneTypes::testScene, "end") ,
-    _background(TEXTURETPATH + std::string("key.png"), TEXTURETPATH + std::string("key.png"), TEXTURETPATH + std::string("key.png"), sf::Vector2f(0,0), sf::Vector2f(100,100)),
-    _chamans(Player(TEXTURETPATH + std::string("key.png"), sf::Vector2f(0,200)),Player(TEXTURETPATH + std::string("key.png"), sf::Vector2f(100,200))),
+    _background(TEXTURETPATH + std::string("game.png"), TEXTURETPATH + std::string("orc.png"), TEXTURETPATH + std::string("other_orc.png"), sf::Vector2f(233,20), sf::Vector2f(455,20)),
     //_recipes(Resources::recipesBg),
     _actualGlyph(GlyphContainer(1,sf::Vector2i(1,1),Resources::key),GlyphContainer(1,sf::Vector2i(1,1),Resources::key)),
     _spelling(InputGlyphs(Resources::spellingBgOrc, &_actualGlyph.first),InputGlyphs(Resources::actualBgCham, &_actualGlyph.second)),
@@ -16,6 +15,9 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
   _inventory.first.setSize(sf::Vector2f(200,200));
   _inventory.second.setSize(sf::Vector2f(200,200));
   _inventory.second.setPosition(sf::Vector2f(600,600));
+  _chamans.first.setParameters(TEXTURETPATH + std::string("orc.png"), sf::Vector2f(20,172));
+  _chamans.second.setParameters(TEXTURETPATH + std::string("other_orc.png"), sf::Vector2f(757,172));
+  _view = _window->getDefaultView();
   _next = "end";
   _inventory.first.init();
   _inventory.second.init();
@@ -116,15 +118,16 @@ void SceneGame::processInput(){
     while(_window->pollEvent(event)){
 
         if (event.type == sf::Event::Closed) {_window->close(); exit(0);}
+        if (event.type == sf::Event::MouseButtonPressed) {_window->close(); exit(0);}
     }
 }
 
 void SceneGame::render(sf::RenderTarget *target){
 
-    //_background.draw(target);
+    _background.draw(target);
 
-    //_chamans.first.draw(target);
-    //_chamans.second.draw(target);
+    _chamans.first.draw(target);
+    _chamans.second.draw(target);
 
     //_recipes.draw(target);
 

@@ -1,7 +1,7 @@
 #include "Game.hpp"
 #include "SceneGame.hpp"
 
-Game::Game() : _window(sf::VideoMode::getFullscreenModes()[0],"TOPKeK", sf::Style::Close | sf::Style::Fullscreen) {
+Game::Game() : _window(sf::VideoMode::getFullscreenModes()[0],"dhfgsadhkf", sf::Style::Close | sf::Style::Fullscreen) {
     _window.setFramerateLimit(FRAMERATE);
     //_window.setMouseCursorVisible(false);
 
@@ -16,9 +16,9 @@ Game::Game() : _window(sf::VideoMode::getFullscreenModes()[0],"TOPKeK", sf::Styl
 
     SoundManager::setGlobalSoundVolumen(100.0f);
     SoundManager::setGlobalMusicVolumen(100.0f);
-    //SoundManager::playMusic("overWorld");
-    //SoundManager::setLoop(true, "overWorld");
-
+    SoundManager::playMusic("music");
+    SoundManager::setLoop(true, "music");
+//(sf::VideoMode::getDesktopMode(), "Poke Clicker YOYOOYOOOO OOOOOH so gut at dis geim")
 }
 
 Game::~Game() {
