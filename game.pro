@@ -32,9 +32,14 @@ SOURCES += main.cpp \
     TextBoxManager.cpp \
     InputManager.cpp \
     SceneTest.cpp \
-    SceneGame.cpp
+    SceneGame.cpp \
     Background.cpp \
-    Player.cpp
+    Player.cpp \
+    ObjectiveGlyphs.cpp \
+    GlyphContainer.cpp \
+    Glyph.cpp \
+    Inventory.cpp \
+    InputGlyphs.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -61,6 +66,11 @@ HEADERS += utils.hpp \
     TextBoxManager.hpp \
     InputManager.hpp \
     SceneTest.hpp \
-    SceneGame.hpp
+    SceneGame.hpp \
     Background.h \
-    Player.h
+    Player.h \
+    ObjectiveGlyphs.h \
+    GlyphContainer.h \
+    Glyph.h \
+    Inventory.h \
+    InputGlyphs.h
