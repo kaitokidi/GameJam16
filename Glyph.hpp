@@ -11,7 +11,7 @@ public:
   Glyph(GlyphID id);
   ~Glyph();
 
-  void draw();
+  void draw(sf::RenderTarget* target);
   void setPosition(sf::Vector2f pos);
   void setSize(sf::Vector2f size);
   void setSize(float width, float height);

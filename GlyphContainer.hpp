@@ -10,7 +10,7 @@ public:
   GlyphContainer(int size, sf::Vector2i layout, const sf::Texture& text);
   ~GlyphContainer();
 
-  void draw();
+  void draw(sf::RenderTarget* target);
   void update(float deltaTime);
 
   void setPosition(const sf::Vector2f& pos);

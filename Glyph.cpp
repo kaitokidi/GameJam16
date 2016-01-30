@@ -60,8 +60,8 @@ Glyph::Glyph(GlyphID id) {
 
 Glyph::~Glyph() {}
 
-void Glyph::draw() {
-  _window->draw(_sprite);
+void Glyph::draw(sf::RenderTarget* target) {
+  target->draw(_sprite);
 }
 
 void Glyph::setPosition(sf::Vector2f pos) {

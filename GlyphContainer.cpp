@@ -10,10 +10,10 @@ GlyphContainer::GlyphContainer(int size, sf::Vector2i layout, const sf::Texture&
 
 GlyphContainer::~GlyphContainer() {}
 
-void GlyphContainer::draw() {
-  _window->draw(_background);
+void GlyphContainer::draw(sf::RenderTarget* target) {
+  target->draw(_background);
   for (auto g : _glyphs) {
-    g.draw();
+    g.draw(target);
   }
 }
 
