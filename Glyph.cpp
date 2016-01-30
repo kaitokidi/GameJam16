@@ -1,10 +1,14 @@
 #include "Glyph.hpp"
 
+#include "Resources.hpp"
+
 Glyph::Glyph() {}
 
 Glyph::Glyph(GlyphID id) {
   _id = id;
   _complete = false;
+
+  _sprite = sf::Sprite(Resources::key);
 
     //   ____    _    _   _ ____  _   _ ____  
     // / ___|  / \  | \ | / ___|| | | |  _ \ 
