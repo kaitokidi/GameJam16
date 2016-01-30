@@ -7,6 +7,6 @@ Inventory::Inventory(const sf::Texture& text, GlyphContainer* curr_object) :
 
 Inventory::~Inventory() {}
 
-Glyph Inventory::rotate(Glyph g) {
+void Inventory::rotate() {
   // TODO
 }
