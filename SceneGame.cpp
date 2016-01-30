@@ -13,18 +13,18 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _actualGlyph.first.setPosition(sf::Vector2f(153, 172));
     _actualGlyph.first.setSize(sf::Vector2f(75, 75));
 
-    _actualGlyph.second.setPosition(sf::Vector2f(677, 172));
+    _actualGlyph.second.setPosition(sf::Vector2f(672, 172));
     _actualGlyph.second.setSize(sf::Vector2f(75, 75));
 
     _spelling.first.setPosition(sf::Vector2f(20, 80));
     _spelling.first.setSize(sf::Vector2f(208, 87));
 
-    _spelling.second.setPosition(sf::Vector2f(677, 80));
+    _spelling.second.setPosition(sf::Vector2f(672, 80));
     _spelling.second.setSize(sf::Vector2f(208, 87));
 
     _inventory.first.setSize(sf::Vector2f(198,260));
     _inventory.first.setPosition(sf::Vector2f(25,310));
-
+    
     _recipes.populate();
 
     _chamans.first.setParameters(TEXTURETPATH + std::string("orc.png"), sf::Vector2f(20,172));
@@ -34,7 +34,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _finalRitual.first.setPosition(sf::Vector2f(20,20));
 
     _finalRitual.second.setSize(sf::Vector2f(208,55));
-    _finalRitual.second.setPosition(sf::Vector2f(677,20));
+    _finalRitual.second.setPosition(sf::Vector2f(672,20));
 /*
 
    /* for ( int i = 0; i < 3; ++i){
