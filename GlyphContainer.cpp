@@ -102,6 +102,13 @@ Glyph GlyphContainer::get(int index) {
   return _glyphs[index];
 }
 
+GlyphID GlyphContainer::getGlyphID() {
+  if(!empty)
+    return _glyphs[0].getID();
+  else
+    return glyph_none;
+}
+
 sf::Vector2f GlyphContainer::calculateGlyphSize() {
   //sheeeeet
   float width;
