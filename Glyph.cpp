@@ -66,8 +66,8 @@ GlyphID Glyph::getID() {
 }
 
 sf::Vector2f Glyph::getSize() {
-  // TODO
-  //return _sprite.getSize();
+  sf::Vector2u texSize = _sprite.getTexture()->getSize();
+
 }
 
 void Glyph::setComplete() {

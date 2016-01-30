@@ -28,7 +28,7 @@ protected:
   sf::Vector2i _layout;
   sf::Vector2f _pos;
 
-  sf::RenderWindow* _window;
+  sf::RenderTarget* _window;
 
   std::vector<Glyph> _glyphs;
   sf::Sprite _background;

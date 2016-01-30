@@ -20,7 +20,7 @@ public:
   bool isComplete();
 
 protected:
-  sf::RenderWindow* _window;
+  sf::RenderTarget* _window;
   sf::Sprite _sprite;
 
   GlyphID _id;
