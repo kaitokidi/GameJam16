@@ -35,7 +35,10 @@ void Recipies::populate() {
 }
 
 GlyphID Recipies::build(std::vector<GlyphID> v) {
-  return recipies[v];
+  if(recipies.find(v) == recipies.end())
+    return glyph_none;
+  else
+    return recipies[v];
 }
 
 void Recipies::generateSimpleRecipies() {
