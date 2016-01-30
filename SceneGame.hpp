@@ -31,6 +31,7 @@ public:
 private:
 
     std::string _next;
+    float _nextInputUpdate;
 
     Background _background;
     std::pair<Player,Player> _chamans;
