@@ -1,9 +1,10 @@
 #include "Player.h"
 
-Player::Player(std::string path){
+Player::Player(std::string path, sf::Vector2f pos){
     if(!_texture.loadFromFile(path)) std::cout << "failed loading player texture" << std::endl;
     _sprite.setTexture(_texture);
     _sprite.setTextureRect(sf::IntRect(0,0,_texture.getSize().x/PLAYER_FRAME_NUM, _texture.getSize().y/PLAYER_STATE_NUM));
+    _sprite.setPosition(pos);
     _status = status::playerStatus::idle;
     _frame = 0;
     _time = 0;

@@ -6,7 +6,7 @@
 class Player
 {
 public:
-    Player(std::string path);
+    Player(std::string path, sf::Vector2f pos);
     void update(float deltaTime);
 
     //0 for idle, 1 for regular action (move object, craft object, etc.) , 2 for attack
