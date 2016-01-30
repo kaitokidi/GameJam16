@@ -10,7 +10,7 @@ SceneTest::~SceneTest(){
 
 }
 
-void SceneTest::init(sf::Vector2f aux){
+void SceneTest::init(sf::Vector2f aux){  
     _texture = Resources::key;
     _sprite.setTexture(_texture);
     _sprite.setOrigin(_sprite.getLocalBounds().width/2, _sprite.getLocalBounds().height/2);
