@@ -7,7 +7,7 @@ GlyphID BasicReagents::used_g[9];
 std::vector<std::vector<GlyphID>> BasicReagents::reagents;
 
 Recipies::Recipies(const sf::Texture& text)
-  : GlyphContainer(6, sf::Vector2i(6,6), text)
+  : GlyphContainer(6, sf::Vector2i(7,7), text)
 {}
 
 Recipies::~Recipies() {}

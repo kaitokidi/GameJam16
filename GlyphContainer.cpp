@@ -7,6 +7,8 @@ GlyphContainer::GlyphContainer(int size, sf::Vector2i layout, const sf::Texture&
 {
   _nglyphs = size;
   _layout = layout;
+  preserve_height = false;
+  preserve_width = false;
 }
 
 GlyphContainer::~GlyphContainer() {}
