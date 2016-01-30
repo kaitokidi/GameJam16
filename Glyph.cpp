@@ -6,7 +6,12 @@ Glyph::Glyph(GlyphID id) {
   _id = id;
   _complete = false;
 
-  // CANSUR
+    //   ____    _    _   _ ____  _   _ ____  
+    // / ___|  / \  | \ | / ___|| | | |  _ \ 
+    // | |     / _ \ |  \| \___ \| | | | |_) |
+    // | |___ / ___ \| |\  |___) | |_| |  _ < 
+    //   \____/_/   \_\_| \_|____/ \___/|_| \_\
+
   // switch(id) {
   // glyphUP:
   //   _sprite = sf::Sprite(Resources::glyphUP);
@@ -90,5 +95,7 @@ void Glyph::setSize(sf::Vector2f size) {
 }
 
 void Glyph::setSize(float width, float height) {
-  // TODO
+  float x_ratio = width / _sprite.getTexture()->getSize().x;
+  float y_ratio = height / _sprite.getTexture()->getSize().y;
+  _sprite.setScale(sf::Vector2f(x_ratio, y_ratio));
 }
