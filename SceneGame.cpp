@@ -86,7 +86,7 @@ void SceneGame::update(float deltaTime){
         if(InputManager::action(InputAction::firstAction)){
             _spelling.first.discard();
             _chamans.first.changeState(status::action);
-
+             SoundManager::playSound("action");
         } else if(InputManager::action(InputAction::firstUp)){
             _spelling.first.add(GlyphID::glyphUP);
 
@@ -125,25 +125,29 @@ void SceneGame::update(float deltaTime){
         if(InputManager::action(InputAction::firstAction)){
             _inventory.first.rotate();
             _chamans.first.changeState(status::action);
-
+             SoundManager::playSound("action");
         } else if(InputManager::action(InputAction::firstUp)){
 
             _finalRitual.first.active(_actualGlyph.first.getGlyphID() );
-
             _actualGlyph.first.pop();
+
             _chamans.first.changeState(status::action);
+            SoundManager::playSound("action");
+
 
         } else if(InputManager::action(InputAction::firstDown)){
             _inventory.first.add(_actualGlyph.first.getGlyphID() );
 
             _actualGlyph.first.pop();
             _chamans.first.changeState(status::action);
+            SoundManager::playSound("action");
 
         } else if(InputManager::action(InputAction::firstLeft)){
             _spelling.first.add(_actualGlyph.first.getGlyphID());
             _inventory.first.firstToActualGlyph();
             _actualGlyph.first.pop();
 
+            SoundManager::playSound("action");
             _chamans.first.changeState(status::action);
 
         } else if(InputManager::action(InputAction::firstRight)){
@@ -160,7 +164,7 @@ void SceneGame::update(float deltaTime){
         if(InputManager::action(InputAction::secondAction)){
             _spelling.second.discard();
             _chamans.second.changeState(status::action);
-
+             SoundManager::playSound("action");
         } else if(InputManager::action(InputAction::secondUp)){
             _spelling.second.add(GlyphID::glyphUP);
 
@@ -198,21 +202,21 @@ void SceneGame::update(float deltaTime){
         if(InputManager::action(InputAction::secondAction)){
             _inventory.second.rotate();
             _chamans.second.changeState(status::action);
-
+             SoundManager::playSound("action");
 
         } else if(InputManager::action(InputAction::secondUp)){
             _finalRitual.second.active(_actualGlyph.second.getGlyphID() );
             _actualGlyph.second.pop();
 
             _chamans.second.changeState(status::action);
-
+             SoundManager::playSound("action");
         } else if(InputManager::action(InputAction::secondDown)){
 
             _inventory.second.add(_actualGlyph.second.getGlyphID() );
             _actualGlyph.second.pop();
 
             _chamans.second.changeState(status::action);
-
+             SoundManager::playSound("action");
 
         } else if(InputManager::action(InputAction::secondRight)){
             _spelling.second.add(_actualGlyph.second.getGlyphID());
@@ -220,7 +224,7 @@ void SceneGame::update(float deltaTime){
             _inventory.second.firstToActualGlyph();
 
             _chamans.second.changeState(status::action);
-
+             SoundManager::playSound("action");
 
         } else if(InputManager::action(InputAction::secondLeft)){
             _inventory.first.attackWith(_actualGlyph.second.getGlyphID());
