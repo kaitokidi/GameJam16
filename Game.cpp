@@ -18,7 +18,6 @@ Game::Game() : _window(sf::VideoMode::getFullscreenModes()[0],"dhfgsadhkf", sf::
     SoundManager::setGlobalMusicVolumen(100.0f);
     SoundManager::playMusic("music");
     SoundManager::setLoop(true, "music");
-//(sf::VideoMode::getDesktopMode(), "Poke Clicker YOYOOYOOOO OOOOOH so gut at dis geim")
 }
 
 Game::~Game() {

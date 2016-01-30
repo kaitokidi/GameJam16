@@ -24,6 +24,13 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
   _chamans.first.setParameters(TEXTURETPATH + std::string("orc.png"), sf::Vector2f(20,172));
   _chamans.second.setParameters(TEXTURETPATH + std::string("other_orc.png"), sf::Vector2f(757,172));
 
+
+    _finalRitual.first.setSize(sf::Vector2f(208,55));
+    _finalRitual.first.setPosition(sf::Vector2f(20,20));
+
+    _finalRitual.second.setSize(sf::Vector2f(208,55));
+    _finalRitual.second.setPosition(sf::Vector2f(677,20));
+
   _view = _window->getDefaultView();
   _next = "end";
   _inventory.first.init();
@@ -131,7 +138,7 @@ void SceneGame::processInput(){
 }
 
 void SceneGame::render(sf::RenderTarget *target){
-    //_background.draw(target);
+    _background.draw(target);
 
     _chamans.first.draw(target);
     _chamans.second.draw(target);
