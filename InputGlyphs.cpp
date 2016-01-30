@@ -11,6 +11,6 @@ void InputGlyphs::discard() {
   _glyphs.clear();
 }
 
-bool InputGlyphs::add(Glyph g) {
-  _glyphs.push_back(g);
-}
+// bool InputGlyphs::add(Glyph g) {
+//   _glyphs.push_back(g);
+// }
