@@ -24,6 +24,9 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
 
     _inventory.first.setSize(sf::Vector2f(198,260));
     _inventory.first.setPosition(sf::Vector2f(25,310));
+
+    _inventory.second.setSize(sf::Vector2f(198,260));
+    _inventory.second.setPosition(sf::Vector2f(677,310));
     
     _recipes.populate();
 
