@@ -82,34 +82,43 @@ void SceneGame::update(float deltaTime){
     _chamans.second.update(deltaTime);
 
 
-    if(_actualGlyph.first.empty()){
+    if(_actualGlyph.first.empty() || _actualGlyph.first.glyphNone()){
         if(InputManager::action(InputAction::firstAction)){
             _spelling.first.discard();
             _chamans.first.changeState(status::action);
 
         } else if(InputManager::action(InputAction::firstUp)){
             _spelling.first.add(GlyphID::glyphUP);
-            /* TODO
-                _actualGlyph.first.add( _finalRitual.first.build(_spelling.first.getVectorGlyphID()) )
-            */
+
+            GlyphID gid = _recipes.build(_spelling.first.getVectorGlyphID());
+            if(gid != GlyphID::glyph_none){
+                _actualGlyph.first.add(gid);
+            }
+
 
         } else if(InputManager::action(InputAction::firstDown)){
             _spelling.first.add(GlyphID::glyphDOWN);
-            /* TODO
-                _actualGlyph.first.add( _finalRitual.first.build(_spelling.first.getVectorGlyphID()) )
-            */
+
+            GlyphID gid = _recipes.build(_spelling.first.getVectorGlyphID());
+            if(gid != GlyphID::glyph_none){
+                _actualGlyph.first.add(gid);
+            }
 
         } else if(InputManager::action(InputAction::firstLeft)){
             _spelling.first.add(GlyphID::glyphLEFT);
-            /* TODO
-                _actualGlyph.first.add( _finalRitual.first.build(_spelling.first.getVectorGlyphID()) )
-            */
+
+            GlyphID gid = _recipes.build(_spelling.first.getVectorGlyphID());
+            if(gid != GlyphID::glyph_none){
+                _actualGlyph.first.add(gid);
+            }
 
         } else if(InputManager::action(InputAction::firstRight)){
             _spelling.first.add(GlyphID::glyphRIGHT);
-            /* TODO
-                _actualGlyph.first.add( _finalRitual.first.build(_spelling.first.getVectorGlyphID()) )
-            */
+
+            GlyphID gid = _recipes.build(_spelling.first.getVectorGlyphID());
+            if(gid != GlyphID::glyph_none){
+                _actualGlyph.first.add(gid);
+            }
 
         }
     } else {
@@ -118,30 +127,31 @@ void SceneGame::update(float deltaTime){
             _chamans.first.changeState(status::action);
 
         } else if(InputManager::action(InputAction::firstUp)){
-            _finalRitual.first.add(_actualGlyph.first.getGlyphID() );
-            _chamans.first.changeState(status::action);
 
-           // _actualGlyph.first.pop();
+            _finalRitual.first.active(_actualGlyph.first.getGlyphID() );
+
+            _actualGlyph.first.pop();
+            _chamans.first.changeState(status::action);
 
         } else if(InputManager::action(InputAction::firstDown)){
             _inventory.first.add(_actualGlyph.first.getGlyphID() );
-            _chamans.first.changeState(status::action);
 
-           // _actualGlyph.first.pop();
+            _actualGlyph.first.pop();
+            _chamans.first.changeState(status::action);
 
         } else if(InputManager::action(InputAction::firstLeft)){
             _spelling.first.add(_actualGlyph.first.getGlyphID());
             _inventory.first.firstToActualGlyph();
-            _chamans.first.changeState(status::action);
+            _actualGlyph.first.pop();
 
-          //  _actualGlyph.first.pop();
+            _chamans.first.changeState(status::action);
 
         } else if(InputManager::action(InputAction::firstRight)){
             _inventory.second.attackWith(_actualGlyph.first.getGlyphID());
+            _actualGlyph.first.pop();
+
             _chamans.first.changeState(status::attack);
             SoundManager::playSound("attack");
-
-          //  _actualGlyph.first.pop();
         }
     }
 
@@ -153,25 +163,36 @@ void SceneGame::update(float deltaTime){
 
         } else if(InputManager::action(InputAction::secondUp)){
             _spelling.second.add(GlyphID::glyphUP);
-            /* TODO
-                _actualGlyph.second.add( _finalRitual.second.build(_spelling.secons.getVectorGlyphID()) )
-            */
+
+            GlyphID gid = _recipes.build(_spelling.second.getVectorGlyphID());
+            if(gid != GlyphID::glyph_none){
+                _actualGlyph.second.add(gid);
+            }
 
         } else if(InputManager::action(InputAction::secondDown)){
             _spelling.second.add(GlyphID::glyphDOWN);
-            /* TODO
-                _actualGlyph.second.add( _finalRitual.second.build(_spelling.secons.getVectorGlyphID()) )
-            */
+
+            GlyphID gid = _recipes.build(_spelling.second.getVectorGlyphID());
+            if(gid != GlyphID::glyph_none){
+                _actualGlyph.second.add(gid);
+            }
+
         } else if(InputManager::action(InputAction::secondLeft)){
             _spelling.second.add(GlyphID::glyphLEFT);
-            /* TODO
-                _actualGlyph.second.add( _finalRitual.second.build(_spelling.secons.getVectorGlyphID()) )
-            */
+
+            GlyphID gid = _recipes.build(_spelling.second.getVectorGlyphID());
+            if(gid != GlyphID::glyph_none){
+                _actualGlyph.second.add(gid);
+            }
+
         } else if(InputManager::action(InputAction::secondRight)){
             _spelling.second.add(GlyphID::glyphRIGHT);
-            /* TODO
-                _actualGlyph.second.add( _finalRitual.second.build(_spelling.secons.getVectorGlyphID()) )
-            */
+
+            GlyphID gid = _recipes.build(_spelling.second.getVectorGlyphID());
+            if(gid != GlyphID::glyph_none){
+                _actualGlyph.second.add(gid);
+            }
+
         }
     } else {
         if(InputManager::action(InputAction::secondAction)){
@@ -180,13 +201,7 @@ void SceneGame::update(float deltaTime){
 
 
         } else if(InputManager::action(InputAction::secondUp)){
-
-            //TODO: atempt (si hi és fer un highlight, si no, res)
-            _finalRitual.second.add(_actualGlyph.second.getGlyphID() );
-            /*should be
-            if(_finalRitual.second.contains(_actualGlyph.second.getGlyphID());
-            _finalRitual.second.collected(_actualGlyph.second.getGlyphID());
-            */
+            _finalRitual.second.active(_actualGlyph.second.getGlyphID() );
             _actualGlyph.second.pop();
 
             _chamans.second.changeState(status::action);
