@@ -26,6 +26,7 @@ void SoundManager::load(){
     if(!attackBuf.loadFromFile("Resources/Sounds/attack.ogg")){ std::cout << "Fail on loading attack" << std::endl;};
     soundMap["chamaleonTongue"].setBuffer(attackBuf);
     */
+    musicMap["music"].openFromFile("Resources/Sounds/music.ogg");
 
 }
 

@@ -27,15 +27,15 @@
 #define UIRATIOX 1117
 #define UIRATIOY 768
 
-#define FRAME_DELAY 0.9
+#define FRAME_DELAY 0.4
 
 //numero de frames de la animacio de cada bitxo/monstre/entitat/deu/summoneable stuff
-#define M_FRAME_NUM 4
+#define M_FRAME_NUM 9
 //numero de evcolucions de cada bitxo/monstre/entitat/deu/summoneable stuff
-#define M_EVOL_NUM 4 //4 per posar algo, ho canviem en funcio dels spritesheets
+#define M_EVOL_NUM 3 //per posar algo, ho canviem en funcio dels spritesheets
 
 //numero de frames i estats de la animacio dels players
-#define PLAYER_FRAME_NUM 6
+#define PLAYER_FRAME_NUM 9
 #define PLAYER_STATE_NUM 3
 
 

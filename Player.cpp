@@ -1,6 +1,12 @@
 #include "Player.h"
 
+Player::Player(){}
+
 Player::Player(std::string path, sf::Vector2f pos){
+    setParameters(path, pos);
+}
+
+void Player::setParameters(std::string path, sf::Vector2f pos){
     if(!_texture.loadFromFile(path)) std::cout << "failed loading player texture" << std::endl;
     _sprite.setTexture(_texture);
     _sprite.setTextureRect(sf::IntRect(0,0,_texture.getSize().x/PLAYER_FRAME_NUM, _texture.getSize().y/PLAYER_STATE_NUM));
@@ -40,8 +46,8 @@ void Player::changeState(status::playerStatus state){
     }*/
 }
 
-void Player::draw(sf::RenderTarget& window){
-    window.draw(_sprite);
+void Player::draw(sf::RenderTarget *window){
+    window->draw(_sprite);
 }
 
 void Player::_updateSprites(){

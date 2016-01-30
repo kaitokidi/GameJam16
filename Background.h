@@ -7,9 +7,10 @@ class Background{
 
 public:
     Background(std::string backgroundPath, std::string m1Path, std::string m2Path, sf::Vector2f m1Pos, sf::Vector2f m2Pos);
+    void setParameters(std::string backgroundPath, std::string m1Path, std::string m2Path, sf::Vector2f m1Pos, sf::Vector2f m2Pos);
     void update(float deltaTime);
     void evolve(bool monster);//false per monstre 1, true per monstre 2
-    void draw(sf::RenderTarget& window);
+    void draw(sf::RenderTarget* window);
 
 private:
     sf::Texture _tMonster1;
