@@ -6,7 +6,7 @@ Glyph::Glyph(sf::Texture& text) :
 
 Glyph::~Glyph() {}
 
-void Glyph::render() {
+void Glyph::draw() {
   _window->draw(_sprite);
 }
 
