@@ -59,7 +59,6 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _finalRitual.first.add(id);
     _finalRitual.second.add(id);
 
-
     _view = _window->getDefaultView();
     _next = "end";
     _inventory.first.init();
@@ -75,12 +74,10 @@ SceneGame::~SceneGame() {}
 void SceneGame::init(sf::Vector2f aux) {}
 
 void SceneGame::update(float deltaTime){
-
     _background.update(deltaTime);
 
     _chamans.first.update(deltaTime);
     _chamans.second.update(deltaTime);
-
 
     if(_actualGlyph.first.empty() || _actualGlyph.first.glyphNone()){
         if(InputManager::action(InputAction::firstAction)){
@@ -94,8 +91,6 @@ void SceneGame::update(float deltaTime){
             if(gid != GlyphID::glyph_none){
                 _actualGlyph.first.add(gid);
             }
-
-
         } else if(InputManager::action(InputAction::firstDown)){
             _spelling.first.add(GlyphID::glyphDOWN);
 
@@ -103,7 +98,6 @@ void SceneGame::update(float deltaTime){
             if(gid != GlyphID::glyph_none){
                 _actualGlyph.first.add(gid);
             }
-
         } else if(InputManager::action(InputAction::firstLeft)){
             _spelling.first.add(GlyphID::glyphLEFT);
 
@@ -111,7 +105,6 @@ void SceneGame::update(float deltaTime){
             if(gid != GlyphID::glyph_none){
                 _actualGlyph.first.add(gid);
             }
-
         } else if(InputManager::action(InputAction::firstRight)){
             _spelling.first.add(GlyphID::glyphRIGHT);
 
@@ -119,7 +112,6 @@ void SceneGame::update(float deltaTime){
             if(gid != GlyphID::glyph_none){
                 _actualGlyph.first.add(gid);
             }
-
         }
     } else {
         if(InputManager::action(InputAction::firstAction)){
@@ -133,15 +125,12 @@ void SceneGame::update(float deltaTime){
 
             _chamans.first.changeState(status::action);
             SoundManager::playSound("action");
-
-
         } else if(InputManager::action(InputAction::firstDown)){
             _inventory.first.add(_actualGlyph.first.getGlyphID() );
 
             _actualGlyph.first.pop();
             _chamans.first.changeState(status::action);
             SoundManager::playSound("action");
-
         } else if(InputManager::action(InputAction::firstLeft)){
             _spelling.first.add(_actualGlyph.first.getGlyphID());
             _inventory.first.firstToActualGlyph();
@@ -149,18 +138,17 @@ void SceneGame::update(float deltaTime){
 
             SoundManager::playSound("action");
             _chamans.first.changeState(status::action);
-
         } else if(InputManager::action(InputAction::firstRight)){
             _inventory.second.attackWith(_actualGlyph.first.getGlyphID());
             _actualGlyph.first.pop();
 
             _chamans.first.changeState(status::attack);
             SoundManager::playSound("attack");
+            //moveEffects.push_back(new MoveEffect(sf::Vector2i(153,172), sf::Vector2i(672,305), Resources::key));
         }
     }
 
     if(_actualGlyph.second.empty()){
-
         if(InputManager::action(InputAction::secondAction)){
             _spelling.second.discard();
             _chamans.second.changeState(status::action);
@@ -172,7 +160,6 @@ void SceneGame::update(float deltaTime){
             if(gid != GlyphID::glyph_none){
                 _actualGlyph.second.add(gid);
             }
-
         } else if(InputManager::action(InputAction::secondDown)){
             _spelling.second.add(GlyphID::glyphDOWN);
 
@@ -180,7 +167,6 @@ void SceneGame::update(float deltaTime){
             if(gid != GlyphID::glyph_none){
                 _actualGlyph.second.add(gid);
             }
-
         } else if(InputManager::action(InputAction::secondLeft)){
             _spelling.second.add(GlyphID::glyphLEFT);
 
@@ -188,7 +174,6 @@ void SceneGame::update(float deltaTime){
             if(gid != GlyphID::glyph_none){
                 _actualGlyph.second.add(gid);
             }
-
         } else if(InputManager::action(InputAction::secondRight)){
             _spelling.second.add(GlyphID::glyphRIGHT);
 
@@ -196,14 +181,12 @@ void SceneGame::update(float deltaTime){
             if(gid != GlyphID::glyph_none){
                 _actualGlyph.second.add(gid);
             }
-
         }
     } else {
         if(InputManager::action(InputAction::secondAction)){
             _inventory.second.rotate();
             _chamans.second.changeState(status::action);
              SoundManager::playSound("action");
-
         } else if(InputManager::action(InputAction::secondUp)){
             _finalRitual.second.active(_actualGlyph.second.getGlyphID() );
             _actualGlyph.second.pop();
@@ -211,13 +194,11 @@ void SceneGame::update(float deltaTime){
             _chamans.second.changeState(status::action);
              SoundManager::playSound("action");
         } else if(InputManager::action(InputAction::secondDown)){
-
             _inventory.second.add(_actualGlyph.second.getGlyphID() );
             _actualGlyph.second.pop();
 
             _chamans.second.changeState(status::action);
              SoundManager::playSound("action");
-
         } else if(InputManager::action(InputAction::secondRight)){
             _spelling.second.add(_actualGlyph.second.getGlyphID());
             _actualGlyph.second.pop(); //only if first To Actual glyph above does not overrite it
@@ -225,24 +206,33 @@ void SceneGame::update(float deltaTime){
 
             _chamans.second.changeState(status::action);
              SoundManager::playSound("action");
-
         } else if(InputManager::action(InputAction::secondLeft)){
             _inventory.first.attackWith(_actualGlyph.second.getGlyphID());
             _actualGlyph.second.pop();
 
             _chamans.second.changeState(status::attack);
             SoundManager::playSound("attack");
-
         }
     }
-
-
     if(_finalRitual.first.complete()){
         changeScene("endOrc");
     }
     if(_finalRitual.second.complete()){
         changeScene("endCham");
     }
+
+
+
+
+    for(auto it = moveEffects.begin(); it != moveEffects.end(); ++it){
+        (*it)->update(deltaTime);
+        if(! (*it)->alive()) {
+            delete *it;
+            moveEffects.erase(it);
+        }
+    }
+
+
 
 }
 
@@ -269,6 +259,10 @@ void SceneGame::render(sf::RenderTarget *target){
 
     _actualGlyph.first.draw(target);
     _actualGlyph.second.draw(target);
+
+    for(auto it = moveEffects.begin(); it != moveEffects.end(); ++it){
+        _window->draw((*(*it)));
+    }
 }
 
 void SceneGame::resizing() {
