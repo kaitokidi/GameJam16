@@ -7,6 +7,7 @@
 
 class Glyph {
 public:
+  Glyph();
   Glyph(GlyphID id);
   ~Glyph();
 
@@ -14,14 +15,18 @@ public:
   void setPosition(sf::Vector2f pos);
   void setSize(sf::Vector2f size);
   void setSize(float width, float height);
+  void setRenderTarget(sf::RenderTarget* t);
   GlyphID getID();
   sf::Vector2f getSize();
+  void setComplete();
+  bool isComplete();
 
-private:
-  sf::RenderWindow* _window;
+protected:
+  sf::RenderTarget* _window;
   sf::Sprite _sprite;
 
   GlyphID _id;
+  bool _complete;
 };
 
 #endif

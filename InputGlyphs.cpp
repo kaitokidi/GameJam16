@@ -1,17 +1,14 @@
 #include "InputGlyphs.hpp"
 
-InputGlyphs::InputGlyphs(int size,
-                         sf::Vector2i layout,
-                         const sf::Texture& text,
-                         GlyphContainer* curr_object) :
-  GlyphContainer(size, layout, text),
+InputGlyphs::InputGlyphs(sf::Texture& text, GlyphContainer* curr_object) :
+  GlyphContainer(10, sf::Vector2i(6,1), text),
   _current_object(curr_object)
 {}
 
 InputGlyphs::~InputGlyphs() {}
 
 void InputGlyphs::discard() {
-  // TODO
+  _glyphs.clear();
 }
 
 bool InputGlyphs::add(Glyph g) {

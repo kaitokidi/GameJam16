@@ -5,8 +5,7 @@
 
 class Inventory : public GlyphContainer {
 public:
-  Inventory(int size, sf::Vector2i layout,
-            const sf::Texture& text, GlyphContainer* curr_object);
+  Inventory(const sf::Texture& text, GlyphContainer* curr_object);
   ~Inventory();
 
   Glyph rotate(Glyph g);

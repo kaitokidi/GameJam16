@@ -21,6 +21,13 @@ void GlyphContainer::update(float deltaTime) {
   // TODO OR NOT TODO
 }
 
+void GlyphContainer::setRenderTarget(sf::RenderTarget* t) {
+  _window = t;
+  for (auto g : _glyphs) {
+    g.setRenderTarget(t);
+  }
+}
+
 void GlyphContainer::setPosition(const sf::Vector2f& pos) {
   _background.setPosition(pos);
   _pos = pos;
@@ -45,14 +52,20 @@ void GlyphContainer::setPosition(const sf::Vector2f& pos) {
 }
 
 void GlyphContainer::setSize(const sf::Vector2f& size) {
-  // TODO _background.(size
-
-  // Recalculate positions
-  setPosition(_pos);
+  setSize(size.x, size.y);
 }
 
 void GlyphContainer::setSize(float width, float height) {
-  setSize(sf::Vector2f(width, height));
+  float x_ratio = width / _background.getTexture()->getSize().x;
+  float y_ratio = height / _background.getTexture()->getSize().y;
+  _background.setScale(sf::Vector2f(x_ratio, y_ratio));
+
+  sf::Vector2f gsize = calculateGlyphSize();
+  for(auto g : _glyphs) {
+    g.setSize(gsize);
+  }
+  // Recalculate positions
+  setPosition(_pos);
 }
 
 Glyph GlyphContainer::top() {
@@ -70,9 +83,15 @@ void GlyphContainer::add(Glyph g) {
     g.setSize(_glyphs[0].getSize());
   }
 
+  g.setRenderTarget(_window);
   _glyphs.push_back(g);
   // Recalculate position
   setPosition(_pos);
+}
+
+void GlyphContainer::add(GlyphID gid) {
+  Glyph g = Glyph(gid);
+  add(g);
 }
 
 bool GlyphContainer::empty() {
@@ -84,5 +103,12 @@ Glyph GlyphContainer::get(int index) {
 }
 
 sf::Vector2f GlyphContainer::calculateGlyphSize() {
-  // TODO
+  //sheeeeet
+  float width;
+  float height;
+
+  width = _background.getTexture()->getSize().x / _layout.x * _background.getScale().x;
+  height = _background.getTexture()->getSize().y / _layout.y * _background.getScale().y;
+
+  return sf::Vector2f(width, height);
 }

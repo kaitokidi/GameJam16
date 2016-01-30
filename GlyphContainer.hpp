@@ -17,18 +17,21 @@ public:
   void setSize(const sf::Vector2f& size);
   void setSize(float width, float height);
 
+  void setRenderTarget(sf::RenderTarget* t);
+
   Glyph top();
   void pop();
   void add(Glyph g);
+  void add(GlyphID gid);
   bool empty();
   Glyph get(int index);
 
-private:
+protected:
   unsigned int _nglyphs;
   sf::Vector2i _layout;
   sf::Vector2f _pos;
 
-  sf::RenderWindow* _window;
+  sf::RenderTarget* _window;
 
   std::vector<Glyph> _glyphs;
   sf::Sprite _background;

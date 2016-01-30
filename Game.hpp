@@ -23,7 +23,7 @@ public:
     void changeScene(std::string sceneName);
 
 
-private:
+protected:
     sf::RenderWindow _window;
     std::map<std::string, Scene*> _scenes;
     Scene* _currentScene;
