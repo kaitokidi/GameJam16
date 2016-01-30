@@ -9,6 +9,7 @@ public:
   ~ObjectiveGlyphs();
 
   void add(Glyph g);
+  bool complete();
 private:
 };
 
