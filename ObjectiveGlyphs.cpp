@@ -15,9 +15,11 @@ void ObjectiveGlyphs::add(Glyph g) {
 void ObjectiveGlyphs::add(GlyphID gid) {
   for (auto g : _glyphs) {
     if (gid == g.getID()) {
-      g.setComplete();
-      _gcounter--;
-      return;
+      if(!g.isComplete()){
+        g.setComplete();
+        _gcounter--;
+        return;
+      }
     }
   }
 }

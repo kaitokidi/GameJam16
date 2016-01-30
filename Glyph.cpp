@@ -74,3 +74,7 @@ void Glyph::setComplete() {
   _complete = true;
   _sprite.setColor(sf::Color::Black);
 }
+
+bool Glyph::isComplete() {
+  return _complete;
+}

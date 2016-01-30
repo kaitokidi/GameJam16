@@ -17,6 +17,7 @@ public:
   GlyphID getID();
   sf::Vector2f getSize();
   void setComplete();
+  bool isComplete();
 
 protected:
   sf::RenderWindow* _window;
