@@ -30,6 +30,8 @@ void SoundManager::load(){
     musicMap["music"].openFromFile("Resources/Sounds/music.ogg");
     if(!attackBuf.loadFromFile("Resources/Sounds/attack.ogg")){ std::cout << "Fail on loading attack sound" << std::endl;};
     soundMap["attack"].setBuffer(attackBuf);
+    if(!actionBuf.loadFromFile("Resources/Sounds/action.ogg")){ std::cout << "Fail on loading attack sound" << std::endl;};
+    soundMap["action"].setBuffer(actionBuf);
 
 }
 
