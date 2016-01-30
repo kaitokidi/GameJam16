@@ -27,7 +27,7 @@
 #define UIRATIOX 1117
 #define UIRATIOY 768
 
-#define FRAME_DELAY 0.4
+#define FRAME_DELAY 0.3
 
 //numero de frames de la animacio de cada bitxo/monstre/entitat/deu/summoneable stuff
 #define M_FRAME_NUM 9

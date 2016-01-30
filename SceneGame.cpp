@@ -109,11 +109,11 @@ void SceneGame::update(float deltaTime){
         } else if(InputManager::action(InputAction::secondDown)){
             _inventory.second.add(_actualGlyph.second.getGlyphID() );
             _chamans.second.changeState(status::action);
-        } else if(InputManager::action(InputAction::secondLeft)){
+        } else if(InputManager::action(InputAction::secondRight)){
             _spelling.second.add(_actualGlyph.second.getGlyphID());
             //_inventory.second.firstToActualGliph();
             _chamans.second.changeState(status::action);
-        } else if(InputManager::action(InputAction::secondRight)){
+        } else if(InputManager::action(InputAction::secondLeft)){
             //_inventory.first.attackWith(_actualGlyph.second.getGliph());
             _chamans.second.changeState(status::attack);
         }
