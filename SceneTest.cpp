@@ -18,7 +18,7 @@ void SceneTest::init(sf::Vector2f aux){
 }
 
 void SceneTest::update(float deltaTime){
-    _sprite.rotate(5*deltaTime);
+   // _sprite.rotate(5*deltaTime);
 //    if (InputManager::action(InputAction::action)) _player->attack();
 }
 

@@ -24,6 +24,7 @@ public:
     static sf::Texture             actualBgCham;
     static sf::Texture             spellingBgCham;
     static sf::Texture             inventoryBgCham;
+    static sf::Texture             background;
 
   static sf::Texture glyphUP;
     // glyphDOWN:

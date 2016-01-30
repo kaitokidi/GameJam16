@@ -20,6 +20,7 @@ sf::Texture             Resources::objectiveCham;
 sf::Texture             Resources::actualBgCham;
 sf::Texture             Resources::spellingBgCham;
 sf::Texture             Resources::inventoryBgCham;
+sf::Texture             Resources::background;
 
 //   ____    _    _   _ ____  _   _ ____
 //  / ___|  / \  | \ | / ___|| | | |  _ \
@@ -105,6 +106,7 @@ void Resources::load() {
 
     talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"));
 
+    background.loadFromFile             (TEXTURETPATH+std::string("background.png"));
 
     // switch(id) {
     // glyphUP:
