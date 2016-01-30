@@ -80,7 +80,7 @@ Glyph GlyphContainer::top() {
 }
 
 void GlyphContainer::pop() {
-  _glyphs.erase(_glyphs.end()--);
+  _glyphs.erase(--_glyphs.end());
 }
 
 void GlyphContainer::add(Glyph g) {
