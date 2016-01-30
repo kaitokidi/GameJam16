@@ -40,25 +40,25 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
 
     _finalRitual.second.setSize(sf::Vector2f(208,55));
     _finalRitual.second.setPosition(sf::Vector2f(672,20));
-/*
 
-   /* for ( int i = 0; i < 3; ++i){
+/*
+    for ( int i = 0; i < 3; ++i){
         int r = random()%3;
-        GlyphID id = _inventory.getGlyphIDByIndex(r);
+        GlyphID id = _recipes.getGlyphIDByIndex(r);
         _finalRitual.first.add(id);
         _finalRitual.second.add(id);
     }
     for ( int i = 0; i < 2; ++i){
         int r = random()%2 +3;
-        GlyphID id = _inventory.getGlyphIDByIndex(r);
+        GlyphID id = _recipes.getGlyphIDByIndex(r);
         _finalRitual.first.add(id);
         _finalRitual.second.add(id);
     }
-    GlyphID id = _inventory.getGlyphIDByIndex(5);
+    GlyphID id = _recipes.getGlyphIDByIndex(5);
     _finalRitual.first.add(id);
     _finalRitual.second.add(id);
-*/
 
+*/
 
     _view = _window->getDefaultView();
     _next = "end";
@@ -81,29 +81,26 @@ void SceneGame::update(float deltaTime){
     _chamans.first.update(deltaTime);
     _chamans.second.update(deltaTime);
 
-    _nextInputUpdate += deltaTime;
-    if(_nextInputUpdate > 0.3){
-    _nextInputUpdate = 0;
 
-        if(_actualGlyph.first.empty()){
-            if(InputManager::action(InputAction::firstAction)){
-                _spelling.first.discard();
-                _chamans.first.changeState(status::action);
+    if(_actualGlyph.first.empty()){
+        if(InputManager::action(InputAction::firstAction)){
+            _spelling.first.discard();
+            _chamans.first.changeState(status::action);
 
 
-            } else if(InputManager::action(InputAction::firstUp)){
-                _spelling.first.add(glyphUP);
+        } else if(InputManager::action(InputAction::firstUp)){
+            _spelling.first.add(glyphUP);
 
-            } else if(InputManager::action(InputAction::firstDown)){
-                _spelling.first.add(glyphDOWN);
+        } else if(InputManager::action(InputAction::firstDown)){
+            _spelling.first.add(glyphDOWN);
 
-            } else if(InputManager::action(InputAction::firstLeft)){
-                _spelling.first.add(glyphLEFT);
+        } else if(InputManager::action(InputAction::firstLeft)){
+            _spelling.first.add(glyphLEFT);
 
-            } else if(InputManager::action(InputAction::firstRight)){
-                _spelling.first.add(glyphRIGHT);
+        } else if(InputManager::action(InputAction::firstRight)){
+            _spelling.first.add(glyphRIGHT);
 
-            }
+        }
     } else {
         if(InputManager::action(InputAction::firstAction)){
             _inventory.first.rotate();
@@ -189,15 +186,16 @@ void SceneGame::update(float deltaTime){
             _actualGlyph.second.pop();
 
         }
-
     }
+
+
     if(_finalRitual.first.complete()){
         changeScene("endOrc");
     }
     if(_finalRitual.second.complete()){
         changeScene("endCham");
     }
-    }
+
 }
 
 void SceneGame::processInput(){
