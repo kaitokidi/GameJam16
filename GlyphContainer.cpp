@@ -13,7 +13,7 @@ GlyphContainer::~GlyphContainer() {}
 
 void GlyphContainer::draw(sf::RenderTarget* target) {
   target->draw(_background);
-  for (auto g : _glyphs) {
+  for (auto &g : _glyphs) {
     g.draw(target);
   }
 }
@@ -24,7 +24,7 @@ void GlyphContainer::update(float deltaTime) {
 
 void GlyphContainer::setRenderTarget(sf::RenderTarget* t) {
   _window = t;
-  for (auto g : _glyphs) {
+  for (auto &g : _glyphs) {
     g.setRenderTarget(t);
   }
 }
@@ -62,7 +62,7 @@ void GlyphContainer::setSize(float width, float height) {
   _background.setScale(sf::Vector2f(x_ratio, y_ratio));
 
   sf::Vector2f gsize = calculateGlyphSize();
-  for(auto g : _glyphs) {
+  for(auto &g : _glyphs) {
     g.setSize(gsize);
   }
   // Recalculate positions
@@ -115,8 +115,8 @@ sf::Vector2f GlyphContainer::calculateGlyphSize() {
   float width;
   float height;
 
-  width = _background.getGlobalBounds().width / _layout.x;
-  height = _background.getGlobalBounds().height / _layout.y;
+  width = this->_background.getGlobalBounds().width / _layout.x;
+  height = this->_background.getGlobalBounds().height / _layout.y;
 
   return sf::Vector2f(width, height);
 }

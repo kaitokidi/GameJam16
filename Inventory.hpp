@@ -11,6 +11,8 @@ public:
   void rotate();
   void attackWith(GlyphID gid);
   void firstToActualGlyph();
+  void setCurrentGlyph(GlyphContainer* p);
+  void init();
 
 private:
   GlyphContainer* _current_object;
