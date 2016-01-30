@@ -7,6 +7,7 @@
 
 class Glyph {
 public:
+  Glyph();
   Glyph(GlyphID id);
   ~Glyph();
 
