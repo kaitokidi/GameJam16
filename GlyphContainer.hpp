@@ -31,7 +31,9 @@ public:
   Glyph get(int index);
   void substitute(GlyphID gid);
 
+  bool glyphNone();
   sf::Sprite _background;
+
 protected:
   unsigned int _nglyphs;
   sf::Vector2i _layout;

@@ -121,7 +121,11 @@ void GlyphContainer::add(GlyphID gid) {
 }
 
 bool GlyphContainer::empty() {
-  return _glyphs.size() == 0;
+  return (_glyphs.size() == 0);
+}
+
+bool GlyphContainer::glyphNone(){
+    return (_glyphs.size() == 1 && _glyphs[0].getID() == GlyphID::glyph_none);
 }
 
 Glyph GlyphContainer::get(int index) {
