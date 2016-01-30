@@ -2,6 +2,7 @@
 
 Glyph::Glyph(GlyphID id) {
   _id = id;
+  _complete = false;
 
   // CANSUR
   switch(id) {
@@ -67,4 +68,9 @@ GlyphID Glyph::getID() {
 sf::Vector2f Glyph::getSize() {
   // TODO
   //return _sprite.getSize();
+}
+
+void Glyph::setComplete() {
+  _complete = true;
+  _sprite.setColor(sf::Color::Black);
 }

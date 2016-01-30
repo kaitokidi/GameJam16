@@ -9,8 +9,10 @@ public:
   ~ObjectiveGlyphs();
 
   void add(Glyph g);
+  void add(GlyphID gid);
   bool complete();
 private:
+  unsigned int _gcounter;
 };
 
 #endif

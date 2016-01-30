@@ -16,12 +16,14 @@ public:
   void setSize(float width, float height);
   GlyphID getID();
   sf::Vector2f getSize();
+  void setComplete();
 
 protected:
   sf::RenderWindow* _window;
   sf::Sprite _sprite;
 
   GlyphID _id;
+  bool _complete;
 };
 
 #endif

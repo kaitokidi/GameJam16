@@ -2,14 +2,26 @@
 
 ObjectiveGlyphs::ObjectiveGlyphs(const sf::Texture& text) :
   GlyphContainer(10, sf::Vector2i(10, 1), text)
-{}
+{
+  _gcounter = 10;
+}
 
 ObjectiveGlyphs::~ObjectiveGlyphs() {}
 
 void ObjectiveGlyphs::add(Glyph g) {
-  // TODO
+  add(g.getID());
+}
+
+void ObjectiveGlyphs::add(GlyphID gid) {
+  for (auto g : _glyphs) {
+    if (gid == g.getID()) {
+      g.setComplete();
+      _gcounter--;
+      return;
+    }
+  }
 }
 
 bool ObjectiveGlyphs::complete() {
-  // TODO
+  return _gcounter == 0;
 }
