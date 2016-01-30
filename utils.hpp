@@ -35,7 +35,7 @@
 #define M_EVOL_NUM 4 //4 per posar algo, ho canviem en funcio dels spritesheets
 
 //numero de frames i estats de la animacio dels players
-#define PLAYER_FRAME_NUM 4
+#define PLAYER_FRAME_NUM 6
 #define PLAYER_STATE_NUM 3
 
 
