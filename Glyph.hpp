@@ -3,21 +3,25 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "utils.hpp"
 
 class Glyph {
 public:
-  Glyph(sf::Texture& text);
+  Glyph(GlyphID id);
   ~Glyph();
 
   void draw();
   void setPosition(sf::Vector2f pos);
   void setSize(sf::Vector2f size);
   void setSize(float width, float height);
+  GlyphID getID();
   sf::Vector2f getSize();
 
 private:
   sf::RenderWindow* _window;
   sf::Sprite _sprite;
+
+  GlyphID _id;
 };
 
 #endif
