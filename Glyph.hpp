@@ -17,7 +17,7 @@ public:
   GlyphID getID();
   sf::Vector2f getSize();
 
-private:
+protected:
   sf::RenderWindow* _window;
   sf::Sprite _sprite;
 

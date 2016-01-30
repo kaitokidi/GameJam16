@@ -1,7 +1,7 @@
 #include "ObjectiveGlyphs.hpp"
 
-ObjectiveGlyphs::ObjectiveGlyphs(int size, sf::Vector2i layout, const sf::Texture& text) :
-  GlyphContainer(size, layout, text)
+ObjectiveGlyphs::ObjectiveGlyphs(const sf::Texture& text) :
+  GlyphContainer(10, sf::Vector2i(10, 1), text)
 {}
 
 ObjectiveGlyphs::~ObjectiveGlyphs() {}

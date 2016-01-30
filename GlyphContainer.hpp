@@ -23,7 +23,7 @@ public:
   bool empty();
   Glyph get(int index);
 
-private:
+protected:
   unsigned int _nglyphs;
   sf::Vector2i _layout;
   sf::Vector2f _pos;

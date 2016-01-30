@@ -59,3 +59,12 @@ void Glyph::draw() {
 void Glyph::setPosition(sf::Vector2f pos) {
   _sprite.setPosition(pos);
 }
+
+GlyphID Glyph::getID() {
+  return _id;
+}
+
+sf::Vector2f Glyph::getSize() {
+  // TODO
+  //return _sprite.getSize();
+}
