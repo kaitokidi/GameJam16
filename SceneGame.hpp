@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Scene.hpp"
 #include "utils.hpp"
+#include "Recipies.hpp"
 #include "Background.h"
 #include "Resources.hpp"
 #include "Inventory.hpp"
@@ -34,14 +35,11 @@ private:
     Background _background;
     std::pair<Player,Player> _chamans;
 
-    //GlyphContainer _recipes;
+    Recipies _recipes;
     std::pair<Inventory,Inventory> _inventory;
     std::pair<InputGlyphs,InputGlyphs> _spelling;
     std::pair<GlyphContainer,GlyphContainer> _actualGlyph;
     std::pair<ObjectiveGlyphs,ObjectiveGlyphs> _finalRitual;
-
-
-
 };
 
 #endif // SCENEGAME_HPP

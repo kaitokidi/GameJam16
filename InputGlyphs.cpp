@@ -12,5 +12,5 @@ void InputGlyphs::discard() {
 }
 
 bool InputGlyphs::add(Glyph g) {
-  // TODO
+  _glyphs.push_back(g);
 }

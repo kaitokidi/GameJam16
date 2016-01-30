@@ -40,3 +40,7 @@ void Inventory::firstToActualGlyph() {
     setPosition(_pos);
   }
 }
+
+GlyphID Inventory::getGlyphIDByIndex(int index) {
+  return _glyphs[index].getID();
+}

@@ -3,7 +3,7 @@
 SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     Scene(g, w, sceneTypes::testScene, "end") ,
     _background(TEXTURETPATH + std::string("game.png"), TEXTURETPATH + std::string("orc.png"), TEXTURETPATH + std::string("other_orc.png"), sf::Vector2f(233,20), sf::Vector2f(455,20)),
-    //_recipes(Resources::recipesBg),
+    _recipes(Resources::talkBox),
     _actualGlyph(GlyphContainer(1,sf::Vector2i(1,1),Resources::talkBox),GlyphContainer(1,sf::Vector2i(1,1),Resources::talkBox)),
     _spelling(InputGlyphs(Resources::talkBox, &_actualGlyph.first),InputGlyphs(Resources::talkBox, &_actualGlyph.second)),
     _inventory(Inventory(Resources::talkBox, &_actualGlyph.first),Inventory(Resources::talkBox, &_actualGlyph.second)),
@@ -27,6 +27,8 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
   _inventory.second.setSize(sf::Vector2f(198,260));
   _inventory.second.setPosition(sf::Vector2f(682,310));
 
+  _recipes.populate();
+
   _chamans.first.setParameters(TEXTURETPATH + std::string("orc.png"), sf::Vector2f(20,172));
   _chamans.second.setParameters(TEXTURETPATH + std::string("other_orc.png"), sf::Vector2f(757,172));
 
@@ -44,13 +46,9 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
   _view = _window->getDefaultView();
 }
 
-SceneGame::~SceneGame(){
+SceneGame::~SceneGame() {}
 
-}
-
-void SceneGame::init(sf::Vector2f aux){
-
-}
+void SceneGame::init(sf::Vector2f aux) {}
 
 void SceneGame::update(float deltaTime){
 
@@ -157,7 +155,7 @@ void SceneGame::render(sf::RenderTarget *target){
     _chamans.first.draw(target);
     _chamans.second.draw(target);
 
-    //_recipes.draw(target);
+    _recipes.draw(target);
 
     _inventory.first.draw(target);
     _inventory.second.draw(target);

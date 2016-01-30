@@ -81,7 +81,9 @@ SOURCES       = main.cpp \
 		GlyphContainer.cpp \
 		Glyph.cpp \
 		Inventory.cpp \
-		InputGlyphs.cpp 
+		InputGlyphs.cpp \
+		Recipies.cpp \
+		BasicReagents.cpp 
 OBJECTS       = main.o \
 		utils.o \
 		Resources.o \
@@ -115,7 +117,9 @@ OBJECTS       = main.o \
 		GlyphContainer.o \
 		Glyph.o \
 		Inventory.o \
-		InputGlyphs.o
+		InputGlyphs.o \
+		Recipies.o \
+		BasicReagents.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -200,7 +204,9 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		GlyphContainer.h \
 		Glyph.h \
 		Inventory.h \
-		InputGlyphs.h main.cpp \
+		InputGlyphs.h \
+		Recipies.hpp \
+		BasicReagents.hpp main.cpp \
 		utils.cpp \
 		Resources.cpp \
 		Game.cpp \
@@ -233,7 +239,9 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		GlyphContainer.cpp \
 		Glyph.cpp \
 		Inventory.cpp \
-		InputGlyphs.cpp
+		InputGlyphs.cpp \
+		Recipies.cpp \
+		BasicReagents.cpp
 QMAKE_TARGET  = game
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = game
@@ -450,10 +458,12 @@ Game.o: Game.cpp Game.hpp \
 		TextBox.hpp \
 		SceneGame.hpp \
 		Player.h \
-		Background.h \
-		Inventory.hpp \
+		Recipies.hpp \
 		GlyphContainer.hpp \
 		Glyph.hpp \
+		Recipe.hpp \
+		Background.h \
+		Inventory.hpp \
 		InputGlyphs.hpp \
 		ObjectiveGlyphs.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Game.o Game.cpp
@@ -608,11 +618,13 @@ SceneGame.o: SceneGame.cpp SceneGame.hpp \
 		InputManager.hpp \
 		Scene.hpp \
 		SceneChanger.hpp \
+		Recipies.hpp \
+		GlyphContainer.hpp \
+		Glyph.hpp \
+		Recipe.hpp \
 		Background.h \
 		Resources.hpp \
 		Inventory.hpp \
-		GlyphContainer.hpp \
-		Glyph.hpp \
 		InputGlyphs.hpp \
 		ObjectiveGlyphs.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneGame.o SceneGame.cpp
@@ -673,6 +685,25 @@ InputGlyphs.o: InputGlyphs.cpp InputGlyphs.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o InputGlyphs.o InputGlyphs.cpp
+
+Recipies.o: Recipies.cpp Recipies.hpp \
+		GlyphContainer.hpp \
+		Glyph.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Recipe.hpp \
+		BasicReagents.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Recipies.o Recipies.cpp
+
+BasicReagents.o: BasicReagents.cpp BasicReagents.hpp \
+		Glyph.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o BasicReagents.o BasicReagents.cpp
 
 ####### Install
 

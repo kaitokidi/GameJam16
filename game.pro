@@ -39,7 +39,9 @@ SOURCES += main.cpp \
     GlyphContainer.cpp \
     Glyph.cpp \
     Inventory.cpp \
-    InputGlyphs.cpp
+    InputGlyphs.cpp \
+    Recipies.cpp \
+    BasicReagents.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -73,4 +75,6 @@ HEADERS += utils.hpp \
     GlyphContainer.h \
     Glyph.h \
     Inventory.h \
-    InputGlyphs.h
+    InputGlyphs.h \
+    Recipies.hpp \
+    BasicReagents.hpp

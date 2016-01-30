@@ -4,14 +4,30 @@
 #include "GlyphContainer.hpp"
 #include "Recipe.hpp"
 
+#include <map>
+
 class Recipies : public GlyphContainer {
 public:
   Recipies(const sf::Texture& text);
   ~Recipies();
 
   void populate();
+  GlyphID build(std::vector<GlyphID>);
+
 private:
-  std::vector<std::pair<Glyph,Recipe>> recipies;
+  void generateSimpleRecipies();
+  void generateComplexRecipe();
+
+  GlyphID generateUniqueSimpleReagent();
+  GlyphID generateUniqueComplexReagent();
+
+  bool isUsed(GlyphID);
+
+  std::map<std::vector<GlyphID>, GlyphID> recipies;
+  std::vector<GlyphID> glyphs;
+
+  int used_simple;
+  GlyphID aused_simple[2];
 };
 
 #endif
