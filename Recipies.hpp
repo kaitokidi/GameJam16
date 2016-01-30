@@ -2,6 +2,7 @@
 #define __RECIPIES__
 
 #include "GlyphContainer.hpp"
+#include "Recipe.hpp"
 
 class Recipies : public GlyphContainer {
 public:
@@ -10,7 +11,7 @@ public:
 
   void populate();
 private:
-  std::vector<Glyph> 
+  std::vector<std::pair<Glyph,Recipe>> recipies;
 };
 
 #endif

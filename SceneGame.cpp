@@ -15,6 +15,12 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
   _actualGlyph.second.setPosition(sf::Vector2f(677, 172));
   _actualGlyph.second.setSize(sf::Vector2f(75, 75));
 
+  _spelling.first.setPosition(sf::Vector2f(20, 80));
+  _spelling.first.setSize(sf::Vector2f(208, 87));
+
+  _spelling.second.setPosition(sf::Vector2f(677, 80));
+  _spelling.second.setSize(sf::Vector2f(208, 87));
+
   _inventory.first.setSize(sf::Vector2f(198,260));
   _inventory.first.setPosition(sf::Vector2f(25,310));
 
