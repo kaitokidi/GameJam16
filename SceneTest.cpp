@@ -18,7 +18,7 @@ void SceneTest::init(sf::Vector2f aux){
 }
 
 void SceneTest::update(float deltaTime){
-    _sprite.rotate(5*deltaTime);
+   // _sprite.rotate(5*deltaTime);
 //    if (InputManager::action(InputAction::action)) _player->attack();
 }
 
@@ -26,7 +26,7 @@ void SceneTest::processInput(){
     sf::Event event;
     while(_window->pollEvent(event)){
         if (event.type == sf::Event::Closed) {_window->close(); exit(0);}
-        if (event.type == sf::Event::MouseButtonReleased) changeScene(_next);//{_window->close(); exit(0);}
+        if (event.type == sf::Event::KeyReleased) changeScene(_next);//{_window->close(); exit(0);}
     }
     InputManager::update();
 }

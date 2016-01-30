@@ -8,7 +8,7 @@ Glyph::Glyph(GlyphID id) {
   _id = id;
   _complete = false;
 
-  _sprite = sf::Sprite(Resources::key);
+ // _sprite = sf::Sprite(Resources::key);
 
     //   ____    _    _   _ ____  _   _ ____
     //  / ___|  / \  | \ | / ___|| | | |  _ \
@@ -16,50 +16,74 @@ Glyph::Glyph(GlyphID id) {
     // | |___ / ___ \| |\  |___) | |_| |  _ <
     //  \____/_/   \_\_| \_|____/ \___/|_| \_\
 
-  // switch(id) {
-  // glyphUP:
-  //   _sprite = sf::Sprite(Resources::glyphUP);
-  // glyphDOWN:
-  //   _sprite = sf::Sprite(Resources::glyphDOWN);
-  // glyphRIGHT:
-  //   _sprite = sf::Sprite(Resources::glyphRIGHT);
-  // glyphLEFT:
-  //   _sprite = sf::Sprite(Resources::glyphLEFT);
-  // glyph11:
-  //   _sprite = sf::Sprite(Resources::glyph11);
-  // glyph12:
-  //   _sprite = sf::Sprite(Resources::glyph12);
-  // glyph13:
-  //   _sprite = sf::Sprite(Resources::glyph13);
-  // glyph14:
-  //   _sprite = sf::Sprite(Resources::glyph14);
-  // glyph15:
-  //   _sprite = sf::Sprite(Resources::glyph15);
-  // glyph16:
-  //   _sprite = sf::Sprite(Resources::glyph16);
-  // glyph17:
-  //   _sprite = sf::Sprite(Resources::glyph17);
-  // glyph18:
-  //   _sprite = sf::Sprite(Resources::glyph18);
-  // glyph19:
-  //   _sprite = sf::Sprite(Resources::glyph19);
-  // glyph21:
-  //   _sprite = sf::Sprite(Resources::glyph21);
-  // glyph22:
-  //   _sprite = sf::Sprite(Resources::glyph22);
-  // glyph23:
-  //   _sprite = sf::Sprite(Resources::glyph23);
-  // glyph24:
-  //   _sprite = sf::Sprite(Resources::glyph24);
-  // glyph26:
-  //   _sprite = sf::Sprite(Resources::glyph26);
-  // glyph31:
-  //   _sprite = sf::Sprite(Resources::glyph31);
-  // glyph32:
-  //   _sprite = sf::Sprite(Resources::glyph32);
-  // glyph33:
-  //   _sprite = sf::Sprite(Resources::glyph33);
-  // }
+  switch(id) {
+    case glyphUP:
+      _sprite = sf::Sprite(Resources::glyphUP);
+      break;
+    case glyphDOWN:
+      _sprite = sf::Sprite(Resources::glyphDOWN);
+      break;
+    case glyphRIGHT:
+      _sprite = sf::Sprite(Resources::glyphRIGHT);
+      break;
+    case glyphLEFT:
+      _sprite = sf::Sprite(Resources::glyphLEFT);
+      break;
+    case glyph11:
+      _sprite = sf::Sprite(Resources::glyph11);
+      break;
+    case glyph12:
+      _sprite = sf::Sprite(Resources::glyph12);
+      break;
+    case glyph13:
+      _sprite = sf::Sprite(Resources::glyph13);
+      break;
+    case glyph14:
+      _sprite = sf::Sprite(Resources::glyph14);
+      break;
+    case glyph15:
+      _sprite = sf::Sprite(Resources::glyph15);
+      break;
+    case glyph16:
+      _sprite = sf::Sprite(Resources::glyph16);
+      break;
+    case glyph17:
+      _sprite = sf::Sprite(Resources::glyph17);
+      break;
+    case glyph18:
+      _sprite = sf::Sprite(Resources::glyph18);
+      break;
+    case glyph19:
+      _sprite = sf::Sprite(Resources::glyph19);
+      break;
+    case glyph21:
+      _sprite = sf::Sprite(Resources::glyph21);
+      break;
+    case glyph22:
+      _sprite = sf::Sprite(Resources::glyph22);
+      break;
+    case glyph23:
+      _sprite = sf::Sprite(Resources::glyph23);
+      break;
+    case glyph24:
+      _sprite = sf::Sprite(Resources::glyph24);
+      break;
+    case glyph26:
+      _sprite = sf::Sprite(Resources::glyph26);
+      break;
+    case glyph31:
+      _sprite = sf::Sprite(Resources::glyph31);
+      break;
+    case glyph32:
+      _sprite = sf::Sprite(Resources::glyph32);
+      break;
+    case glyph33:
+      _sprite = sf::Sprite(Resources::glyph33);
+      break;
+  default:
+      break;
+    }
+
 }
 
 Glyph::~Glyph() {}
