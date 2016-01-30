@@ -8,28 +8,28 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _spelling(InputGlyphs(Resources::talkBox, &_actualGlyph.first),InputGlyphs(Resources::talkBox, &_actualGlyph.second)),
     _inventory(Inventory(Resources::talkBox, &_actualGlyph.first),Inventory(Resources::talkBox, &_actualGlyph.second)),
     _finalRitual(ObjectiveGlyphs(Resources::talkBox),ObjectiveGlyphs(Resources::talkBox))
-{
-  _actualGlyph.first.setPosition(sf::Vector2f(153, 172));
-  _actualGlyph.first.setSize(sf::Vector2f(75, 75));
+    {
 
-  _actualGlyph.second.setPosition(sf::Vector2f(677, 172));
-  _actualGlyph.second.setSize(sf::Vector2f(75, 75));
+    _actualGlyph.first.setPosition(sf::Vector2f(153, 172));
+    _actualGlyph.first.setSize(sf::Vector2f(75, 75));
 
-  _spelling.first.setPosition(sf::Vector2f(20, 80));
-  _spelling.first.setSize(sf::Vector2f(208, 87));
+    _actualGlyph.second.setPosition(sf::Vector2f(677, 172));
+    _actualGlyph.second.setSize(sf::Vector2f(75, 75));
 
-  _spelling.second.setPosition(sf::Vector2f(677, 80));
-  _spelling.second.setSize(sf::Vector2f(208, 87));
+    _spelling.first.setPosition(sf::Vector2f(20, 80));
+    _spelling.first.setSize(sf::Vector2f(208, 87));
 
-  _inventory.first.setSize(sf::Vector2f(198,260));
-  _inventory.first.setPosition(sf::Vector2f(25,310));
+    _spelling.second.setPosition(sf::Vector2f(677, 80));
+    _spelling.second.setSize(sf::Vector2f(208, 87));
 
-  _inventory.second.setSize(sf::Vector2f(198,260));
-  _inventory.second.setPosition(sf::Vector2f(682,310));
+    _inventory.first.setSize(sf::Vector2f(198,260));
+    _inventory.first.setPosition(sf::Vector2f(25,310));
 
-  _chamans.first.setParameters(TEXTURETPATH + std::string("orc.png"), sf::Vector2f(20,172));
-  _chamans.second.setParameters(TEXTURETPATH + std::string("other_orc.png"), sf::Vector2f(757,172));
+    _inventory.second.setSize(sf::Vector2f(198,260));
+    _inventory.second.setPosition(sf::Vector2f(682,310));
 
+    _chamans.first.setParameters(TEXTURETPATH + std::string("orc.png"), sf::Vector2f(20,172));
+    _chamans.second.setParameters(TEXTURETPATH + std::string("other_orc.png"), sf::Vector2f(757,172));
 
     _finalRitual.first.setSize(sf::Vector2f(208,55));
     _finalRitual.first.setPosition(sf::Vector2f(20,20));
@@ -37,12 +37,31 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _finalRitual.second.setSize(sf::Vector2f(208,55));
     _finalRitual.second.setPosition(sf::Vector2f(677,20));
 
-  _view = _window->getDefaultView();
-  _next = "end";
-  _inventory.first.init();
-  _inventory.second.init();
-  _view = _window->getDefaultView();
-  _nextInputUpdate = 0.0f;
+
+    for ( int i = 0; i < 3; ++i){
+        int r = random()%3;
+        GlyphID id = _inventory.getGlyphIDByIndex(r);
+        _finalRitual.first.add(id);
+        _finalRitual.second.add(id);
+    }
+    for ( int i = 0; i < 2; ++i){
+        int r = random()%2 +3;
+        GlyphID id = _inventory.getGlyphIDByIndex(r);
+        _finalRitual.first.add(id);
+        _finalRitual.second.add(id);
+    }
+    GlyphID id = _inventory.getGlyphIDByIndex(5);
+    _finalRitual.first.add(id);
+    _finalRitual.second.add(id);
+
+
+
+    _view = _window->getDefaultView();
+    _next = "end";
+    _inventory.first.init();
+    _inventory.second.init();
+    _view = _window->getDefaultView();
+    _nextInputUpdate = 0.0f;
 }
 
 SceneGame::~SceneGame(){
