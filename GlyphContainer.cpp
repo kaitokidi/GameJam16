@@ -63,7 +63,7 @@ void GlyphContainer::pop() {
   _glyphs.erase(_glyphs.end()--);
 }
 
-void GlyphContainer::insert(Glyph g) {
+void GlyphContainer::add(Glyph g) {
   if(_glyphs.size() == 0) {
     g.setSize(calculateGlyphSize());
   } else {

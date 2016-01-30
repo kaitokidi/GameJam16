@@ -19,7 +19,7 @@ public:
 
   Glyph top();
   void pop();
-  void insert(Glyph g);
+  void add(Glyph g);
   bool empty();
   Glyph get(int index);
 
