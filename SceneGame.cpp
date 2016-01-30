@@ -5,7 +5,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _background(TEXTURETPATH + std::string("key.png"), TEXTURETPATH + std::string("key.png"), TEXTURETPATH + std::string("key.png"), sf::Vector2f(0,0), sf::Vector2f(100,100)),
     _chamans(Player(TEXTURETPATH + std::string("key.png"), sf::Vector2f(0,200)),Player(TEXTURETPATH + std::string("key.png"), sf::Vector2f(100,200))),
     //_recipes(Resources::recipesBg),
-    _actualGlyph(GlyphContainer(1,sf::Vector2i(1,1),Resources::key),GlyphContainer(1,sf::Vector2i(1,1),Resources::key)),
+    _actualGlyph(GlyphContainer(1,sf::Vector2i(1,1),Resources::talkBox),GlyphContainer(1,sf::Vector2i(1,1),Resources::talkBox)),
     _spelling(InputGlyphs(Resources::spellingBgOrc, &_actualGlyph.first),InputGlyphs(Resources::actualBgCham, &_actualGlyph.second)),
     _inventory(Inventory(Resources::inventoryBgOrc, &_actualGlyph.first),Inventory(Resources::actualBgCham, &_actualGlyph.second)),
     _finalRitual(ObjectiveGlyphs(Resources::objectiveBg),ObjectiveGlyphs(Resources::actualBgCham))
@@ -19,6 +19,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
   _next = "end";
   _inventory.first.init();
   _inventory.second.init();
+  _view = _window->getDefaultView();
 }
 
 SceneGame::~SceneGame(){
@@ -120,7 +121,6 @@ void SceneGame::processInput(){
 }
 
 void SceneGame::render(sf::RenderTarget *target){
-
     //_background.draw(target);
 
     //_chamans.first.draw(target);
@@ -139,7 +139,6 @@ void SceneGame::render(sf::RenderTarget *target){
 
     _actualGlyph.first.draw(target);
     _actualGlyph.second.draw(target);
-
 }
 
 void SceneGame::resizing() {

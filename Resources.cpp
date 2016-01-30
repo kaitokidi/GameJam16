@@ -30,8 +30,6 @@ void Resources::load() {
     //...loadFromFile(); or whatever
     key.loadFromFile                    (TEXTURETPATH+std::string("key.png"));
 
-
-
     actualBgOrc.loadFromFile                    (TEXTURETPATH+std::string("key.png"));
     objectiveBg.loadFromFile                    (TEXTURETPATH+std::string("key.png"));
     spellingBgOrc.loadFromFile                  (TEXTURETPATH+std::string("key.png"));
@@ -44,11 +42,6 @@ void Resources::load() {
 
     recipesBg.loadFromFile                      (TEXTURETPATH+std::string("key.png"));
 
-
-
-
-
-
     talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"));
 
    // descriptions = std::vector<SpriteSheetDescription>(spriteDescriptionsQtt);
@@ -57,7 +50,6 @@ void Resources::load() {
     if (!cInvert.loadFromFile           (SHADERPATH+std::string("invert.frag"), sf::Shader::Fragment)) exit(EXIT_FAILURE);
 
     if (!pauseMenuFont.loadFromFile("Resources/Fonts/font.ttf")) exit(EXIT_FAILURE);
-
 }
 
 
