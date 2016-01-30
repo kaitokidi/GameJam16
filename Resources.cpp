@@ -6,10 +6,24 @@
 sf::Texture            Resources::key;
 sf::Texture            Resources::talkBox;
 sf::Shader             Resources::cInvert;
-
 sf::Font               Resources::pauseMenuFont;
-
 std::vector<SpriteSheetDescription> Resources::descriptions;
+
+
+
+//Orc textures
+sf::Texture             Resources::objectiveBg;
+sf::Texture             Resources::actualBgOrc;
+sf::Texture             Resources::spellingBgOrc;
+sf::Texture             Resources::inventoryBgOrc;
+
+//Silvan textures
+sf::Texture             Resources::objectiveCham;
+sf::Texture             Resources::actualBgCham;
+sf::Texture             Resources::spellingBgCham;
+sf::Texture             Resources::inventoryBgCham;
+
+sf::Texture             Resources::recipesBg;
 
 
 
@@ -17,6 +31,26 @@ void Resources::load() {
     //LOAD THE INFORMATION IN THE VARIABLES
     //...loadFromFile(); or whatever
     key.loadFromFile                    (TEXTURETPATH+std::string("key.png"));
+
+
+
+    actualBgOrc.loadFromFile                    (TEXTURETPATH+std::string("key.png"));
+    objectiveBg.loadFromFile                    (TEXTURETPATH+std::string("key.png"));
+    spellingBgOrc.loadFromFile                  (TEXTURETPATH+std::string("key.png"));
+    inventoryBgOrc.loadFromFile                 (TEXTURETPATH+std::string("key.png"));
+
+    actualBgCham.loadFromFile                   (TEXTURETPATH+std::string("key.png"));
+    objectiveCham.loadFromFile                  (TEXTURETPATH+std::string("key.png"));
+    spellingBgCham.loadFromFile                 (TEXTURETPATH+std::string("key.png"));
+    inventoryBgCham.loadFromFile                (TEXTURETPATH+std::string("key.png"));
+
+    recipesBg.loadFromFile                      (TEXTURETPATH+std::string("key.png"));
+
+
+
+
+
+
     //talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"));
 
    // descriptions = std::vector<SpriteSheetDescription>(spriteDescriptionsQtt);

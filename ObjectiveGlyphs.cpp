@@ -9,3 +9,7 @@ ObjectiveGlyphs::~ObjectiveGlyphs() {}
 void ObjectiveGlyphs::add(Glyph g) {
   // TODO
 }
+
+bool ObjectiveGlyphs::complete() {
+  // TODO
+}
