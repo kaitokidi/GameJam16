@@ -45,7 +45,7 @@ void GlyphManager::draw(sf::RenderTarget *rt) {
 }
 
 sf::Texture& GlyphManager::getTextureByGlyphType(GlyphType gt) {
-  return Resources::key; // TEMPORAL
+  return Resources::glyphTextures[int(gt)];
 }
 
 GlyphManager::DataInstance GlyphManager::getGlyphDataById(unsigned int id) {
@@ -78,8 +78,8 @@ bool Glyph::isDestroyed() const {
 
 void Glyph::setSize(sf::Vector2f _s) {
   sf::Vector2u _ts = gm->getGlyphDataById(id)._d->_sprite.getTexture()->getSize();
-  float xf = _ts.x / _s.x;
-  float yf = _ts.y / _s.y;
+  float xf = _s.x / _ts.x;
+  float yf = _s.y / _ts.y;
   gm->getGlyphDataById(id)._d->_sprite.setScale(sf::Vector2f(xf, yf));
 }
 

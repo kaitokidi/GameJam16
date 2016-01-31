@@ -82,17 +82,17 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
 
     _inventory.first.add(gg);
 
-    gg = gm.create(GlyphType::glyph_11);
+    gg = gm.create(GlyphType::glyph_12);
     gg.setPosition(sf::Vector2f(30, 30));
 
     _inventory.first.add(gg);
 
-    gg = gm.create(GlyphType::glyph_11);
+    gg = gm.create(GlyphType::glyph_13);
     gg.setPosition(sf::Vector2f(30, 30));
 
     _inventory.first.add(gg);
 
-    gg = gm.create(GlyphType::glyph_11);
+    gg = gm.create(GlyphType::glyph_31);
     gg.setPosition(sf::Vector2f(30, 30));
 
     _inventory.first.add(gg);
@@ -107,7 +107,6 @@ void SceneGame::update(float deltaTime){
 
     _shamans.first.update(deltaTime);
     _shamans.second.update(deltaTime);
-
 
     // if(_actualGlyph.first.empty() || _actualGlyph.first.glyphNone()){
     //     if(InputManager::action(InputAction::firstAction)){
