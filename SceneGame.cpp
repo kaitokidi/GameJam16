@@ -41,11 +41,10 @@ void SceneGame::update(float deltaTime){
                 SoundManager::playSound("attack");
                 _chamans.first.changeState(status::attack);
             }
-            random = rand()%2;
-            if(random == 0){
-                moveEffects.first.init(sf::Vector2i(40,172),sf::Vector2i(272,172),_glyphTexture);
-                moveEffects.first.setTextureRect(sf::IntRect(0+glyphSize*(rand()%21),0,glyphSize,glyphSize));
-            }
+
+            moveEffects.first.init(sf::Vector2i(70,172),sf::Vector2i(390,172),_glyphTexture);
+            moveEffects.first.setTextureRect(sf::IntRect(0+glyphSize*(rand()%21),0,glyphSize,glyphSize));
+
         }
 
     }
@@ -62,11 +61,10 @@ void SceneGame::update(float deltaTime){
                 SoundManager::playSound("attack");
                 _chamans.second.changeState(status::attack);
             }
-            random = rand()%2;
-            if(random == 0){
-                moveEffects.second.init(sf::Vector2i(272,172),sf::Vector2i(40,172),_glyphTexture);
-                moveEffects.second.setTextureRect(sf::IntRect(+glyphSize*(rand()%21),0,glyphSize,glyphSize));
-            }
+
+            moveEffects.second.init(sf::Vector2i(300,172),sf::Vector2i(40,172),_glyphTexture);
+            moveEffects.second.setTextureRect(sf::IntRect(+glyphSize*(rand()%21),0,glyphSize,glyphSize));
+
         }
     }
 
@@ -76,16 +74,20 @@ void SceneGame::update(float deltaTime){
     if(_clicks.first%60 == 0) { _background.evolve(false); ++_clicks.first; ++_evolutions.first; }
     if(_clicks.second%60 == 0){ _background.evolve(true); ++_clicks.second; ++_evolutions.second;}
 
-    if(_evolutions.first > 3)
+    if(_evolutions.first >= 3) { minit(); changeScene("EndRed"); SoundManager::playSound("bossRed"); }
+    if(_evolutions.second >= 3) { minit(); changeScene("EndGreen"); SoundManager::playSound("bossGreen"); }
 
 }
 
+void SceneGame::minit(){
+    _background.init();
+    _clicks.first = _clicks.second = 1;
+    _evolutions.first = _evolutions.second = 0;
+}
 void SceneGame::processInput(){
     InputManager::update(_window);
     if(InputManager::action(InputAction::reset)) {
-        _background.init();
-        _clicks.first = _clicks.second = 1;
-        _evolutions.first = _evolutions.second = 0;
+        minit();
     }
 }
 

@@ -24,6 +24,7 @@ public:
 
     void resizing();
 
+    void minit();
 private:
 
     std::string _next;

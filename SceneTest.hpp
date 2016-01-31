@@ -8,7 +8,7 @@ class Game;
 class SceneTest : public Scene {
 
 public:
-    SceneTest(Game* g, sf::RenderWindow* w, std::string next);
+    SceneTest(Game* g, sf::RenderWindow* w, std::string next, std::string text = "Press any Key");
 
     ~SceneTest();
 
@@ -24,7 +24,9 @@ public:
 
 private:
 
+    float timer;
     Game* _game;
+    sf::Text _text;
     std::string _next;
     sf::Sprite _sprite;
     sf::Texture _texture;
