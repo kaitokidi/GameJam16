@@ -1,6 +1,6 @@
 #include "GlyphContainer.hpp"
 
-GlyphContainer::GlyphContainer(sf::Vector2i layout, const sf::Texture& bg_text) :
+GlyphContainer::GlyphContainer(sf::Vector2u layout, const sf::Texture& bg_text) :
   _background(bg_text)
 {
   // Draw layout (columns, rows)
@@ -59,7 +59,7 @@ void GlyphContainer::setSize(float width, float height) {
   _background.setScale(sf::Vector2f(x_ratio, y_ratio));
 
   sf::Vector2f gsize = calculateGlyphSize();
-  for(int i = 0; i < n_elements; ++i) {
+  for(unsigned int i = 0; i < n_elements; ++i) {
     _glyphs[i].setSize(gsize);
   }
 
