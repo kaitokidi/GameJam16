@@ -6,7 +6,7 @@
 
 class GlyphContainer {
 public:
-  GlyphContainer(GlyphManager *gm, sf::Vector2u layout, const sf::Texture& text);
+  GlyphContainer(GlyphManager *n_gm, sf::Vector2u layout, const sf::Texture& text);
   ~GlyphContainer();
 
   void draw(sf::RenderTarget* target);

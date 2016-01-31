@@ -4,14 +4,15 @@
 #include <array>
 
 #include "GlyphContainer.hpp"
+#include "Maybe.hpp"
 
 class Recipes : public GlyphContainer {
 public:
-  Recipes(GlyphManager *gm);
+  Recipes(GlyphManager *n_gm);
   ~Recipes();
 
   void populate();
-  Glyph getGlyphByIndex(unsigned int index);
+  Maybe<Glyph> getGlyphByIndex(unsigned int index);
 private:
 };
 

@@ -75,7 +75,8 @@ SOURCES       = main.cpp \
 		GlyphContainer.cpp \
 		BasicReagents.cpp \
 		MoveEffect.cpp \
-		GlyphManager.cpp 
+		GlyphManager.cpp \
+		Recipes.cpp 
 OBJECTS       = main.o \
 		utils.o \
 		Resources.o \
@@ -103,7 +104,8 @@ OBJECTS       = main.o \
 		GlyphContainer.o \
 		BasicReagents.o \
 		MoveEffect.o \
-		GlyphManager.o
+		GlyphManager.o \
+		Recipes.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -182,7 +184,8 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		GlyphContainer.h \
 		BasicReagents.hpp \
 		MoveEffect.hpp \
-		GlyphManager.hpp main.cpp \
+		GlyphManager.hpp \
+		Recipes.hpp main.cpp \
 		utils.cpp \
 		Resources.cpp \
 		Game.cpp \
@@ -209,7 +212,8 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		GlyphContainer.cpp \
 		BasicReagents.cpp \
 		MoveEffect.cpp \
-		GlyphManager.cpp
+		GlyphManager.cpp \
+		Recipes.cpp
 QMAKE_TARGET  = game
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = game
@@ -405,7 +409,8 @@ utils.o: utils.cpp utils.hpp \
 Resources.o: Resources.cpp Resources.hpp \
 		utils.hpp \
 		SoundManager.hpp \
-		InputManager.hpp
+		InputManager.hpp \
+		GlyphManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Resources.o Resources.cpp
 
 Game.o: Game.cpp Game.hpp \
@@ -421,7 +426,8 @@ Game.o: Game.cpp Game.hpp \
 		Background.h \
 		MoveEffect.hpp \
 		GlyphContainer.hpp \
-		GlyphManager.hpp
+		GlyphManager.hpp \
+		Recipes.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Game.o Game.cpp
 
 Scene.o: Scene.cpp Scene.hpp \
@@ -526,7 +532,8 @@ SceneGame.o: SceneGame.cpp SceneGame.hpp \
 		Resources.hpp \
 		MoveEffect.hpp \
 		GlyphContainer.hpp \
-		GlyphManager.hpp
+		GlyphManager.hpp \
+		Recipes.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneGame.o SceneGame.cpp
 
 Background.o: Background.cpp Background.h \
@@ -545,7 +552,8 @@ GlyphContainer.o: GlyphContainer.cpp GlyphContainer.hpp \
 		GlyphManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GlyphContainer.o GlyphContainer.cpp
 
-BasicReagents.o: BasicReagents.cpp BasicReagents.hpp
+BasicReagents.o: BasicReagents.cpp BasicReagents.hpp \
+		GlyphManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o BasicReagents.o BasicReagents.cpp
 
 MoveEffect.o: MoveEffect.cpp MoveEffect.hpp \
@@ -554,8 +562,21 @@ MoveEffect.o: MoveEffect.cpp MoveEffect.hpp \
 		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MoveEffect.o MoveEffect.cpp
 
-GlyphManager.o: GlyphManager.cpp GlyphManager.hpp
+GlyphManager.o: GlyphManager.cpp GlyphManager.hpp \
+		Resources.hpp \
+		utils.hpp \
+		SoundManager.hpp \
+		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GlyphManager.o GlyphManager.cpp
+
+Recipes.o: Recipes.cpp Recipes.hpp \
+		GlyphContainer.hpp \
+		GlyphManager.hpp \
+		Resources.hpp \
+		utils.hpp \
+		SoundManager.hpp \
+		InputManager.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Recipes.o Recipes.cpp
 
 ####### Install
 

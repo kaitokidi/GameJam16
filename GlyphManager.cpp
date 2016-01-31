@@ -2,6 +2,7 @@
 #include "Resources.hpp"
 
 #include <cstring>
+#include <stdio.h>
 
 ///////////////////
 // GLYPH MANAGER //
@@ -34,7 +35,8 @@ Glyph GlyphManager::create(GlyphType gt) {
 
 // Creates a clone of g with a new id
 Glyph GlyphManager::clone(Glyph g) {
-  std::memmove(&_data[_n_glyphs], &_data[g.id], sizeof(_glyph_data));
+  printf("%d\n", _n_glyphs);
+  _data[_n_glyphs] = _data[g.id];
 
   Glyph ng;
   ng.id = _n_glyphs;

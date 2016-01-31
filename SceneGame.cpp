@@ -3,6 +3,7 @@
 SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
   gm(),
   Scene(g, w, sceneTypes::testScene, "end"),
+  _recipes(&gm),
   _background(TEXTURETPATH + std::string("game.png"),
               TEXTURETPATH + std::string("garrapato_vermell.png"),
               TEXTURETPATH + std::string("garrapato_verd.png"),

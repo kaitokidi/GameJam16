@@ -33,7 +33,8 @@ SOURCES += main.cpp \
         GlyphContainer.cpp \
         BasicReagents.cpp \
         MoveEffect.cpp \
-        GlyphManager.cpp
+        GlyphManager.cpp \
+        Recipes.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -61,4 +62,5 @@ HEADERS += utils.hpp \
         GlyphContainer.h \
         BasicReagents.hpp \
         MoveEffect.hpp \
-        GlyphManager.hpp
+        GlyphManager.hpp \
+        Recipes.hpp

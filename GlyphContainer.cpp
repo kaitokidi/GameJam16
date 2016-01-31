@@ -1,6 +1,6 @@
 #include "GlyphContainer.hpp"
 
-GlyphContainer::GlyphContainer(GlyphManager *gm, sf::Vector2u layout, const sf::Texture& bg_text) :
+GlyphContainer::GlyphContainer(GlyphManager *n_gm, sf::Vector2u layout, const sf::Texture& bg_text) :
   _background(bg_text)
 {
   // Draw layout (columns, rows)
@@ -13,7 +13,7 @@ GlyphContainer::GlyphContainer(GlyphManager *gm, sf::Vector2u layout, const sf::
   // we start with zero elements
   n_elements = 0;
 
-  gm = gm;
+  gm = n_gm;
 }
 
 GlyphContainer::~GlyphContainer() {}
