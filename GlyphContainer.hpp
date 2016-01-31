@@ -24,6 +24,7 @@ public:
 
   bool empty() const;
   Maybe<Glyph> get(unsigned int index);
+  const std::array<Glyph,30>& getArray() const;
 
 protected:
   // Layout
@@ -37,7 +38,7 @@ protected:
 
   // Container data
   unsigned int n_elements;
-  std::array<Glyph, 30> _glyphs;
+  std::array<Glyph,30> _glyphs;
 
   sf::Vector2f calculateGlyphSize();
 

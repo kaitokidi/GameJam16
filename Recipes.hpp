@@ -13,7 +13,10 @@ public:
 
   void draw(sf::RenderTarget *rt);
   void populate();
+  Maybe<Glyph> build(const std::array<Glyph,30>& a);
 private:
+  std::array<std::array<Glyph,30>,6> _recipes;
+  bool compare_arrays(const std::array<Glyph,30>& g, const std::array<Glyph,30>& j);
 };
 
 #endif

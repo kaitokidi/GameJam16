@@ -132,3 +132,7 @@ sf::Vector2f GlyphContainer::calculateGlyphSize() {
 
   return sf::Vector2f(width, height);
 }
+
+const std::array<Glyph,30>& GlyphContainer::getArray() const {
+  return _glyphs;
+}

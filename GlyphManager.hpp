@@ -2,6 +2,7 @@
 #define __GLYPHMANAGER__
 
 #include <SFML/Graphics.hpp>
+#include "Maybe.hpp"
 
 // maximum number of glyphs the Glyph Manager can hold
 const unsigned int MAX_NUM_GLYPHS = 32000;
@@ -37,7 +38,11 @@ enum GlyphType {
 class GlyphManager;
 struct Glyph {
   friend class GlyphManager;
+  friend class Recipes;
 public:
+  Glyph() {gm = nullptr;}
+  ~Glyph() {}
+
   unsigned int id;
 
   void destroy();
@@ -50,6 +55,8 @@ public:
 
   void setSize(sf::Vector2f _s);
   void setPosition(sf::Vector2f _p);
+
+  bool operator==(const Glyph& rhs) const;
 private:
   GlyphManager* gm;
 };
@@ -64,6 +71,7 @@ private:
 
 class GlyphManager {
   friend class Glyph;
+  friend class Recipes;
 public:
   GlyphManager();
   ~GlyphManager();
@@ -98,7 +106,7 @@ public:
   };
 
 private:
-  GlyphManager::DataInstance getGlyphDataById(unsigned int id);
+  Maybe<GlyphManager::DataInstance> getGlyphDataById(unsigned int id);
 };
 
 #endif
