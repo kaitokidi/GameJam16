@@ -82,7 +82,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
 
     _inventory.first.add(gg);
 
-    gg = gm.create(GlyphType::glyph_12);
+    gg = gm.create(GlyphType::glyph_left);
     gg.setPosition(sf::Vector2f(30, 30));
 
     _inventory.first.add(gg);
