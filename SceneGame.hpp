@@ -6,6 +6,8 @@
 #include "Background.h"
 #include "Resources.hpp"
 #include "MoveEffect.hpp"
+
+#include "GlyphContainer.hpp"
 #include "GlyphManager.hpp"
 
 class SceneGame : public Scene {
@@ -17,7 +19,6 @@ public:
   void update(float deltaTime);
   void processInput();
   void render(sf::RenderTarget* target);
-  void resizing();
 
 private:
   std::string _next;
@@ -25,15 +26,15 @@ private:
   GlyphManager gm;
 
   Background _background;
-  std::pair<Player,Player> _chamans;
+  std::pair<Player,Player> _shamans;
 
   // Recipies _recipes;
-  // std::pair<Inventory,Inventory> _inventory;
-  // std::pair<InputGlyphs,InputGlyphs> _spelling;
-  // std::pair<GlyphContainer,GlyphContainer> _actualGlyph;
-  // std::pair<ObjectiveGlyphs,ObjectiveGlyphs> _finalRitual;
+  std::pair<GlyphContainer, GlyphContainer> _inventory;
+  std::pair<GlyphContainer, GlyphContainer> _input;
+  std::pair<GlyphContainer, GlyphContainer> _intermediate;
+  std::pair<GlyphContainer, GlyphContainer> _objective;
 
-  std::vector<MoveEffect* > moveEffects;
+  // std::vector<MoveEffect* > moveEffects;
 };
 
 #endif // SCENEGAME_HPP

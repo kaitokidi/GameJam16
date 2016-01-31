@@ -28,7 +28,7 @@ void GlyphContainer::setPosition(const sf::Vector2f& pos) {
 
   sf::Vector2f g_size;
 
-  if(!_glyphs.empty())
+  if(!empty())
     g_size = _glyphs[0].getSize();
   else
     return;
@@ -39,7 +39,7 @@ void GlyphContainer::setPosition(const sf::Vector2f& pos) {
 
   for(unsigned int i = 0; i < _layout.x; i++) {
     for(unsigned int j = 0; j < _layout.y; j++) {
-      if((i * _layout.y + j) > _glyphs.size())
+      if((i * _layout.y + j) > n_elements)
         return;
 
       sf::Vector2f n_pos = _pos + sf::Vector2f(i * g_size.x + offset.x,
@@ -59,9 +59,10 @@ void GlyphContainer::setSize(float width, float height) {
   _background.setScale(sf::Vector2f(x_ratio, y_ratio));
 
   sf::Vector2f gsize = calculateGlyphSize();
-  for(auto &g : _glyphs) {
-    g.setSize(gsize);
+  for(int i = 0; i < n_elements; ++i) {
+    _glyphs[i].setSize(gsize);
   }
+
   // Recalculate positions
   setPosition(_pos);
 }
