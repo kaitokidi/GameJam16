@@ -12,7 +12,6 @@ public:
   ~Recipes();
 
   void populate();
-  Maybe<Glyph> getGlyphByIndex(unsigned int index);
 private:
 };
 

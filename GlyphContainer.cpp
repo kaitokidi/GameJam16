@@ -103,8 +103,17 @@ bool GlyphContainer::empty() const {
   return n_elements == 0;
 }
 
-Glyph GlyphContainer::get(int index) const {
-  // TODO
+Maybe<Glyph> GlyphContainer::get(unsigned int index) {
+  Maybe<Glyph> result;
+  if(index >= n_elements) {
+    result.valid = false;
+    return result;
+  }
+  else {
+    result.valid = true;
+    result.value = _glyphs[index].clone();
+    return result;
+  }
 }
 
 // PRIVATE

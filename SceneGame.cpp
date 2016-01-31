@@ -53,7 +53,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
 
     for ( int i = 0; i < 3; ++i){
         int r = random()%3;
-        Maybe<Glyph> result = _recipes.getGlyphByIndex(r);
+        Maybe<Glyph> result = _recipes.get(r);
         if (result.valid) {
           _objective.first.add(result.value);
           _objective.second.add(result.value);
@@ -62,14 +62,14 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
 
     for ( int i = 0; i < 2; ++i){
         int r = random()%2 +3;
-        Maybe<Glyph> result = _recipes.getGlyphByIndex(r);
+        Maybe<Glyph> result = _recipes.get(r);
         if (result.valid) {
           _objective.first.add(result.value);
           _objective.second.add(result.value);
         }
     }
 
-    Maybe<Glyph> result = _recipes.getGlyphByIndex(5);
+    Maybe<Glyph> result = _recipes.get(5);
     if (result.valid) {
       _objective.first.add(result.value);
       _objective.second.add(result.value);
@@ -77,32 +77,8 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
 
     _view = _window->getDefaultView();
     _next = "end";
-    //_inventory.first.init();
-    //_inventory.second.init();
-    //_view = _window->getDefaultView();
-    // initView(&_view, sf::Vector2i(_window->getSize().x,_window->getSize().y));
     initView(&_view, sf::Vector2i(900,600));
     _nextInputUpdate = 0.0f;
-
-    Glyph gg = gm.create(GlyphType::glyph_11);
-    gg.setPosition(sf::Vector2f(30, 30));
-
-    _inventory.first.add(gg);
-
-    gg = gm.create(GlyphType::glyph_left);
-    gg.setPosition(sf::Vector2f(30, 30));
-
-    _inventory.first.add(gg);
-
-    gg = gm.create(GlyphType::glyph_13);
-    gg.setPosition(sf::Vector2f(30, 30));
-
-    _inventory.first.add(gg);
-
-    gg = gm.create(GlyphType::glyph_31);
-    gg.setPosition(sf::Vector2f(30, 30));
-
-    _inventory.first.add(gg);
 }
 
 SceneGame::~SceneGame() {}

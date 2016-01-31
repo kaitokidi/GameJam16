@@ -3,6 +3,7 @@
 
 #include <array>
 #include "GlyphManager.hpp"
+#include "Maybe.hpp"
 
 class GlyphContainer {
 public:
@@ -22,7 +23,7 @@ public:
   void discard();
 
   bool empty() const;
-  Glyph get(int index) const;
+  Maybe<Glyph> get(unsigned int index);
 
 protected:
   // Layout

@@ -8,18 +8,6 @@ Recipes::Recipes(GlyphManager *n_gm)
 Recipes::~Recipes() {}
 
 void Recipes::populate() {
+  // TODO
   add(gm->create(GlyphType::glyph_14)); // TEST
-}
-
-Maybe<Glyph> Recipes::getGlyphByIndex(unsigned int index) {
-  Maybe<Glyph> result;
-  if(index >= n_elements) {
-    result.valid = false;
-    return result;
-  }
-  else {
-    result.valid = true;
-    result.value = _glyphs[index].clone();
-    return result;
-  }
 }
