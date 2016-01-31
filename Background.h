@@ -11,6 +11,7 @@ public:
     void update(float deltaTime);
     void evolve(bool monster);//false per monstre 1, true per monstre 2
     void draw(sf::RenderTarget* window);
+    void init();
 
 private:
     sf::Texture _tMonster1;

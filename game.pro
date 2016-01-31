@@ -36,6 +36,7 @@ SOURCES += main.cpp \
         GlyphManager.cpp \
         Recipes.cpp
 
+
 HEADERS += utils.hpp \
         Resources.cpp \
         Game.cpp \

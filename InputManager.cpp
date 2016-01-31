@@ -49,7 +49,7 @@ float InputManager::action(int s) {
     if (itK != keyboardBinds.end() && (*itK).second.b) { (*itK).second.b = false;  return true; }
     else {
         auto itM = mouseBinds.find(s);
-        if (itM != mouseBinds.end() && (*itM).second.b) return true;
+        if (itM != mouseBinds.end() && (*itM).second.b) { (*itM).second.b = false; return true; }
         else {
             auto itJA = joystickAxisBinds.find(s);
             if (itJA != joystickAxisBinds.end() && (*itJA).second.pos) return (*itJA).second.pos/100.f;
@@ -81,16 +81,26 @@ void InputManager::update(sf::RenderWindow *rw) {
     sf::Event event;
     while(rw->pollEvent(event)){
         if (event.type == sf::Event::Closed) {rw->close(); exit(0);}
-        if (event.type == sf::Event::MouseButtonPressed) {rw->close(); exit(0);}
+        if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {rw->close(); exit(0);}
 
         if(event.type == sf::Event::KeyPressed ){
             for (auto& kb : keyboardBinds) {
                 if(event.key.code == kb.second.k) kb.second.b = true;
             }
         }
+        if(event.type == sf::Event::MouseButtonPressed) {
+            for (auto& mb: mouseBinds){
+                if(event.mouseButton.button == mb.second.m) mb.second.b = true;
+            }
+        }
         if(event.type == sf::Event::KeyReleased ){
             for (auto& kb : keyboardBinds) {
                 if(event.key.code == kb.second.k) kb.second.b = false;
+            }
+        }
+        if(event.type == sf::Event::MouseButtonReleased) {
+            for (auto& mb: mouseBinds){
+                if(event.mouseButton.button == mb.second.m) mb.second.b = false;
             }
         }
     }

@@ -1,5 +1,4 @@
 #include "SceneGame.hpp"
-
 #include <iostream>
 
 SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
@@ -173,7 +172,7 @@ void SceneGame::update(float deltaTime){
     if(result.valid){
       _intermediate.second.add(result.value.clone());
     }
-    } else {
+  } else {
     //     if(InputManager::action(InputAction::secondAction)){
     //         _inventory.second.rotate();
     //         _shamans.second.changeState(status::action);
@@ -210,30 +209,30 @@ void SceneGame::update(float deltaTime){
     // }
     // if(_objective.second.complete()){
     //     changeScene("endCham");
-    }
   }
+}
 
-  void SceneGame::processInput(){
-    InputManager::update(_window);
-  }
+void SceneGame::processInput(){
+  InputManager::update(_window);
+}
 
-  void SceneGame::render(sf::RenderTarget *target){
-    _background.draw(target);
+void SceneGame::render(sf::RenderTarget *target) {
+  _background.draw(target);
 
-    _shamans.first.draw(target);
-    _shamans.second.draw(target);
+  _shamans.first.draw(target);
+  _shamans.second.draw(target);
 
-    _intermediate.first.draw(target);
-    _intermediate.second.draw(target);
+  _intermediate.first.draw(target);
+  _intermediate.second.draw(target);
 
-    _input.first.draw(target);
-    _input.second.draw(target);
+  _input.first.draw(target);
+  _input.second.draw(target);
 
-    _inventory.first.draw(target);
-    _inventory.second.draw(target);
+  _inventory.first.draw(target);
+  _inventory.second.draw(target);
 
-    _objective.first.draw(target);
-    _objective.second.draw(target);
+  _objective.first.draw(target);
+  _objective.second.draw(target);
 
-    gm.draw(target);
-  }
+  gm.draw(target);
+}

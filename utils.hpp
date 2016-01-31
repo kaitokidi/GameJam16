@@ -95,6 +95,7 @@ namespace InputAction {
       secondLeft,
       secondRight,
       secondAction,
+      reset,
       inputQtt
   };
 }

@@ -47,6 +47,10 @@ void Background::draw(sf::RenderTarget *window){
     window->draw(_monster2);
 }
 
+void Background::init(){
+    _m1Evolution = _m2Evolution = 0;
+}
+
 void Background::evolve(bool monster){
     if(monster) ++_m2Evolution;
     else ++_m1Evolution;

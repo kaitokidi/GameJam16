@@ -6,6 +6,8 @@
 
 /* Example:
 sf::Music           SoundManager::overWorldMusic;*/
+sf::SoundBuffer     SoundManager::bossRed;
+sf::SoundBuffer     SoundManager::bossGreen;
 sf::SoundBuffer     SoundManager::actionBuf;
 sf::SoundBuffer     SoundManager::attackBuf;
 
@@ -32,6 +34,10 @@ void SoundManager::load(){
     soundMap["attack"].setBuffer(attackBuf);
     if(!actionBuf.loadFromFile("Resources/Sounds/action.ogg")){ std::cout << "Fail on loading attack sound" << std::endl;};
     soundMap["action"].setBuffer(actionBuf);
+    if(!bossGreen.loadFromFile("Resources/Sounds/Boss2.ogg")){ std::cout << "Fail on load boss2 sound" << std::endl; };
+    soundMap["bossGreen"].setBuffer(bossGreen);
+    if(!bossRed.loadFromFile("Resources/Sounds/Boss1.ogg")){ std::cout << "Fail on load boss1 sound" << std::endl; };
+    soundMap["bossRed"].setBuffer(bossRed);
 
 }
 

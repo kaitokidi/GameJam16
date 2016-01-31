@@ -21,6 +21,7 @@ public:
   void processInput();
   void render(sf::RenderTarget* target);
 
+    void minit();
 private:
   std::string _next;
   float _nextInputUpdate;

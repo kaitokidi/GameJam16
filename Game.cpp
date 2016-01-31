@@ -61,6 +61,8 @@ void Game::changeScene(std::string sceneName) {
 void Game::loadScenes() {
     _scenes.insert(std::make_pair("test", new SceneTest(this, &_window, "test2")));
     _scenes.insert(std::make_pair("test2", new SceneGame(this, &_window)));
+    _scenes.insert(std::make_pair("EndRed", new SceneTest(this, &_window, "previous", "First Player Won! Press a key to restart")));
+    _scenes.insert(std::make_pair("EndGreen", new SceneTest(this, &_window, "previous", "Second Player Won! Press any key to restart")));
 }
 
 void Game::loadScene(std::string sceneName) {}

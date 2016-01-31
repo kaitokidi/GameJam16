@@ -410,7 +410,8 @@ Resources.o: Resources.cpp Resources.hpp \
 		utils.hpp \
 		SoundManager.hpp \
 		InputManager.hpp \
-		GlyphManager.hpp
+		GlyphManager.hpp \
+		Maybe.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Resources.o Resources.cpp
 
 Game.o: Game.cpp Game.hpp \
@@ -427,6 +428,7 @@ Game.o: Game.cpp Game.hpp \
 		MoveEffect.hpp \
 		GlyphContainer.hpp \
 		GlyphManager.hpp \
+		Maybe.hpp \
 		Recipes.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Game.o Game.cpp
 
@@ -533,6 +535,7 @@ SceneGame.o: SceneGame.cpp SceneGame.hpp \
 		MoveEffect.hpp \
 		GlyphContainer.hpp \
 		GlyphManager.hpp \
+		Maybe.hpp \
 		Recipes.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneGame.o SceneGame.cpp
 
@@ -549,11 +552,13 @@ Player.o: Player.cpp Player.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Player.o Player.cpp
 
 GlyphContainer.o: GlyphContainer.cpp GlyphContainer.hpp \
-		GlyphManager.hpp
+		GlyphManager.hpp \
+		Maybe.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GlyphContainer.o GlyphContainer.cpp
 
 BasicReagents.o: BasicReagents.cpp BasicReagents.hpp \
-		GlyphManager.hpp
+		GlyphManager.hpp \
+		Maybe.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o BasicReagents.o BasicReagents.cpp
 
 MoveEffect.o: MoveEffect.cpp MoveEffect.hpp \
@@ -563,6 +568,7 @@ MoveEffect.o: MoveEffect.cpp MoveEffect.hpp \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MoveEffect.o MoveEffect.cpp
 
 GlyphManager.o: GlyphManager.cpp GlyphManager.hpp \
+		Maybe.hpp \
 		Resources.hpp \
 		utils.hpp \
 		SoundManager.hpp \
@@ -572,6 +578,7 @@ GlyphManager.o: GlyphManager.cpp GlyphManager.hpp \
 Recipes.o: Recipes.cpp Recipes.hpp \
 		GlyphContainer.hpp \
 		GlyphManager.hpp \
+		Maybe.hpp \
 		Resources.hpp \
 		utils.hpp \
 		SoundManager.hpp \
