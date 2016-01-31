@@ -1,19 +1,20 @@
 #include "SceneGame.hpp"
 
 SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
-    Scene(g, w, sceneTypes::testScene, "end"),
-    _background(TEXTURETPATH + std::string("game.png"),
-                TEXTURETPATH + std::string("orc.png"),
-                TEXTURETPATH + std::string("other_orc.png"),
-                sf::Vector2f(233,20), sf::Vector2f(455,20)),
-    _intermediate(GlyphContainer(sf::Vector2u(1,1), Resources::talkBox),
-                  GlyphContainer(sf::Vector2u(1,1), Resources::talkBox)),
-    _input(GlyphContainer(sf::Vector2u(8,1), Resources::talkBox),
-           GlyphContainer(sf::Vector2u(8,1), Resources::talkBox)),
-    _inventory(GlyphContainer(sf::Vector2u(2,3), Resources::talkBox),
-               GlyphContainer(sf::Vector2u(2,3), Resources::talkBox)),
-    _objective(GlyphContainer(sf::Vector2u(6,1), Resources::talkBox),
-               GlyphContainer(sf::Vector2u(6,1), Resources::talkBox))
+  gm(),
+  Scene(g, w, sceneTypes::testScene, "end"),
+  _background(TEXTURETPATH + std::string("game.png"),
+              TEXTURETPATH + std::string("orc.png"),
+              TEXTURETPATH + std::string("other_orc.png"),
+              sf::Vector2f(233,20), sf::Vector2f(455,20)),
+  _intermediate(GlyphContainer(&gm, sf::Vector2u(1,1), Resources::talkBox),
+                GlyphContainer(&gm, sf::Vector2u(1,1), Resources::talkBox)),
+  _input(GlyphContainer(&gm, sf::Vector2u(8,1), Resources::talkBox),
+         GlyphContainer(&gm, sf::Vector2u(8,1), Resources::talkBox)),
+  _inventory(GlyphContainer(&gm, sf::Vector2u(2,3), Resources::talkBox),
+             GlyphContainer(&gm, sf::Vector2u(2,3), Resources::talkBox)),
+  _objective(GlyphContainer(&gm, sf::Vector2u(6,1), Resources::talkBox),
+               GlyphContainer(&gm, sf::Vector2u(6,1), Resources::talkBox))
 {
     _intermediate.first.setPosition(sf::Vector2f(153, 172));
     _intermediate.first.setSize(sf::Vector2f(75, 75));
@@ -75,6 +76,26 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     // // initView(&_view, sf::Vector2i(_window->getSize().x,_window->getSize().y));
     initView(&_view, sf::Vector2i(900,600));
     _nextInputUpdate = 0.0f;
+
+    Glyph gg = gm.create(GlyphType::glyph_11);
+    gg.setPosition(sf::Vector2f(30, 30));
+
+    _inventory.first.add(gg);
+
+    gg = gm.create(GlyphType::glyph_11);
+    gg.setPosition(sf::Vector2f(30, 30));
+
+    _inventory.first.add(gg);
+
+    gg = gm.create(GlyphType::glyph_11);
+    gg.setPosition(sf::Vector2f(30, 30));
+
+    _inventory.first.add(gg);
+
+    gg = gm.create(GlyphType::glyph_11);
+    gg.setPosition(sf::Vector2f(30, 30));
+
+    _inventory.first.add(gg);
 }
 
 SceneGame::~SceneGame() {}
@@ -87,8 +108,6 @@ void SceneGame::update(float deltaTime){
     _shamans.first.update(deltaTime);
     _shamans.second.update(deltaTime);
 
-    Glyph g = gm.create(GlyphType::glyph_11);
-    g.setPosition(sf::Vector2f(30, 30));
 
     // if(_actualGlyph.first.empty() || _actualGlyph.first.glyphNone()){
     //     if(InputManager::action(InputAction::firstAction)){

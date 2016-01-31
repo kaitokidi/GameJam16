@@ -1,6 +1,6 @@
 #include "GlyphContainer.hpp"
 
-GlyphContainer::GlyphContainer(sf::Vector2u layout, const sf::Texture& bg_text) :
+GlyphContainer::GlyphContainer(GlyphManager *gm, sf::Vector2u layout, const sf::Texture& bg_text) :
   _background(bg_text)
 {
   // Draw layout (columns, rows)
@@ -12,6 +12,8 @@ GlyphContainer::GlyphContainer(sf::Vector2u layout, const sf::Texture& bg_text) 
 
   // we start with zero elements
   n_elements = 0;
+
+  gm = gm;
 }
 
 GlyphContainer::~GlyphContainer() {}
@@ -39,7 +41,7 @@ void GlyphContainer::setPosition(const sf::Vector2f& pos) {
 
   for(unsigned int i = 0; i < _layout.x; i++) {
     for(unsigned int j = 0; j < _layout.y; j++) {
-      if((i * _layout.y + j) > n_elements)
+      if((i * _layout.y + j) >= n_elements)
         return;
 
       sf::Vector2f n_pos = _pos + sf::Vector2f(i * g_size.x + offset.x,
@@ -83,6 +85,8 @@ void GlyphContainer::add(Glyph g) {
 }
 
 void GlyphContainer::discard() {
+  for (int i = 0; i < n_elements; ++i)
+    _glyphs[i].destroy();
   n_elements = 0;
 }
 

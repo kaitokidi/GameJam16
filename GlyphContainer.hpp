@@ -6,7 +6,7 @@
 
 class GlyphContainer {
 public:
-  GlyphContainer(sf::Vector2u layout, const sf::Texture& text);
+  GlyphContainer(GlyphManager *gm, sf::Vector2u layout, const sf::Texture& text);
   ~GlyphContainer();
 
   void draw(sf::RenderTarget* target);
@@ -39,6 +39,8 @@ protected:
   std::array<Glyph, 30> _glyphs;
 
   sf::Vector2f calculateGlyphSize();
+
+  GlyphManager *gm;
 };
 
 #endif
