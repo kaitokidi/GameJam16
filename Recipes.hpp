@@ -11,8 +11,8 @@ public:
   ~Recipes();
 
   void populate();
+  Glyph getGlyphByIndex(unsigned int index);
 private:
-
 };
 
 #endif

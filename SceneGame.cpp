@@ -50,30 +50,30 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _recipes.setPosition(sf::Vector2f(233, 305));
     _recipes.setSize(sf::Vector2f(434, 270));
 
-    // for ( int i = 0; i < 3; ++i){
-    //     int r = random()%3;
-    //     GlyphID id = _recipes.getGlyphIDByIndex(r);
-    //     _objective.first.add(id);
-    //     _objective.second.add(id);
-    // }
+    for ( int i = 0; i < 3; ++i){
+        int r = random()%3;
+        Glyph id = _recipes.getGlyphByIndex(r);
+        _objective.first.add(id);
+        _objective.second.add(id);
+    }
 
-    // for ( int i = 0; i < 2; ++i){
-    //     int r = random()%2 +3;
-    //     GlyphID id = _recipes.getGlyphIDByIndex(r);
-    //     //_objective.first.add(id);
-    //     //_objective.second.add(id);
-    // }
+    for ( int i = 0; i < 2; ++i){
+        int r = random()%2 +3;
+        Glyph id = _recipes.getGlyphByIndex(r);
+        _objective.first.add(id);
+        _objective.second.add(id);
+    }
 
-    // GlyphID id = _recipes.getGlyphIDByIndex(5);
-    // _objective.first.add(id);
-    // _objective.second.add(id);
+    Glyph id = _recipes.getGlyphByIndex(5);
+    _objective.first.add(id);
+    _objective.second.add(id);
 
     _view = _window->getDefaultView();
     _next = "end";
-    // _inventory.first.init();
-    // _inventory.second.init();
-    // //_view = _window->getDefaultView();
-    // // initView(&_view, sf::Vector2i(_window->getSize().x,_window->getSize().y));
+    //_inventory.first.init();
+    //_inventory.second.init();
+    //_view = _window->getDefaultView();
+    // initView(&_view, sf::Vector2i(_window->getSize().x,_window->getSize().y));
     initView(&_view, sf::Vector2i(900,600));
     _nextInputUpdate = 0.0f;
 

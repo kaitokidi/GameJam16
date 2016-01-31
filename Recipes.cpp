@@ -9,3 +9,7 @@ Recipes::~Recipes() {}
 void Recipes::populate() {
   // TODO
 }
+
+Glyph Recipes::getGlyphByIndex(unsigned int index) {
+  return _glyphs[index].clone();
+}

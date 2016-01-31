@@ -1,6 +1,8 @@
 #include "GlyphManager.hpp"
 #include "Resources.hpp"
 
+#include <cstring>
+
 ///////////////////
 // GLYPH MANAGER //
 ///////////////////
@@ -28,6 +30,19 @@ Glyph GlyphManager::create(GlyphType gt) {
 
   // Return glyph instance
   return g;
+}
+
+// Creates a clone of g with a new id
+Glyph GlyphManager::clone(Glyph g) {
+  std::memmove(&_data[_n_glyphs], &_data[g.id], sizeof(_glyph_data));
+
+  Glyph ng;
+  ng.id = _n_glyphs;
+  ng.gm = this;
+
+  ++_n_glyphs;
+
+  return ng;
 }
 
 void GlyphManager::destroy(Glyph g) {
@@ -60,6 +75,10 @@ GlyphManager::DataInstance GlyphManager::getGlyphDataById(unsigned int id) {
 
 void Glyph::destroy() {
   gm->destroy(*this);
+}
+
+Glyph Glyph::clone() {
+  return gm->clone(*this);
 }
 
 sf::Vector2f Glyph::getSize() const {

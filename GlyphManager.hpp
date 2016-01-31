@@ -41,6 +41,7 @@ public:
   unsigned int id;
 
   void destroy();
+  Glyph clone();
 
   sf::Vector2f getSize() const;
   sf::Vector2f getPosition() const;
@@ -69,6 +70,7 @@ public:
 
   Glyph create(GlyphType gt);
   void  destroy(Glyph);
+  Glyph clone(Glyph);
   void  draw(sf::RenderTarget *rt);
 
 private:
