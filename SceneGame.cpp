@@ -48,6 +48,9 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _objective.second.setSize(sf::Vector2f(208,55));
     _objective.second.setPosition(sf::Vector2f(672,20));
 
+    _objective.first.preserveHeight(true);
+    _objective.second.preserveHeight(true);
+
     _recipes.setPosition(sf::Vector2f(233, 305));
     _recipes.setSize(sf::Vector2f(434, 270));
 
@@ -55,8 +58,9 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
         int r = random()%3;
         Maybe<Glyph> result = _recipes.get(r);
         if (result.valid) {
-          _objective.first.add(result.value);
-          _objective.second.add(result.value);
+          _objective.first.add(result.value.clone());
+          _objective.second.add(result.value.clone());
+          result.value.destroy();
         }
     }
 
@@ -64,15 +68,17 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
         int r = random()%2 +3;
         Maybe<Glyph> result = _recipes.get(r);
         if (result.valid) {
-          _objective.first.add(result.value);
-          _objective.second.add(result.value);
+          _objective.first.add(result.value.clone());
+          _objective.second.add(result.value.clone());
+          result.value.destroy();
         }
     }
 
     Maybe<Glyph> result = _recipes.get(5);
     if (result.valid) {
-      _objective.first.add(result.value);
-      _objective.second.add(result.value);
+      _objective.first.add(result.value.clone());
+      _objective.second.add(result.value.clone());
+      result.value.destroy();
     }
 
     _view = _window->getDefaultView();

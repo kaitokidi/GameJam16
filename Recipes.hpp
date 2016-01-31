@@ -11,6 +11,7 @@ public:
   Recipes(GlyphManager *n_gm);
   ~Recipes();
 
+  void draw(sf::RenderTarget *rt);
   void populate();
 private:
 };
