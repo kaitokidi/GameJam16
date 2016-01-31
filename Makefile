@@ -54,7 +54,6 @@ SOURCES       = main.cpp \
 		Game.cpp \
 		Scene.cpp \
 		SceneChanger.cpp \
-		Collisionable.cpp \
 		Effect.cpp \
 		GUI/Button.cpp \
 		GUI/Container.cpp \
@@ -67,31 +66,22 @@ SOURCES       = main.cpp \
 		GUI/VLayout.cpp \
 		GUI/HLayout.cpp \
 		GUI/Widget.cpp \
-		TextBox.cpp \
 		SoundManager.cpp \
-		DataManager.cpp \
-		StatsBar.cpp \
-		TextBoxManager.cpp \
 		InputManager.cpp \
 		SceneTest.cpp \
 		SceneGame.cpp \
 		Background.cpp \
 		Player.cpp \
-		ObjectiveGlyphs.cpp \
 		GlyphContainer.cpp \
-		Glyph.cpp \
-		Inventory.cpp \
-		InputGlyphs.cpp \
-		Recipies.cpp \
 		BasicReagents.cpp \
-		MoveEffect.cpp 
+		MoveEffect.cpp \
+		GlyphManager.cpp 
 OBJECTS       = main.o \
 		utils.o \
 		Resources.o \
 		Game.o \
 		Scene.o \
 		SceneChanger.o \
-		Collisionable.o \
 		Effect.o \
 		Button.o \
 		Container.o \
@@ -104,24 +94,16 @@ OBJECTS       = main.o \
 		VLayout.o \
 		HLayout.o \
 		Widget.o \
-		TextBox.o \
 		SoundManager.o \
-		DataManager.o \
-		StatsBar.o \
-		TextBoxManager.o \
 		InputManager.o \
 		SceneTest.o \
 		SceneGame.o \
 		Background.o \
 		Player.o \
-		ObjectiveGlyphs.o \
 		GlyphContainer.o \
-		Glyph.o \
-		Inventory.o \
-		InputGlyphs.o \
-		Recipies.o \
 		BasicReagents.o \
-		MoveEffect.o
+		MoveEffect.o \
+		GlyphManager.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -179,7 +161,6 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		Game.cpp \
 		Scene.hpp \
 		SceneChanger.hpp \
-		Collisionable.hpp \
 		Effect.hpp \
 		GUI/Button.hpp \
 		GUI/Container.hpp \
@@ -192,30 +173,21 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		GUI/HLayout.hpp \
 		GUI/Widget.hpp \
 		GUI/Frame.hpp \
-		TextBox.hpp \
 		SoundManager.hpp \
-		DataManager.hpp \
-		StatsBar.hpp \
-		TextBoxManager.hpp \
 		InputManager.hpp \
 		SceneTest.hpp \
 		SceneGame.hpp \
 		Background.h \
 		Player.h \
-		ObjectiveGlyphs.h \
 		GlyphContainer.h \
-		Glyph.h \
-		Inventory.h \
-		InputGlyphs.h \
-		Recipies.hpp \
 		BasicReagents.hpp \
-		MoveEffect.hpp main.cpp \
+		MoveEffect.hpp \
+		GlyphManager.hpp main.cpp \
 		utils.cpp \
 		Resources.cpp \
 		Game.cpp \
 		Scene.cpp \
 		SceneChanger.cpp \
-		Collisionable.cpp \
 		Effect.cpp \
 		GUI/Button.cpp \
 		GUI/Container.cpp \
@@ -228,24 +200,16 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		GUI/VLayout.cpp \
 		GUI/HLayout.cpp \
 		GUI/Widget.cpp \
-		TextBox.cpp \
 		SoundManager.cpp \
-		DataManager.cpp \
-		StatsBar.cpp \
-		TextBoxManager.cpp \
 		InputManager.cpp \
 		SceneTest.cpp \
 		SceneGame.cpp \
 		Background.cpp \
 		Player.cpp \
-		ObjectiveGlyphs.cpp \
 		GlyphContainer.cpp \
-		Glyph.cpp \
-		Inventory.cpp \
-		InputGlyphs.cpp \
-		Recipies.cpp \
 		BasicReagents.cpp \
-		MoveEffect.cpp
+		MoveEffect.cpp \
+		GlyphManager.cpp
 QMAKE_TARGET  = game
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = game
@@ -425,80 +389,56 @@ compiler_clean:
 
 main.o: main.cpp Game.hpp \
 		utils.hpp \
-		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp \
 		Scene.hpp \
 		SceneChanger.hpp \
 		Resources.hpp \
-		SceneTest.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp
+		SceneTest.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 utils.o: utils.cpp utils.hpp \
-		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utils.o utils.cpp
 
 Resources.o: Resources.cpp Resources.hpp \
 		utils.hpp \
-		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Resources.o Resources.cpp
 
 Game.o: Game.cpp Game.hpp \
 		utils.hpp \
-		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp \
 		Scene.hpp \
 		SceneChanger.hpp \
 		Resources.hpp \
 		SceneTest.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp \
 		SceneGame.hpp \
 		Player.h \
-		Recipies.hpp \
-		GlyphContainer.hpp \
-		Glyph.hpp \
-		Recipe.hpp \
 		Background.h \
-		Inventory.hpp \
 		MoveEffect.hpp \
-		InputGlyphs.hpp \
-		ObjectiveGlyphs.hpp
+		GlyphContainer.hpp \
+		GlyphManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Game.o Game.cpp
 
 Scene.o: Scene.cpp Scene.hpp \
 		utils.hpp \
-		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp \
 		SceneChanger.hpp \
 		Game.hpp \
 		Resources.hpp \
-		SceneTest.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp
+		SceneTest.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Scene.o Scene.cpp
 
 SceneChanger.o: SceneChanger.cpp SceneChanger.hpp \
 		utils.hpp \
-		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneChanger.o SceneChanger.cpp
-
-Collisionable.o: Collisionable.cpp Collisionable.hpp \
-		utils.hpp \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Collisionable.o Collisionable.cpp
 
 Effect.o: Effect.cpp Effect.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Effect.o Effect.cpp
@@ -558,59 +498,16 @@ HLayout.o: GUI/HLayout.cpp GUI/HLayout.hpp \
 Widget.o: GUI/Widget.cpp GUI/Widget.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Widget.o GUI/Widget.cpp
 
-TextBox.o: TextBox.cpp TextBox.hpp \
-		Resources.hpp \
-		utils.hpp \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TextBox.o TextBox.cpp
-
 SoundManager.o: SoundManager.cpp SoundManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SoundManager.o SoundManager.cpp
 
-DataManager.o: DataManager.cpp DataManager.hpp \
-		utils.hpp \
-		SoundManager.hpp \
-		InputManager.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DataManager.o DataManager.cpp
-
-StatsBar.o: StatsBar.cpp StatsBar.hpp \
-		utils.hpp \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Frame.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp \
-		GUI/VLayout.hpp \
-		GUI/HLayout.hpp \
-		GUI/ImgButton.hpp \
-		GUI/TextButton.hpp \
-		GUI/ImgTextButton.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o StatsBar.o StatsBar.cpp
-
-TextBoxManager.o: TextBoxManager.cpp TextBoxManager.hpp \
-		TextBox.hpp \
-		Resources.hpp \
-		utils.hpp \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TextBoxManager.o TextBoxManager.cpp
-
 InputManager.o: InputManager.cpp InputManager.hpp \
 		utils.hpp \
-		DataManager.hpp \
 		SoundManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o InputManager.o InputManager.cpp
 
 SceneTest.o: SceneTest.cpp SceneTest.hpp \
 		utils.hpp \
-		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp \
 		Scene.hpp \
@@ -621,105 +518,44 @@ SceneTest.o: SceneTest.cpp SceneTest.hpp \
 SceneGame.o: SceneGame.cpp SceneGame.hpp \
 		Player.h \
 		utils.hpp \
-		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp \
 		Scene.hpp \
 		SceneChanger.hpp \
-		Recipies.hpp \
-		GlyphContainer.hpp \
-		Glyph.hpp \
-		Recipe.hpp \
 		Background.h \
 		Resources.hpp \
-		Inventory.hpp \
 		MoveEffect.hpp \
-		InputGlyphs.hpp \
-		ObjectiveGlyphs.hpp
+		GlyphContainer.hpp \
+		GlyphManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneGame.o SceneGame.cpp
 
 Background.o: Background.cpp Background.h \
 		utils.hpp \
-		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Background.o Background.cpp
 
 Player.o: Player.cpp Player.h \
 		utils.hpp \
-		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Player.o Player.cpp
 
-ObjectiveGlyphs.o: ObjectiveGlyphs.cpp ObjectiveGlyphs.hpp \
-		GlyphContainer.hpp \
-		Glyph.hpp \
-		utils.hpp \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ObjectiveGlyphs.o ObjectiveGlyphs.cpp
-
 GlyphContainer.o: GlyphContainer.cpp GlyphContainer.hpp \
-		Glyph.hpp \
-		utils.hpp \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp
+		GlyphManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GlyphContainer.o GlyphContainer.cpp
 
-Glyph.o: Glyph.cpp Glyph.hpp \
-		utils.hpp \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Resources.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Glyph.o Glyph.cpp
-
-Inventory.o: Inventory.cpp Inventory.hpp \
-		GlyphContainer.hpp \
-		Glyph.hpp \
-		utils.hpp \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Inventory.o Inventory.cpp
-
-InputGlyphs.o: InputGlyphs.cpp InputGlyphs.hpp \
-		GlyphContainer.hpp \
-		Glyph.hpp \
-		utils.hpp \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o InputGlyphs.o InputGlyphs.cpp
-
-Recipies.o: Recipies.cpp Recipies.hpp \
-		GlyphContainer.hpp \
-		Glyph.hpp \
-		utils.hpp \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Recipe.hpp \
-		BasicReagents.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Recipies.o Recipies.cpp
-
-BasicReagents.o: BasicReagents.cpp BasicReagents.hpp \
-		Glyph.hpp \
-		utils.hpp \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp
+BasicReagents.o: BasicReagents.cpp BasicReagents.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o BasicReagents.o BasicReagents.cpp
 
 MoveEffect.o: MoveEffect.cpp MoveEffect.hpp \
 		utils.hpp \
-		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MoveEffect.o MoveEffect.cpp
+
+GlyphManager.o: GlyphManager.cpp GlyphManager.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GlyphManager.o GlyphManager.cpp
 
 ####### Install
 

@@ -1,8 +1,6 @@
-#include "Game.hpp"
+ #include "Game.hpp"
 
 int main() {
-
-
     srand(time(NULL));
     Game game;
     game.start();

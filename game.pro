@@ -24,7 +24,6 @@ SOURCES += main.cpp \
         GUI/VLayout.cpp \
         GUI/HLayout.cpp \
         GUI/Widget.cpp \
-        TextBox.cpp \
         SoundManager.cpp \
         InputManager.cpp \
         SceneTest.cpp \
@@ -53,7 +52,6 @@ HEADERS += utils.hpp \
         GUI/HLayout.hpp \
         GUI/Widget.hpp \
         GUI/Frame.hpp \
-        TextBox.hpp \
         SoundManager.hpp \
         InputManager.hpp \
         SceneTest.hpp \

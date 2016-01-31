@@ -11,9 +11,7 @@ Game::Game() : _window(sf::VideoMode::getFullscreenModes()[0],"dhfgsadhkf", sf::
 
     initInput();
     Resources::load();
-    DataManager::load();
     SoundManager::load();
-    TextBoxManager::load();
 
     SoundManager::setGlobalSoundVolumen(100.0f);
     SoundManager::setGlobalMusicVolumen(100.0f);

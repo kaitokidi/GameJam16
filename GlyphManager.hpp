@@ -40,6 +40,15 @@ struct Glyph {
 public:
   unsigned int id;
 
+  void destroy();
+
+  sf::Vector2f getSize() const;
+  sf::Vector2f getPosition() const;
+
+  bool isDestroyed() const;
+
+  void setSize(sf::Vector2f _s);
+  void setPosition(sf::Vector2f _p);
 private:
   GlyphManager* gm;
 };
@@ -60,6 +69,7 @@ public:
 
   Glyph create(GlyphType gt);
   void  destroy(Glyph);
+  void  draw(sf::RenderTarget *rt);
 
 private:
   struct _glyph_data {
@@ -83,7 +93,6 @@ public:
     _glyph_data *_d;
 
     // Data Instance data methods
-
   };
 
 private:

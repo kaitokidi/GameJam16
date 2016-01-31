@@ -16,15 +16,12 @@ GlyphContainer::GlyphContainer(sf::Vector2i layout, const sf::Texture& bg_text) 
 
 GlyphContainer::~GlyphContainer() {}
 
-// Draw the container and the Glyphs in it
+// Draw the container, the glyphs will be drawn using the Glyph Manager
 void GlyphContainer::draw(sf::RenderTarget* target) {
   target->draw(_background);
-
-  for (auto g : _glyphs) {
-    g.draw(target);
-  }
 }
 
+//
 void GlyphContainer::setPosition(const sf::Vector2f& pos) {
   _background.setPosition(pos);
   _pos = pos;
@@ -70,6 +67,7 @@ void GlyphContainer::setSize(float width, float height) {
 }
 
 void GlyphContainer::add(Glyph g) {
+  // TODO
   if(_glyphs.size() == 0) {
     g.setSize(calculateGlyphSize());
   } else {
@@ -90,11 +88,6 @@ void GlyphContainer::preserveWidth(bool b) {
   preserve_width = b;
 }
 
-void GlyphContainer::add(GlyphID gid) {
-  Glyph g = Glyph(gid);
-  add(g);
-}
-
 bool GlyphContainer::empty() {
   return n_elements == 0;
 }
@@ -106,8 +99,7 @@ Glyph GlyphContainer::get(int index) {
     return _glyphs[index].getID();
 }
 
-// Private
-
+// PRIVATE
 sf::Vector2f GlyphContainer::calculateGlyphSize() {
   float width;
   float height;

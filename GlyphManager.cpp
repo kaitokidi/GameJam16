@@ -1,4 +1,9 @@
 #include "GlyphManager.hpp"
+#include "Resources.hpp"
+
+///////////////////
+// GLYPH MANAGER //
+///////////////////
 
 GlyphManager::GlyphManager() {
   _n_glyphs = 0;
@@ -32,12 +37,52 @@ void GlyphManager::destroy(Glyph g) {
   ++_n_free_indices;
 }
 
+void GlyphManager::draw(sf::RenderTarget *rt) {
+  for (auto g : _data) {
+    if(!g._destroyed)
+      rt->draw(g._sprite);
+  }
+}
+
 sf::Texture& GlyphManager::getTextureByGlyphType(GlyphType gt) {
-  // TODO
+  return Resources::key; // TEMPORAL
 }
 
 GlyphManager::DataInstance GlyphManager::getGlyphDataById(unsigned int id) {
   DataInstance _d;
   _d._d = &_data[id];
   return _d;
+}
+
+///////////
+// GLYPH //
+///////////
+
+void Glyph::destroy() {
+  gm->destroy(*this);
+}
+
+sf::Vector2f Glyph::getSize() const {
+  sf::Vector2f _ss = gm->getGlyphDataById(id)._d->_sprite.getScale();
+  sf::Vector2u _ts = gm->getGlyphDataById(id)._d->_sprite.getTexture()->getSize();
+  return sf::Vector2f(_ss.x * _ts.x, _ss.y * _ts.y);
+}
+
+sf::Vector2f Glyph::getPosition() const {
+  return gm->getGlyphDataById(id)._d->_sprite.getPosition();
+}
+
+bool Glyph::isDestroyed() const {
+  return gm->getGlyphDataById(id)._d->_destroyed;
+}
+
+void Glyph::setSize(sf::Vector2f _s) {
+  sf::Vector2u _ts = gm->getGlyphDataById(id)._d->_sprite.getTexture()->getSize();
+  float xf = _ts.x / _s.x;
+  float yf = _ts.y / _s.y;
+  gm->getGlyphDataById(id)._d->_sprite.setScale(sf::Vector2f(xf, yf));
+}
+
+void Glyph::setPosition(sf::Vector2f _p) {
+  gm->getGlyphDataById(id)._d->_sprite.setPosition(_p);
 }

@@ -6,8 +6,6 @@
 #include "Resources.hpp"
 #include "SceneTest.hpp"
 #include "SceneChanger.hpp"
-#include "TextBoxManager.hpp"
-
 
 class Game {
 friend class SceneMenu;

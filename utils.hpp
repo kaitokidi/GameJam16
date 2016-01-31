@@ -38,9 +38,6 @@
 #define PLAYER_FRAME_NUM 9
 #define PLAYER_STATE_NUM 3
 
-
-
-
 #ifdef _WIN32
 #define NOMINMAX
 #define M_PI 3.14159
@@ -65,7 +62,6 @@
 #include <climits>
 #include <functional> // priority queue stuff
 
-#include "DataManager.hpp"
 #include "SoundManager.hpp"
 #include "InputManager.hpp"
 
