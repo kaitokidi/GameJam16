@@ -53,21 +53,27 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
 
     for ( int i = 0; i < 3; ++i){
         int r = random()%3;
-        Glyph id = _recipes.getGlyphByIndex(r);
-        _objective.first.add(id);
-        _objective.second.add(id);
+        Maybe<Glyph> result = _recipes.getGlyphByIndex(r);
+        if (result.valid) {
+          _objective.first.add(result.value);
+          _objective.second.add(result.value);
+        }
     }
 
     for ( int i = 0; i < 2; ++i){
         int r = random()%2 +3;
-        Glyph id = _recipes.getGlyphByIndex(r);
-        _objective.first.add(id);
-        _objective.second.add(id);
+        Maybe<Glyph> result = _recipes.getGlyphByIndex(r);
+        if (result.valid) {
+          _objective.first.add(result.value);
+          _objective.second.add(result.value);
+        }
     }
 
-    Glyph id = _recipes.getGlyphByIndex(5);
-    _objective.first.add(id);
-    _objective.second.add(id);
+    Maybe<Glyph> result = _recipes.getGlyphByIndex(5);
+    if (result.valid) {
+      _objective.first.add(result.value);
+      _objective.second.add(result.value);
+    }
 
     _view = _window->getDefaultView();
     _next = "end";

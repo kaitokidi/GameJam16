@@ -8,7 +8,7 @@ Recipes::Recipes(GlyphManager *n_gm)
 Recipes::~Recipes() {}
 
 void Recipes::populate() {
-  // TODO
+  add(gm->create(GlyphType::glyph_14)); // TEST
 }
 
 Maybe<Glyph> Recipes::getGlyphByIndex(unsigned int index) {
