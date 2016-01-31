@@ -39,6 +39,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
   _inventory.second.setPosition(sf::Vector2f(672,305));
 
   _recipes.populate();
+  _recipes.preserveWidth(true);
 
   _shamans.first.setParameters(TEXTURETPATH + std::string("orc.png"), sf::Vector2f(20,172));
   _shamans.second.setParameters(TEXTURETPATH + std::string("orca.png"), sf::Vector2f(757,172));
@@ -66,7 +67,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
   }
 
   for ( int i = 0; i < 2; ++i){
-    int r = random()%2 +3;
+    int r = random()%2 + 3;
     Maybe<Glyph> result = _recipes.get(r);
     if (result.valid) {
       _objective.first.add(result.value.clone());
@@ -103,20 +104,36 @@ void SceneGame::update(float deltaTime){
       _input.first.discard();
       _shamans.first.changeState(status::action);
       SoundManager::playSound("action");
-    } else if(InputManager::action(InputAction::firstUp)){
-      _input.first.add(gm.create(GlyphType::glyph_up));
-    } else if(InputManager::action(InputAction::firstDown)){
-      _input.first.add(gm.create(GlyphType::glyph_down));
-    } else if(InputManager::action(InputAction::firstLeft)){
-      _input.first.add(gm.create(GlyphType::glyph_left));
-    } else if(InputManager::action(InputAction::firstRight)){
-      _input.first.add(gm.create(GlyphType::glyph_right));
-    }
-
-    Maybe<Glyph> result = _recipes.build(_input.first.getArray());
-    if(result.valid){
-      std::cout << "hola" << std::endl;
-      _intermediate.first.add(result.value.clone());
+    } else {
+      if(InputManager::action(InputAction::firstUp)){
+        _input.first.add(gm.create(GlyphType::glyph_up));
+        Maybe<Glyph> result = _recipes.build(_input.first.getArray());
+        if(result.valid){
+          std::cout << "hola" << std::endl;
+          _intermediate.first.add(result.value.clone());
+        }
+      } else if(InputManager::action(InputAction::firstDown)){
+        _input.first.add(gm.create(GlyphType::glyph_down));
+        Maybe<Glyph> result = _recipes.build(_input.first.getArray());
+        if(result.valid){
+          std::cout << "hola" << std::endl;
+          _intermediate.first.add(result.value.clone());
+        }
+      } else if(InputManager::action(InputAction::firstLeft)){
+        _input.first.add(gm.create(GlyphType::glyph_left));
+        Maybe<Glyph> result = _recipes.build(_input.first.getArray());
+        if(result.valid){
+          std::cout << "hola" << std::endl;
+          _intermediate.first.add(result.value.clone());
+        }
+      } else if(InputManager::action(InputAction::firstRight)){
+        _input.first.add(gm.create(GlyphType::glyph_right));
+        Maybe<Glyph> result = _recipes.build(_input.first.getArray());
+        if(result.valid){
+          std::cout << "hola" << std::endl;
+          _intermediate.first.add(result.value.clone());
+        }
+      }
     }
   } else {
     // if(InputManager::action(InputAction::firstAction)){
@@ -168,10 +185,10 @@ void SceneGame::update(float deltaTime){
       _input.second.add(gm.create(GlyphType::glyph_right));
     }
 
-    Maybe<Glyph> result = _recipes.build(_input.second.getArray());
-    if(result.valid){
-      _intermediate.second.add(result.value.clone());
-    }
+    // Maybe<Glyph> result = _recipes.build(_input.second.getArray());
+    // if(result.valid){
+    //   _intermediate.second.add(result.value.clone());
+    // }
   } else {
     //     if(InputManager::action(InputAction::secondAction)){
     //         _inventory.second.rotate();

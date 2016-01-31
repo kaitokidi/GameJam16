@@ -9,12 +9,15 @@ bool Recipes::compare_arrays(const std::array<Glyph,30>& g, const std::array<Gly
     if(gm->getGlyphDataById(g[i].id).valid && gm->getGlyphDataById(j[i].id).valid){
       if(gm->getGlyphDataById(g[i].id).value._d->_gt !=
          gm->getGlyphDataById(j[i].id).value._d->_gt) {
+        std::cout << "hola1 " << gm->getGlyphDataById(g[i].id).value._d->_gt <<
+          " " << gm->getGlyphDataById(j[i].id).value._d->_gt <<  " " <<
+          gm->getGlyphDataById(g[i].id).valid << " " <<
+          gm->getGlyphDataById(j[i].id).valid <<  std::endl;
         return false;
       }
-    } else if(!gm->getGlyphDataById(g[i].id).valid && gm->getGlyphDataById(j[i].id).valid) {
-      return false;
-    } else if(gm->getGlyphDataById(g[i].id).valid && !gm->getGlyphDataById(j[i].id).valid) {
-      return false;
+    } else if(gm->getGlyphDataById(g[i].id).valid != gm->getGlyphDataById(j[i].id).valid) {
+      std::cout << "hola2 " << std::endl;
+        return false;
     }
   }
   return true;
@@ -33,7 +36,9 @@ void Recipes::draw(sf::RenderTarget *rt) {
 Maybe<Glyph> Recipes::build(const std::array<Glyph,30>& g) {
   Maybe<Glyph> result;
   for(int i = 0; i < 6; ++i) {
+    std::cout << "volta " << i << std::endl;
     if(compare_arrays(g, _recipes[i])) {
+      std::cout << "wtf " << std::endl;
       result.valid = true;
       result.value = _glyphs[i];
       return result;

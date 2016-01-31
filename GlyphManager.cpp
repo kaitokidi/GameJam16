@@ -66,11 +66,12 @@ sf::Texture& GlyphManager::getTextureByGlyphType(GlyphType gt) {
 }
 
 Maybe<GlyphManager::DataInstance> GlyphManager::getGlyphDataById(unsigned int id) {
+  std::cout << id << std::endl;
   Maybe<GlyphManager::DataInstance> result;
   DataInstance _d;
   _d._d = &_data[id];
 
-  if(id < _n_glyphs) {
+  if(id < _n_glyphs && !_data[id]._destroyed) {
     result.valid = true;
     result.value = _d;
   } else {

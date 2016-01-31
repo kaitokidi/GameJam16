@@ -13,8 +13,8 @@ MAKEFILE      = Makefile
 CC            = gcc
 CXX           = g++
 DEFINES       = 
-CFLAGS        = -pipe -O2 -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -Wall -W -fPIC $(DEFINES)
-CXXFLAGS      = -pipe -std=c++11 -g -O2 -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -Wall -W -fPIC $(DEFINES)
+CFLAGS        = -pipe -march=x86-64 -mtune=generic -pipe -fstack-protector-strong -Wall -W -fPIC $(DEFINES)
+CXXFLAGS      = -pipe -std=c++11 -g -march=x86-64 -mtune=generic -pipe -fstack-protector-strong -Wall -W -fPIC $(DEFINES)
 INCPATH       = -I. -I/usr/lib/qt/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt/bin/qmake
 DEL_FILE      = rm -f
@@ -35,7 +35,7 @@ COMPRESS      = gzip -9f
 DISTNAME      = game1.0.0
 DISTDIR = /home/marcecoll/Projects/Games/GameJam16/.tmp/game1.0.0
 LINK          = g++
-LFLAGS        = -Wl,-O1 -Wl,-O1,--sort-common,--as-needed,-z,relro
+LFLAGS        = 
 LIBS          = $(SUBLIBS) -lsfml-audio -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system 
 AR            = ar cqs
 RANLIB        = 
