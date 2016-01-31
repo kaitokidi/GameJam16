@@ -84,6 +84,7 @@ void GlyphContainer::add(Glyph g) {
   setPosition(_pos);
 }
 
+// Discard all the elements in the container
 void GlyphContainer::discard() {
   for (int i = 0; i < n_elements; ++i)
     _glyphs[i].destroy();
