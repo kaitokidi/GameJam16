@@ -9,6 +9,7 @@
 
 #include "GlyphContainer.hpp"
 #include "GlyphManager.hpp"
+#include "Recipes.hpp"
 
 class SceneGame : public Scene {
 public:
@@ -28,13 +29,11 @@ private:
   Background _background;
   std::pair<Player,Player> _shamans;
 
-  // Recipies _recipes;
+  Recipes _recipes;
   std::pair<GlyphContainer, GlyphContainer> _inventory;
   std::pair<GlyphContainer, GlyphContainer> _input;
   std::pair<GlyphContainer, GlyphContainer> _intermediate;
   std::pair<GlyphContainer, GlyphContainer> _objective;
-
-  // std::vector<MoveEffect* > moveEffects;
 };
 
 #endif // SCENEGAME_HPP

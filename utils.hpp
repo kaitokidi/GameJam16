@@ -30,7 +30,7 @@
 #define FRAME_DELAY 0.2
 
 //numero de frames de la animacio de cada bitxo/monstre/entitat/deu/summoneable stuff
-#define M_FRAME_NUM 9
+#define M_FRAME_NUM 6
 //numero de evcolucions de cada bitxo/monstre/entitat/deu/summoneable stuff
 #define M_EVOL_NUM 3 //per posar algo, ho canviem en funcio dels spritesheets
 

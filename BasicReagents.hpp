@@ -11,6 +11,7 @@ public:
   static void startNewSequence();
   static std::pair<Glyph, std::vector<Glyph>> getBasicReagent();
   static void init();
+  
 private:
   static Glyph basic[NUM_BASIC_REAGENTS];
   static Glyph used_g[NUM_BASIC_REAGENTS];

@@ -4,8 +4,8 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
   gm(),
   Scene(g, w, sceneTypes::testScene, "end"),
   _background(TEXTURETPATH + std::string("game.png"),
-              TEXTURETPATH + std::string("orc.png"),
-              TEXTURETPATH + std::string("other_orc.png"),
+              TEXTURETPATH + std::string("garrapato_vermell.png"),
+              TEXTURETPATH + std::string("garrapato_verd.png"),
               sf::Vector2f(233,20), sf::Vector2f(455,20)),
   _intermediate(GlyphContainer(&gm, sf::Vector2u(1,1), Resources::talkBox),
                 GlyphContainer(&gm, sf::Vector2u(1,1), Resources::talkBox)),
@@ -14,7 +14,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
   _inventory(GlyphContainer(&gm, sf::Vector2u(2,3), Resources::talkBox),
              GlyphContainer(&gm, sf::Vector2u(2,3), Resources::talkBox)),
   _objective(GlyphContainer(&gm, sf::Vector2u(6,1), Resources::talkBox),
-               GlyphContainer(&gm, sf::Vector2u(6,1), Resources::talkBox))
+             GlyphContainer(&gm, sf::Vector2u(6,1), Resources::talkBox))
 {
     _intermediate.first.setPosition(sf::Vector2f(153, 172));
     _intermediate.first.setSize(sf::Vector2f(75, 75));
@@ -36,10 +36,10 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _inventory.second.setSize(sf::Vector2f(160,240));
     _inventory.second.setPosition(sf::Vector2f(672,305));
 
-    // _recipes.populate();
+    _recipes.populate();
 
     _shamans.first.setParameters(TEXTURETPATH + std::string("orc.png"), sf::Vector2f(20,172));
-    _shamans.second.setParameters(TEXTURETPATH + std::string("other_orc.png"), sf::Vector2f(757,172));
+    _shamans.second.setParameters(TEXTURETPATH + std::string("orca.png"), sf::Vector2f(757,172));
 
     _objective.first.setSize(sf::Vector2f(208,55));
     _objective.first.setPosition(sf::Vector2f(20,20));
@@ -47,8 +47,8 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     _objective.second.setSize(sf::Vector2f(208,55));
     _objective.second.setPosition(sf::Vector2f(672,20));
 
-    // _recipes.setPosition(sf::Vector2f(233, 305));
-    // _recipes.setSize(sf::Vector2f(434, 270));
+    _recipes.setPosition(sf::Vector2f(233, 305));
+    _recipes.setSize(sf::Vector2f(434, 270));
 
     // for ( int i = 0; i < 3; ++i){
     //     int r = random()%3;
