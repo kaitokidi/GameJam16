@@ -4,7 +4,7 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     Scene(g, w, sceneTypes::testScene, "end") ,
     _background(TEXTURETPATH + std::string("game.png"), TEXTURETPATH + std::string("orc.png"), TEXTURETPATH + std::string("other_orc.png"), sf::Vector2f(233,20), sf::Vector2f(455,20)),
     _recipes(Resources::talkBox),
-    _actualGlyph(GlyphContainer(1,sf::Vector2i(1,1),Resources::talkBox),GlyphContainer(1,sf::Vector2i(1,1),Resources::talkBox)),
+    _actualGlyph(GlyphContainer(sf::Vector2i(1,1),Resources::talkBox),GlyphContainer(sf::Vector2i(1,1),Resources::talkBox)),
     _spelling(InputGlyphs(Resources::talkBox, &_actualGlyph.first),InputGlyphs(Resources::talkBox, &_actualGlyph.second)),
     _inventory(Inventory(Resources::talkBox, &_actualGlyph.first),Inventory(Resources::talkBox, &_actualGlyph.second)),
     _finalRitual(ObjectiveGlyphs(Resources::talkBox),ObjectiveGlyphs(Resources::talkBox))
@@ -49,12 +49,14 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
         _finalRitual.first.add(id);
         _finalRitual.second.add(id);
     }
+
     for ( int i = 0; i < 2; ++i){
         int r = random()%2 +3;
         GlyphID id = _recipes.getGlyphIDByIndex(r);
-        _finalRitual.first.add(id);
-        _finalRitual.second.add(id);
+        //_finalRitual.first.add(id);
+        //_finalRitual.second.add(id);
     }
+
     GlyphID id = _recipes.getGlyphIDByIndex(5);
     _finalRitual.first.add(id);
     _finalRitual.second.add(id);
@@ -221,9 +223,6 @@ void SceneGame::update(float deltaTime){
         changeScene("endCham");
     }
 
-
-
-
     for(auto it = moveEffects.begin(); it != moveEffects.end(); ++it){
         (*it)->update(deltaTime);
         if(! (*it)->alive()) {
@@ -231,9 +230,6 @@ void SceneGame::update(float deltaTime){
             moveEffects.erase(it);
         }
     }
-
-
-
 }
 
 void SceneGame::processInput(){
@@ -265,8 +261,6 @@ void SceneGame::render(sf::RenderTarget *target){
     }
 }
 
-void SceneGame::resizing() {
-
-}
+void SceneGame::resizing() {}
 
 

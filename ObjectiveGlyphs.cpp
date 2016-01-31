@@ -1,7 +1,7 @@
 #include "ObjectiveGlyphs.hpp"
 
 ObjectiveGlyphs::ObjectiveGlyphs(const sf::Texture& text) :
-  GlyphContainer(10, sf::Vector2i(10, 1), text)
+  GlyphContainer(sf::Vector2i(10, 1), text)
 {
   _gcounter = 10;
   preserve_height = true;

@@ -1,21 +1,27 @@
 #include "GlyphContainer.hpp"
 #include <stdio.h>
 
-GlyphContainer::GlyphContainer(int size, sf::Vector2i layout, const sf::Texture& bg_text) :
-  _background(bg_text),
-  _glyphs()
+GlyphContainer::GlyphContainer(sf::Vector2i layout, const sf::Texture& bg_text) :
+  _background(bg_text)
 {
-  _nglyphs = size;
+  // Draw layout (columns, rows)
   _layout = layout;
+
+  // Layout presentation
   preserve_height = false;
   preserve_width = false;
+
+  // we start with zero elements
+  n_elements = 0;
 }
 
 GlyphContainer::~GlyphContainer() {}
 
+// Draw the container and the Glyphs in it
 void GlyphContainer::draw(sf::RenderTarget* target) {
   target->draw(_background);
-  for (auto &g : _glyphs) {
+
+  for (auto g : _glyphs) {
     g.draw(target);
   }
 }
@@ -24,20 +30,13 @@ void GlyphContainer::update(float deltaTime) {
   // TODO OR NOT TODO
 }
 
-void GlyphContainer::setRenderTarget(sf::RenderTarget* t) {
-  _window = t;
-  for (auto &g : _glyphs) {
-    g.setRenderTarget(t);
-  }
-}
-
 void GlyphContainer::setPosition(const sf::Vector2f& pos) {
   _background.setPosition(pos);
   _pos = pos;
 
   sf::Vector2f g_size;
 
-  if(!empty())
+  if(!_glyphs.empty())
     g_size = _glyphs[0].getSize();
   else
     return;
@@ -76,11 +75,10 @@ void GlyphContainer::setSize(float width, float height) {
 }
 
 Glyph GlyphContainer::top() {
-  return _glyphs[_glyphs.size()];
+  return _glyphs.back();
 }
 
 void GlyphContainer::pop() {
-  _glyphs.erase(_glyphs.end()--);
 }
 
 void GlyphContainer::add(Glyph g) {
@@ -89,24 +87,24 @@ void GlyphContainer::add(Glyph g) {
   } else {
     g.setSize(_glyphs[0].getSize());
   }
-  printf("%d\n", g.getID());
-  _glyphs.push_back(g);
+  _glyphs[_glyphs.size()] = g;
+  ++n_elements;
 
   // Recalculate position
   setPosition(_pos);
 }
 
 void GlyphContainer::substitute(GlyphID gid) {
-  printf("%d\n", gid);
   Glyph g = Glyph(gid);
 
   if(_glyphs.size() == 0) {
     g.setSize(calculateGlyphSize());
-    _glyphs.push_back(g);
   } else {
     g.setSize(_glyphs[0].getSize());
-    _glyphs[0] = g;
   }
+
+  _glyphs[0] = g;
+  n_elements = 1;
 
   setPosition(_pos);
 }
@@ -121,7 +119,7 @@ void GlyphContainer::add(GlyphID gid) {
 }
 
 bool GlyphContainer::empty() {
-  return (_glyphs.size() == 0);
+  return n_elements == 0;
 }
 
 bool GlyphContainer::glyphNone(){

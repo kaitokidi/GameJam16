@@ -83,7 +83,8 @@ SOURCES       = main.cpp \
 		Inventory.cpp \
 		InputGlyphs.cpp \
 		Recipies.cpp \
-		BasicReagents.cpp 
+		BasicReagents.cpp \
+		MoveEffect.cpp 
 OBJECTS       = main.o \
 		utils.o \
 		Resources.o \
@@ -119,7 +120,8 @@ OBJECTS       = main.o \
 		Inventory.o \
 		InputGlyphs.o \
 		Recipies.o \
-		BasicReagents.o
+		BasicReagents.o \
+		MoveEffect.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -206,7 +208,8 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		Inventory.h \
 		InputGlyphs.h \
 		Recipies.hpp \
-		BasicReagents.hpp main.cpp \
+		BasicReagents.hpp \
+		MoveEffect.hpp main.cpp \
 		utils.cpp \
 		Resources.cpp \
 		Game.cpp \
@@ -241,7 +244,8 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		Inventory.cpp \
 		InputGlyphs.cpp \
 		Recipies.cpp \
-		BasicReagents.cpp
+		BasicReagents.cpp \
+		MoveEffect.cpp
 QMAKE_TARGET  = game
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = game
@@ -464,6 +468,7 @@ Game.o: Game.cpp Game.hpp \
 		Recipe.hpp \
 		Background.h \
 		Inventory.hpp \
+		MoveEffect.hpp \
 		InputGlyphs.hpp \
 		ObjectiveGlyphs.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Game.o Game.cpp
@@ -628,6 +633,7 @@ SceneGame.o: SceneGame.cpp SceneGame.hpp \
 		Background.h \
 		Resources.hpp \
 		Inventory.hpp \
+		MoveEffect.hpp \
 		InputGlyphs.hpp \
 		ObjectiveGlyphs.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneGame.o SceneGame.cpp
@@ -707,6 +713,13 @@ BasicReagents.o: BasicReagents.cpp BasicReagents.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o BasicReagents.o BasicReagents.cpp
+
+MoveEffect.o: MoveEffect.cpp MoveEffect.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MoveEffect.o MoveEffect.cpp
 
 ####### Install
 

@@ -1,13 +1,13 @@
 #ifndef __GLYPHCONTAINER_HPP__
 #define __GLYPHCONTAINER_HPP__
 
-#include <vector>
+#include <array>
 
 #include "Glyph.hpp"
 
 class GlyphContainer {
 public:
-  GlyphContainer(int size, sf::Vector2i layout, const sf::Texture& text);
+  GlyphContainer(sf::Vector2i layout, const sf::Texture& text);
   ~GlyphContainer();
 
   void draw(sf::RenderTarget* target);
@@ -18,8 +18,6 @@ public:
   void setSize(float width, float height);
 
   GlyphID getGlyphID();
-
-  void setRenderTarget(sf::RenderTarget* t);
 
   void preserveHeight(bool b);
 
@@ -35,7 +33,6 @@ public:
   sf::Sprite _background;
 
 protected:
-  unsigned int _nglyphs;
   sf::Vector2i _layout;
   sf::Vector2f _pos;
   bool preserve_height;
@@ -43,7 +40,8 @@ protected:
 
   sf::RenderTarget* _window;
 
-  std::vector<Glyph> _glyphs;
+  int n_elements;
+  std::array<Glyph, 30> _glyphs;
 
   sf::Vector2f calculateGlyphSize();
 };
