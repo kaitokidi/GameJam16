@@ -74,7 +74,7 @@ void GlyphContainer::setSize(float width, float height) {
   setPosition(_pos);
 }
 
-Glyph GlyphContainer::top() {
+GlyphID GlyphContainer::top() {
   return _glyphs.back();
 }
 
@@ -123,11 +123,14 @@ bool GlyphContainer::empty() {
 }
 
 bool GlyphContainer::glyphNone(){
-    return (_glyphs.size() == 1 && _glyphs[0].getID() == GlyphID::glyph_none);
+  return (_glyphs.size() == 1 && _glyphs[0].getID() == GlyphID::glyph_none);
 }
 
-Glyph GlyphContainer::get(int index) {
-  return _glyphs[index];
+GlyphID GlyphContainer::get(int index) {
+  if(index >= n_elements)
+    return glyph_none;
+  else
+    return _glyphs[index].getID();
 }
 
 GlyphID GlyphContainer::getGlyphID() {

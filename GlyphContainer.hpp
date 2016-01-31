@@ -23,18 +23,22 @@ public:
 
   Glyph top();
   void pop();
+
   void add(Glyph g);
   void add(GlyphID gid);
+
   bool empty();
   Glyph get(int index);
   void substitute(GlyphID gid);
 
   bool glyphNone();
-  sf::Sprite _background;
 
 protected:
   sf::Vector2i _layout;
   sf::Vector2f _pos;
+
+  sf::Sprite _background;
+
   bool preserve_height;
   bool preserve_width;
 
