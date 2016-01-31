@@ -1,5 +1,4 @@
 #include "GlyphContainer.hpp"
-#include <stdio.h>
 
 GlyphContainer::GlyphContainer(sf::Vector2i layout, const sf::Texture& bg_text) :
   _background(bg_text)
@@ -24,10 +23,6 @@ void GlyphContainer::draw(sf::RenderTarget* target) {
   for (auto g : _glyphs) {
     g.draw(target);
   }
-}
-
-void GlyphContainer::update(float deltaTime) {
-  // TODO OR NOT TODO
 }
 
 void GlyphContainer::setPosition(const sf::Vector2f& pos) {
@@ -74,13 +69,6 @@ void GlyphContainer::setSize(float width, float height) {
   setPosition(_pos);
 }
 
-GlyphID GlyphContainer::top() {
-  return _glyphs.back();
-}
-
-void GlyphContainer::pop() {
-}
-
 void GlyphContainer::add(Glyph g) {
   if(_glyphs.size() == 0) {
     g.setSize(calculateGlyphSize());
@@ -94,23 +82,12 @@ void GlyphContainer::add(Glyph g) {
   setPosition(_pos);
 }
 
-void GlyphContainer::substitute(GlyphID gid) {
-  Glyph g = Glyph(gid);
-
-  if(_glyphs.size() == 0) {
-    g.setSize(calculateGlyphSize());
-  } else {
-    g.setSize(_glyphs[0].getSize());
-  }
-
-  _glyphs[0] = g;
-  n_elements = 1;
-
-  setPosition(_pos);
-}
-
 void GlyphContainer::preserveHeight(bool b) {
   preserve_height = b;
+}
+
+void GlyphContainer::preserveWidth(bool b) {
+  preserve_width = b;
 }
 
 void GlyphContainer::add(GlyphID gid) {
@@ -122,26 +99,16 @@ bool GlyphContainer::empty() {
   return n_elements == 0;
 }
 
-bool GlyphContainer::glyphNone(){
-  return (_glyphs.size() == 1 && _glyphs[0].getID() == GlyphID::glyph_none);
-}
-
-GlyphID GlyphContainer::get(int index) {
+Glyph GlyphContainer::get(int index) {
   if(index >= n_elements)
     return glyph_none;
   else
     return _glyphs[index].getID();
 }
 
-GlyphID GlyphContainer::getGlyphID() {
-  if(!empty())
-    return _glyphs[0].getID();
-  else
-    return glyph_none;
-}
+// Private
 
 sf::Vector2f GlyphContainer::calculateGlyphSize() {
-  //sheeeeet
   float width;
   float height;
 

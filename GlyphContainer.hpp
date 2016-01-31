@@ -2,8 +2,7 @@
 #define __GLYPHCONTAINER_HPP__
 
 #include <array>
-
-#include "Glyph.hpp"
+#include "GlyphManager.hpp"
 
 class GlyphContainer {
 public:
@@ -11,39 +10,30 @@ public:
   ~GlyphContainer();
 
   void draw(sf::RenderTarget* target);
-  void update(float deltaTime);
 
   void setPosition(const sf::Vector2f& pos);
   void setSize(const sf::Vector2f& size);
   void setSize(float width, float height);
 
-  GlyphID getGlyphID();
-
   void preserveHeight(bool b);
-
-  Glyph top();
-  void pop();
+  void preserveWidth(bool b);
 
   void add(Glyph g);
-  void add(GlyphID gid);
 
   bool empty();
   Glyph get(int index);
-  void substitute(GlyphID gid);
-
-  bool glyphNone();
 
 protected:
+  // Layout
   sf::Vector2i _layout;
   sf::Vector2f _pos;
-
-  sf::Sprite _background;
 
   bool preserve_height;
   bool preserve_width;
 
-  sf::RenderTarget* _window;
+  sf::Sprite _background;
 
+  // Container data
   int n_elements;
   std::array<Glyph, 30> _glyphs;
 

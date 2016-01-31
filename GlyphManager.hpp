@@ -82,7 +82,8 @@ public:
   struct DataInstance {
     _glyph_data *_d;
 
-    // Add methods
+    // Data Instance data methods
+
   };
 
 private:
