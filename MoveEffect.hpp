@@ -7,8 +7,10 @@ class MoveEffect : public sf::Sprite
 
 public:
 
-    MoveEffect(sf::Vector2i ini, sf::Vector2i end, sf::Texture &texture);
+    MoveEffect();
     ~MoveEffect();
+    MoveEffect(sf::Vector2i ini, sf::Vector2i end, sf::Texture &texture);
+    void init(sf::Vector2i ini, sf::Vector2i end, sf::Texture &texture);
 
     bool alive();
     void update(float deltaTime);

@@ -3,14 +3,10 @@
 #include "Player.h"
 #include "Scene.hpp"
 #include "utils.hpp"
-#include "Recipies.hpp"
 #include "Background.h"
 #include "Resources.hpp"
-#include "Inventory.hpp"
 #include "MoveEffect.hpp"
-#include "InputGlyphs.hpp"
-#include "GlyphContainer.hpp"
-#include "ObjectiveGlyphs.hpp"
+
 class SceneGame : public Scene {
 
 public:
@@ -31,18 +27,15 @@ public:
 private:
 
     std::string _next;
-    float _nextInputUpdate;
 
+    float glyphSize;
     Background _background;
+    sf::Texture _glyphTexture;
+    std::pair<int, int> _clicks;
+    std::pair<int, int> _evolutions;
     std::pair<Player,Player> _chamans;
+    std::pair<MoveEffect, MoveEffect> moveEffects;
 
-    Recipies _recipes;
-    std::pair<Inventory,Inventory> _inventory;
-    std::pair<InputGlyphs,InputGlyphs> _spelling;
-    std::pair<GlyphContainer,GlyphContainer> _actualGlyph;
-    std::pair<ObjectiveGlyphs,ObjectiveGlyphs> _finalRitual;
-
-    std::vector<MoveEffect* > moveEffects;
 
 };
 

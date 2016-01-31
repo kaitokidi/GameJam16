@@ -25,7 +25,6 @@ void Background::setParameters(std::string backgroundPath, std::string m1Path, s
     _m1Frame = 0;
     _m2Frame = 0;
 
-    std::cout << "OY" << std::endl;
 }
 
 void Background::update(float deltaTime){
@@ -40,6 +39,10 @@ void Background::draw(sf::RenderTarget *window){
     window->draw(_background);
     window->draw(_monster1);
     window->draw(_monster2);
+}
+
+void Background::init(){
+    _m1Evolution = _m2Evolution = 0;
 }
 
 void Background::evolve(bool monster){

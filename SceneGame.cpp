@@ -2,71 +2,20 @@
 
 SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
     Scene(g, w, sceneTypes::testScene, "end") ,
-    _background(TEXTURETPATH + std::string("game.png"), TEXTURETPATH + std::string("orc.png"), TEXTURETPATH + std::string("other_orc.png"), sf::Vector2f(233,20), sf::Vector2f(455,20)),
-    _recipes(Resources::talkBox),
-    _actualGlyph(GlyphContainer(1,sf::Vector2i(1,1),Resources::talkBox),GlyphContainer(1,sf::Vector2i(1,1),Resources::talkBox)),
-    _spelling(InputGlyphs(Resources::talkBox, &_actualGlyph.first),InputGlyphs(Resources::talkBox, &_actualGlyph.second)),
-    _inventory(Inventory(Resources::talkBox, &_actualGlyph.first),Inventory(Resources::talkBox, &_actualGlyph.second)),
-    _finalRitual(ObjectiveGlyphs(Resources::talkBox),ObjectiveGlyphs(Resources::talkBox))
+    _background(TEXTURETPATH + std::string("stonegenge_background_small.png"), TEXTURETPATH + std::string("garrapato_vermell.png"),
+                TEXTURETPATH + std::string("garrapato_verd.png"), sf::Vector2f(0,10), sf::Vector2f(230,10))
 {
-    _actualGlyph.first.setPosition(sf::Vector2f(153, 172));
-    _actualGlyph.first.setSize(sf::Vector2f(75, 75));
+    _chamans.first.setParameters(TEXTURETPATH + std::string("Orc_shaman_animations.png"), sf::Vector2f(20,172));
+    _chamans.second.setParameters(TEXTURETPATH + std::string("Orco.png"), sf::Vector2f(280,172));
 
-    _actualGlyph.second.setPosition(sf::Vector2f(672, 172));
-    _actualGlyph.second.setSize(sf::Vector2f(75, 75));
-
-    _spelling.first.setPosition(sf::Vector2f(20, 80));
-    _spelling.first.setSize(sf::Vector2f(208, 87));
-    _spelling.first.preserveHeight(true);
-
-    _spelling.second.setPosition(sf::Vector2f(672, 80));
-    _spelling.second.setSize(sf::Vector2f(208, 87));
-    _spelling.second.preserveHeight(true);
-
-    _inventory.first.setSize(sf::Vector2f(160,240));
-    _inventory.first.setPosition(sf::Vector2f(68,305));
-
-    _inventory.second.setSize(sf::Vector2f(160,240));
-    _inventory.second.setPosition(sf::Vector2f(672,305));
-
-    _recipes.populate();
-
-    _chamans.first.setParameters(TEXTURETPATH + std::string("orc.png"), sf::Vector2f(20,172));
-    _chamans.second.setParameters(TEXTURETPATH + std::string("other_orc.png"), sf::Vector2f(757,172));
-
-    _finalRitual.first.setSize(sf::Vector2f(208,55));
-    _finalRitual.first.setPosition(sf::Vector2f(20,20));
-
-    _finalRitual.second.setSize(sf::Vector2f(208,55));
-    _finalRitual.second.setPosition(sf::Vector2f(672,20));
-
-    _recipes.setPosition(sf::Vector2f(233, 305));
-    _recipes.setSize(sf::Vector2f(434, 270));
-
-    for ( int i = 0; i < 3; ++i){
-        int r = random()%3;
-        GlyphID id = _recipes.getGlyphIDByIndex(r);
-        _finalRitual.first.add(id);
-        _finalRitual.second.add(id);
-    }
-    for ( int i = 0; i < 2; ++i){
-        int r = random()%2 +3;
-        GlyphID id = _recipes.getGlyphIDByIndex(r);
-        _finalRitual.first.add(id);
-        _finalRitual.second.add(id);
-    }
-    GlyphID id = _recipes.getGlyphIDByIndex(5);
-    _finalRitual.first.add(id);
-    _finalRitual.second.add(id);
-
-    _view = _window->getDefaultView();
     _next = "end";
-    _inventory.first.init();
-    _inventory.second.init();
-    //_view = _window->getDefaultView();
-    // initView(&_view, sf::Vector2i(_window->getSize().x,_window->getSize().y));
-    initView(&_view, sf::Vector2i(900,600));
-    _nextInputUpdate = 0.0f;
+    _view = _window->getDefaultView();
+    if(! _glyphTexture.loadFromFile(TEXTURETPATH + std::string("glyps.png"))) std::cout << ": ( not loaded texture " << std::endl;
+    glyphSize = _glyphTexture.getSize().x/22;
+
+    _clicks.first = _clicks.second = 1;
+    _evolutions.first = _evolutions.second = 0;
+    initView(&_view, sf::Vector2i(450,300));
 }
 
 SceneGame::~SceneGame() {}
@@ -79,191 +28,73 @@ void SceneGame::update(float deltaTime){
     _chamans.first.update(deltaTime);
     _chamans.second.update(deltaTime);
 
-    if(_actualGlyph.first.empty() || _actualGlyph.first.glyphNone()){
-        if(InputManager::action(InputAction::firstAction)){
-            _spelling.first.discard();
-            _chamans.first.changeState(status::action);
-             SoundManager::playSound("action");
-        } else if(InputManager::action(InputAction::firstUp)){
-            _spelling.first.add(GlyphID::glyphUP);
 
-            GlyphID gid = _recipes.build(_spelling.first.getVectorGlyphID());
-            if(gid != GlyphID::glyph_none){
-                _actualGlyph.first.add(gid);
+    if(InputManager::action(InputAction::firstAction)){
+        ++_clicks.first;
+        if(_clicks.first%20 == 0){
+            int random = rand()%2;
+            if(random == 0){
+                SoundManager::playSound("action");
+                _chamans.first.changeState(status::action);
             }
-        } else if(InputManager::action(InputAction::firstDown)){
-            _spelling.first.add(GlyphID::glyphDOWN);
-
-            GlyphID gid = _recipes.build(_spelling.first.getVectorGlyphID());
-            if(gid != GlyphID::glyph_none){
-                _actualGlyph.first.add(gid);
+            else {
+                SoundManager::playSound("attack");
+                _chamans.first.changeState(status::attack);
             }
-        } else if(InputManager::action(InputAction::firstLeft)){
-            _spelling.first.add(GlyphID::glyphLEFT);
-
-            GlyphID gid = _recipes.build(_spelling.first.getVectorGlyphID());
-            if(gid != GlyphID::glyph_none){
-                _actualGlyph.first.add(gid);
-            }
-        } else if(InputManager::action(InputAction::firstRight)){
-            _spelling.first.add(GlyphID::glyphRIGHT);
-
-            GlyphID gid = _recipes.build(_spelling.first.getVectorGlyphID());
-            if(gid != GlyphID::glyph_none){
-                _actualGlyph.first.add(gid);
+            random = rand()%2;
+            if(random == 0){
+                moveEffects.first.init(sf::Vector2i(40,172),sf::Vector2i(272,172),_glyphTexture);
+                moveEffects.first.setTextureRect(sf::IntRect(0+glyphSize*(rand()%21),0,glyphSize,glyphSize));
             }
         }
-    } else {
-        if(InputManager::action(InputAction::firstAction)){
-            _inventory.first.rotate();
-            _chamans.first.changeState(status::action);
-             SoundManager::playSound("action");
-        } else if(InputManager::action(InputAction::firstUp)){
 
-            _finalRitual.first.active(_actualGlyph.first.getGlyphID() );
-            _actualGlyph.first.pop();
+    }
 
-            _chamans.first.changeState(status::action);
-            SoundManager::playSound("action");
-        } else if(InputManager::action(InputAction::firstDown)){
-            _inventory.first.add(_actualGlyph.first.getGlyphID() );
-
-            _actualGlyph.first.pop();
-            _chamans.first.changeState(status::action);
-            SoundManager::playSound("action");
-        } else if(InputManager::action(InputAction::firstLeft)){
-            _spelling.first.add(_actualGlyph.first.getGlyphID());
-            _inventory.first.firstToActualGlyph();
-            _actualGlyph.first.pop();
-
-            SoundManager::playSound("action");
-            _chamans.first.changeState(status::action);
-        } else if(InputManager::action(InputAction::firstRight)){
-            _inventory.second.attackWith(_actualGlyph.first.getGlyphID());
-            _actualGlyph.first.pop();
-
-            _chamans.first.changeState(status::attack);
-            SoundManager::playSound("attack");
-            //moveEffects.push_back(new MoveEffect(sf::Vector2i(153,172), sf::Vector2i(672,305), Resources::key));
+    if(InputManager::action(InputAction::secondAction)){
+        ++_clicks.second;
+        if(_clicks.second%20 == 0){
+            int random = rand()%2;
+            if(random == 0){
+                SoundManager::playSound("action");
+                _chamans.second.changeState(status::action);
+            }
+            else {
+                SoundManager::playSound("attack");
+                _chamans.second.changeState(status::attack);
+            }
+            random = rand()%2;
+            if(random == 0){
+                moveEffects.second.init(sf::Vector2i(272,172),sf::Vector2i(40,172),_glyphTexture);
+                moveEffects.second.setTextureRect(sf::IntRect(+glyphSize*(rand()%21),0,glyphSize,glyphSize));
+            }
         }
     }
 
-    if(_actualGlyph.second.empty()){
-        if(InputManager::action(InputAction::secondAction)){
-            _spelling.second.discard();
-            _chamans.second.changeState(status::action);
-             SoundManager::playSound("action");
-        } else if(InputManager::action(InputAction::secondUp)){
-            _spelling.second.add(GlyphID::glyphUP);
+    moveEffects.first.update(deltaTime);
+    moveEffects.second.update(deltaTime);
 
-            GlyphID gid = _recipes.build(_spelling.second.getVectorGlyphID());
-            if(gid != GlyphID::glyph_none){
-                _actualGlyph.second.add(gid);
-            }
-        } else if(InputManager::action(InputAction::secondDown)){
-            _spelling.second.add(GlyphID::glyphDOWN);
+    if(_clicks.first%60 == 0) { _background.evolve(false); ++_clicks.first; ++_evolutions.first; }
+    if(_clicks.second%60 == 0){ _background.evolve(true); ++_clicks.second; ++_evolutions.second;}
 
-            GlyphID gid = _recipes.build(_spelling.second.getVectorGlyphID());
-            if(gid != GlyphID::glyph_none){
-                _actualGlyph.second.add(gid);
-            }
-        } else if(InputManager::action(InputAction::secondLeft)){
-            _spelling.second.add(GlyphID::glyphLEFT);
-
-            GlyphID gid = _recipes.build(_spelling.second.getVectorGlyphID());
-            if(gid != GlyphID::glyph_none){
-                _actualGlyph.second.add(gid);
-            }
-        } else if(InputManager::action(InputAction::secondRight)){
-            _spelling.second.add(GlyphID::glyphRIGHT);
-
-            GlyphID gid = _recipes.build(_spelling.second.getVectorGlyphID());
-            if(gid != GlyphID::glyph_none){
-                _actualGlyph.second.add(gid);
-            }
-        }
-    } else {
-        if(InputManager::action(InputAction::secondAction)){
-            _inventory.second.rotate();
-            _chamans.second.changeState(status::action);
-             SoundManager::playSound("action");
-        } else if(InputManager::action(InputAction::secondUp)){
-            _finalRitual.second.active(_actualGlyph.second.getGlyphID() );
-            _actualGlyph.second.pop();
-
-            _chamans.second.changeState(status::action);
-             SoundManager::playSound("action");
-        } else if(InputManager::action(InputAction::secondDown)){
-            _inventory.second.add(_actualGlyph.second.getGlyphID() );
-            _actualGlyph.second.pop();
-
-            _chamans.second.changeState(status::action);
-             SoundManager::playSound("action");
-        } else if(InputManager::action(InputAction::secondRight)){
-            _spelling.second.add(_actualGlyph.second.getGlyphID());
-            _actualGlyph.second.pop(); //only if first To Actual glyph above does not overrite it
-            _inventory.second.firstToActualGlyph();
-
-            _chamans.second.changeState(status::action);
-             SoundManager::playSound("action");
-        } else if(InputManager::action(InputAction::secondLeft)){
-            _inventory.first.attackWith(_actualGlyph.second.getGlyphID());
-            _actualGlyph.second.pop();
-
-            _chamans.second.changeState(status::attack);
-            SoundManager::playSound("attack");
-        }
-    }
-    if(_finalRitual.first.complete()){
-        changeScene("endOrc");
-    }
-    if(_finalRitual.second.complete()){
-        changeScene("endCham");
-    }
-
-
-
-    for(auto it = moveEffects.begin(); it != moveEffects.end() && (*it) != nullptr; ++it){
-        (*it)->update(deltaTime);
-        if(! (*it)->alive()) {
-            delete (*it);
-            moveEffects.erase(it);
-        }
-    }
-
-
+    if(_evolutions.first > 3)
 
 }
 
 void SceneGame::processInput(){
     InputManager::update(_window);
+    if(InputManager::action(InputAction::reset)) {
+        _background.init();
+        _clicks.first = _clicks.second = 1;
+        _evolutions.first = _evolutions.second = 0;
+    }
 }
 
 void SceneGame::render(sf::RenderTarget *target){
     _background.draw(target);
-
     _chamans.first.draw(target);
     _chamans.second.draw(target);
-
-    _recipes.draw(target);
-
-    _inventory.first.draw(target);
-    _inventory.second.draw(target);
-
-    _spelling.first.draw(target);
-    _spelling.second.draw(target);
-
-    _finalRitual.first.draw(target);
-    _finalRitual.second.draw(target);
-
-    _actualGlyph.first.draw(target);
-    _actualGlyph.second.draw(target);
-
-    for(auto it = moveEffects.begin(); it != moveEffects.end(); ++it){
-        std::cout << "d" << std::endl;
-        _window->draw((*(*it)));
-        std::cout << "dd" << std::endl;
-    }
+    if(moveEffects.first.alive()) target->draw(moveEffects.first);
+    if(moveEffects.second.alive()) target->draw(moveEffects.second);
 }
 
 void SceneGame::resizing() {

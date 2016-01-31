@@ -35,13 +35,6 @@ SOURCES += main.cpp \
     SceneGame.cpp \
     Background.cpp \
     Player.cpp \
-    ObjectiveGlyphs.cpp \
-    GlyphContainer.cpp \
-    Glyph.cpp \
-    Inventory.cpp \
-    InputGlyphs.cpp \
-    Recipies.cpp \
-    BasicReagents.cpp \
     MoveEffect.cpp
 
 HEADERS += utils.hpp \

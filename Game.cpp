@@ -97,6 +97,12 @@ void Game::initInput() {
     InputManager::bind(InputAction::secondAction, sf::Keyboard::RShift);
 
 
+    InputManager::bind(InputAction::firstAction, sf::Mouse::Left);
+    InputManager::bind(InputAction::secondAction, sf::Mouse::Right);
+    InputManager::bind(InputAction::reset, sf::Keyboard::R);
+
+
+
     /*
     InputManager::bind(InputAction::menuUp, sf::Keyboard::Up);
     InputManager::bind(InputAction::menuDown, sf::Keyboard::Down);
