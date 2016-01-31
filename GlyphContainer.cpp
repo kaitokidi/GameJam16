@@ -66,14 +66,15 @@ void GlyphContainer::setSize(float width, float height) {
   setPosition(_pos);
 }
 
+// Add glyph to Container
 void GlyphContainer::add(Glyph g) {
   // TODO
-  if(_glyphs.size() == 0) {
+  if(n_elements == 0) {
     g.setSize(calculateGlyphSize());
   } else {
     g.setSize(_glyphs[0].getSize());
   }
-  _glyphs[_glyphs.size()] = g;
+  _glyphs[n_elements] = g;
   ++n_elements;
 
   // Recalculate position
@@ -93,10 +94,7 @@ bool GlyphContainer::empty() {
 }
 
 Glyph GlyphContainer::get(int index) {
-  if(index >= n_elements)
-    return glyph_none;
-  else
-    return _glyphs[index].getID();
+  // TODO
 }
 
 // PRIVATE

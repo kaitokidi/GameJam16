@@ -99,32 +99,6 @@ namespace InputAction {
   };
 }
 
-enum GlyphID {
-    glyphUP,
-    glyphDOWN,
-    glyphLEFT,
-    glyphRIGHT,
-    glyph11,
-    glyph12,
-    glyph13,
-    glyph14,
-    glyph15,
-    glyph16,
-    glyph17,
-    glyph18,
-    glyph19,
-    glyph21,
-    glyph22,
-    glyph23,
-    glyph24,
-    glyph25,
-    glyph26,
-    glyph31,
-    glyph32,
-    glyph33,
-    glyph_none
-};
-
 //Scenes
 enum sceneTypes {
     menu = -1,
