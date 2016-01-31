@@ -87,10 +87,13 @@ void SceneGame::update(float deltaTime){
     _shamans.first.update(deltaTime);
     _shamans.second.update(deltaTime);
 
+    Glyph g = gm.create(GlyphType::glyph_11);
+    g.setPosition(sf::Vector2f(30, 30));
+
     // if(_actualGlyph.first.empty() || _actualGlyph.first.glyphNone()){
     //     if(InputManager::action(InputAction::firstAction)){
     //         _input.first.discard();
-    //         _chamans.first.changeState(status::action);
+    //         _shamans.first.changeState(status::action);
     //          SoundManager::playSound("action");
     //     } else if(InputManager::action(InputAction::firstUp)){
     //         _input.first.add(GlyphID::glyphUP);
@@ -124,20 +127,20 @@ void SceneGame::update(float deltaTime){
     // } else {
     //     if(InputManager::action(InputAction::firstAction)){
     //         _inventory.first.rotate();
-    //         _chamans.first.changeState(status::action);
+    //         _shamans.first.changeState(status::action);
     //          SoundManager::playSound("action");
     //     } else if(InputManager::action(InputAction::firstUp)){
 
     //         _objective.first.active(_actualGlyph.first.getGlyphID() );
     //         _actualGlyph.first.pop();
 
-    //         _chamans.first.changeState(status::action);
+    //         _shamans.first.changeState(status::action);
     //         SoundManager::playSound("action");
     //     } else if(InputManager::action(InputAction::firstDown)){
     //         _inventory.first.add(_actualGlyph.first.getGlyphID() );
 
     //         _actualGlyph.first.pop();
-    //         _chamans.first.changeState(status::action);
+    //         _shamans.first.changeState(status::action);
     //         SoundManager::playSound("action");
     //     } else if(InputManager::action(InputAction::firstLeft)){
     //         _input.first.add(_actualGlyph.first.getGlyphID());
@@ -145,12 +148,12 @@ void SceneGame::update(float deltaTime){
     //         _actualGlyph.first.pop();
 
     //         SoundManager::playSound("action");
-    //         _chamans.first.changeState(status::action);
+    //         _shamans.first.changeState(status::action);
     //     } else if(InputManager::action(InputAction::firstRight)){
     //         _inventory.second.attackWith(_actualGlyph.first.getGlyphID());
     //         _actualGlyph.first.pop();
 
-    //         _chamans.first.changeState(status::attack);
+    //         _shamans.first.changeState(status::attack);
     //         SoundManager::playSound("attack");
     //         //moveEffects.push_back(new MoveEffect(sf::Vector2i(153,172), sf::Vector2i(672,305), Resources::key));
     //     }
@@ -159,7 +162,7 @@ void SceneGame::update(float deltaTime){
     // if(_actualGlyph.second.empty()){
     //     if(InputManager::action(InputAction::secondAction)){
     //         _input.second.discard();
-    //         _chamans.second.changeState(status::action);
+    //         _shamans.second.changeState(status::action);
     //          SoundManager::playSound("action");
     //     } else if(InputManager::action(InputAction::secondUp)){
     //         _input.second.add(GlyphID::glyphUP);
@@ -193,32 +196,32 @@ void SceneGame::update(float deltaTime){
     // } else {
     //     if(InputManager::action(InputAction::secondAction)){
     //         _inventory.second.rotate();
-    //         _chamans.second.changeState(status::action);
+    //         _shamans.second.changeState(status::action);
     //          SoundManager::playSound("action");
     //     } else if(InputManager::action(InputAction::secondUp)){
     //         _objective.second.active(_actualGlyph.second.getGlyphID() );
     //         _actualGlyph.second.pop();
 
-    //         _chamans.second.changeState(status::action);
+    //         _shamans.second.changeState(status::action);
     //          SoundManager::playSound("action");
     //     } else if(InputManager::action(InputAction::secondDown)){
     //         _inventory.second.add(_actualGlyph.second.getGlyphID() );
     //         _actualGlyph.second.pop();
 
-    //         _chamans.second.changeState(status::action);
+    //         _shamans.second.changeState(status::action);
     //          SoundManager::playSound("action");
     //     } else if(InputManager::action(InputAction::secondRight)){
     //         _input.second.add(_actualGlyph.second.getGlyphID());
     //         _actualGlyph.second.pop(); //only if first To Actual glyph above does not overrite it
     //         _inventory.second.firstToActualGlyph();
 
-    //         _chamans.second.changeState(status::action);
+    //         _shamans.second.changeState(status::action);
     //          SoundManager::playSound("action");
     //     } else if(InputManager::action(InputAction::secondLeft)){
     //         _inventory.first.attackWith(_actualGlyph.second.getGlyphID());
     //         _actualGlyph.second.pop();
 
-    //         _chamans.second.changeState(status::attack);
+    //         _shamans.second.changeState(status::attack);
     //         SoundManager::playSound("attack");
     //     }
     // }

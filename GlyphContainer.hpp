@@ -19,9 +19,10 @@ public:
   void preserveWidth(bool b);
 
   void add(Glyph g);
+  void discard();
 
-  bool empty();
-  Glyph get(int index);
+  bool empty() const;
+  Glyph get(int index) const;
 
 protected:
   // Layout

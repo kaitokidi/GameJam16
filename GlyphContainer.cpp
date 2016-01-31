@@ -82,6 +82,10 @@ void GlyphContainer::add(Glyph g) {
   setPosition(_pos);
 }
 
+void GlyphContainer::discard() {
+  n_elements = 0;
+}
+
 void GlyphContainer::preserveHeight(bool b) {
   preserve_height = b;
 }
@@ -90,11 +94,11 @@ void GlyphContainer::preserveWidth(bool b) {
   preserve_width = b;
 }
 
-bool GlyphContainer::empty() {
+bool GlyphContainer::empty() const {
   return n_elements == 0;
 }
 
-Glyph GlyphContainer::get(int index) {
+Glyph GlyphContainer::get(int index) const {
   // TODO
 }
 
