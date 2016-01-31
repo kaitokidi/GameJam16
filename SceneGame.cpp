@@ -6,14 +6,14 @@ SceneGame::SceneGame(Game *g, sf::RenderWindow *w) :
                 TEXTURETPATH + std::string("orc.png"),
                 TEXTURETPATH + std::string("other_orc.png"),
                 sf::Vector2f(233,20), sf::Vector2f(455,20)),
-    _intermediate(GlyphContainer(sf::Vector2i(1,1), Resources::talkBox),
-                  GlyphContainer(sf::Vector2i(1,1), Resources::talkBox)),
-    _input(GlyphContainer(sf::Vector2i(8,1), Resources::talkBox),
-           GlyphContainer(sf::Vector2i(8,1), Resources::talkBox)),
-    _inventory(GlyphContainer(sf::Vector2i(2,3), Resources::talkBox),
-               GlyphContainer(sf::Vector2i(2,3), Resources::talkBox)),
-    _objective(GlyphContainer(sf::Vector2i(6,1), Resources::talkBox),
-               GlyphContainer(sf::Vector2i(6,1), Resources::talkBox))
+    _intermediate(GlyphContainer(sf::Vector2u(1,1), Resources::talkBox),
+                  GlyphContainer(sf::Vector2u(1,1), Resources::talkBox)),
+    _input(GlyphContainer(sf::Vector2u(8,1), Resources::talkBox),
+           GlyphContainer(sf::Vector2u(8,1), Resources::talkBox)),
+    _inventory(GlyphContainer(sf::Vector2u(2,3), Resources::talkBox),
+               GlyphContainer(sf::Vector2u(2,3), Resources::talkBox)),
+    _objective(GlyphContainer(sf::Vector2u(6,1), Resources::talkBox),
+               GlyphContainer(sf::Vector2u(6,1), Resources::talkBox))
 {
     _intermediate.first.setPosition(sf::Vector2f(153, 172));
     _intermediate.first.setSize(sf::Vector2f(75, 75));
@@ -247,6 +247,18 @@ void SceneGame::render(sf::RenderTarget *target){
 
     _shamans.first.draw(target);
     _shamans.second.draw(target);
+
+    _intermediate.first.draw(target);
+    _intermediate.second.draw(target);
+
+    _input.first.draw(target);
+    _input.second.draw(target);
+
+    _inventory.first.draw(target);
+    _inventory.second.draw(target);
+
+    _objective.first.draw(target);
+    _objective.second.draw(target);
 
     gm.draw(target);
 }
